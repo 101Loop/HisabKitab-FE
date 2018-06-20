@@ -1,0 +1,54 @@
+<div>
+  <h3 class="title">Post Outgoing</h3>
+</div>
+<form [formGroup]="normalForm">
+  <div>
+    <div align="center">
+      <p>
+        <mat-form-field appearance="outline" class="inputfield">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" [(ngModel)]="name" formControlName="position">
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="inputfield">
+          <mat-label>Contact</mat-label>
+          <input matInput placeholder="Contact" [(ngModel)]="contact" formControlName="org">
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="inputfield">
+          <mat-label>Amount</mat-label>
+          <input matInput placeholder="Amount" [(ngModel)]="amount" formControlName="org">
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="inputfield">
+          <mat-label>Date</mat-label>
+          <input matInput placeholder="Date" [(ngModel)]="create_date" value="{{create_date}}" name="sal" formControlName="salary">
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </p>
+      <div class="dropdown">
+        <mat-form-field class="gender" appearance="outline">
+          <mat-select placeholder="Mode" [(value)]="selectedMode" >
+            <mat-option *ngFor="let Mode of mode" [value]="Mode.value" >
+              {{ Mode.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!--<input type="file" class="uploder">-->
+    </div>
+
+    <div align="center">
+      <button mat-button class="button" (click)="onSuccess()" [disabled]="normalForm.invalid">Submit</button>
+    </div>
+  </div>
+  <div align="center">
+    <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
+  </div>
+</form>

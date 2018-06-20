@@ -1,0 +1,154 @@
+.container{
+  margin-top: 80px;
+}
+.img{
+  width: 50px;
+  height: 50px;
+}
+.border{
+  background-color: white;
+  z-index: 999;
+  border: solid 1px #c7c7c7;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  padding: 15px;
+  margin-bottom: -85px;
+}
+.card{
+  width: 50%;
+  margin: 50px auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: transparent;
+}
+/*mat-icon{
+  margin: 20px 0 0 20px;
+}*/
+h3{
+  text-align: center;
+}
+mat-form-field.mat-form-field {
+  font-size: 12px;
+}
+textarea.mat-input-element {
+  padding: 10px 0;
+  margin: -20px 0;
+}
+.inputfield{
+  width: 70%;
+  margin-bottom: -25px;
+}
+.emailfield{
+  margin-top: 1px;
+  padding-top: 1px;
+}
+.backArrow{
+  cursor: pointer;
+  margin-left: 20px;
+}
+.button{
+  background: #DA9403;
+  color: white;
+  width: 40%;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+.text{
+  text-align: center;
+}
+a{
+  text-decoration: none
+}
+.loader{
+  position: absolute;
+  top: 40%;
+  margin-left: -30px;
+}
+@media screen and (max-width: 700px) {
+  .inputfield{
+    width: 100%;
+  }
+  .button{
+    width: 100%;
+  }
+  .card{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .border{
+    margin-bottom: -35px;
+  }
+  .loader{
+    position: absolute;
+    top: 50%;
+    margin-left: -30px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .container{
+    margin-top: 100px;
+  }
+  .inputfield{
+    width: 100%;
+  }
+  .button{
+    width: 100%;
+  }
+  .card{
+    width: 60%;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .border{
+    margin-bottom: -35px;
+  }
+  .loader{
+    position: absolute;
+    top: 50%;
+    margin-left: -30px;
+  }
+}
+@media only screen
+and (min-device-height : 800px)
+and (max-device-height : 900px)
+and (orientation : portrait) {
+  .container{
+    margin-top: 150px;
+  }
+  .inputfield{
+    width: 80%;
+  }
+  .button{
+    width: 40%;
+  }
+}
+@media only screen
+and (min-device-height : 900px)
+and (max-device-height : 1050px)
+and (orientation : portrait) {
+  .container{
+    margin-top: 300px;
+  }
+  .inputfield{
+    width: 80%;
+  }
+  .button{
+    width: 40%;
+  }
+}
+@media only screen
+and (min-device-height : 1050px)
+and (max-device-height : 1400px)
+and (orientation : portrait) {
+  .container{
+    margin-top: 400px;
+  }
+  .inputfield{
+    width: 80%;
+  }
+  .button{
+    width: 40%;
+  }
+}

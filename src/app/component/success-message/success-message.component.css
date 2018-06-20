@@ -1,0 +1,15 @@
+div{align-items: center}
+.tik{
+  border: 3px solid #ADA8A8 ;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  font-size: 35px;
+  color: #7BB700;
+  padding: 5px;
+}
+button{
+  background-color: #DA9403;
+  color: white;
+
+}

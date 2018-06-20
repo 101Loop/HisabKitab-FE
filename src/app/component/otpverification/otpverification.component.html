@@ -1,0 +1,35 @@
+
+<div align="center" class="container">
+<div >
+ <!-- <h2>Flexy Managers</h2>-->
+</div>
+<div class="border">
+</div>
+<mat-card class="card">
+  <div align="center  ">
+  <div>
+    <h3 >OTP Verification</h3>
+  </div>
+  <P>
+    <mat-form-field appearance="outline" class="inputfield ">
+      <mat-label>{{output}}</mat-label>
+      <input matInput [disabled]="true">
+      <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
+  </P>
+  <P>
+    <mat-form-field appearance="outline" class="inputfield">
+      <mat-label>OTP*</mat-label>
+      <input  matInput placeholder="OTP" [(ngModel)]="otp" (keyup.enter)="verifyOtp()">
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+  </P>
+  <div>
+    <button mat-button class="button" (click)="verifyOtp()">Verify</button>
+  </div>
+  </div>
+</mat-card>
+  <div>
+    <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<H2>Imcoming</H2>
+<div class="container">
+  <div class="noData" *ngIf="isData" align="center">
+    <p>No Data Found<br>
+      Please add post</p>
+  </div>
+  <div *ngIf="isNetwork" class="noData" align="center">
+    <p>Please check your internet connection!</p>
+  </div>
+  <div class="content" *ngFor="let i of respData">
+    <mat-card class="card" >
+      <button class="label" ></button>
+      <div class="div" >
+        <h4>Name: {{i.name}}</h4>
+        <p class="p">Contact:</p>
+        <p class="p comp"> {{i.contact}} </p><br>
+        <p class="p"> Amount: <i class="fa fa-inr"></i></p>
+        <p class="p salary"> {{i.amount}}</p><br>
+        <p class="p">Mode: </p>
+        <p class="p salary">{{i.mode}}</p><br>
+        <!-- <p class="more" >...view more </p>-->
+        <p class="p date" >Date:{{dateFormat(i.date)}}{{i.cre_ate_date}} </p>
+      </div>
+    </mat-card>
+  </div>
+  <div class="buttondiv">
+    <button mat-fab class="button" (click)="openDialog()"><mat-icon>add</mat-icon></button>
+  </div>
+  <div align="center">
+    <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
+  </div>
+</div>

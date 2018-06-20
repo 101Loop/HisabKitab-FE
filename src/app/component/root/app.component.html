@@ -1,0 +1,57 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--c09d2dd6b22f45dc9e4afd4f466ab63a-->
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+
+  <mat-toolbar color="primary" class="example-toolbar" style="background: #1295c9">
+    <button mat-icon-button (click)="snav.toggle()"  *ngIf="this.navbar.visible"><mat-icon>menu</mat-icon></button>
+    <mat-icon class="backArrow" (click)="goBack()" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
+    <h1 class="example-app-name" *ngIf="this.navbar.visible" >{{title}}</h1>
+    <h1 class="example-app-name" *ngIf="!this.navbar.visible"  >Jyess Trading</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+
+    <!--nav bar-->
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'over'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="navbar">
+      <!--nav menu-->
+      <mat-nav-list (click)="snav.toggle()">
+        <div>
+          <div class="profile" routerLink="/profile" align="center">
+            <button mat-mini-fab class="profile_fab"><mat-icon>person</mat-icon></button>
+            <p class="name">{{s_name}}</p>
+            <p>{{s_mobile}}</p>
+            <p>{{s_email}}</p>
+          </div>
+          <div class="navmenu" >
+            <p routerLink="/incoming" class="menuitem">Incomming</p>
+            <p routerLink="/normalpost" class="menuitem">Outgoing</p>
+            <div (click)="onLogout()">
+              <p class="menuitem logout" >Logout</p>
+            </div>
+          </div>
+
+       <!--   <div class="social_menu">
+            <mat-divider></mat-divider>
+            <ul>
+              <li><p>Share On: </p></li>
+              <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://client.flexymanagers.com/register?referral=CODE&amp;
+        &amp;source=Flexy Managers" title="linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true" style="color: white"></i></a></li>
+              &lt;!&ndash; <li><a href="" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="" title="Google+" target="_blank"><i class="fa fa-google"></i></a></li>
+               <li><a href="" title="Google+" target="_blank">
+                 <i class="fa fa-instagram"></i></a></li>&ndash;&gt;
+            </ul>
+          </div>-->
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <!--rest part-->
+    <mat-sidenav-content>
+      <router-outlet ></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

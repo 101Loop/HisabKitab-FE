@@ -1,0 +1,184 @@
+.container{
+  width: 100%;
+  position: relative;
+}
+.content{
+  float: left;
+  width: 95%;
+}
+.buttondiv{
+  float: right;
+  width: 5%;
+}
+.button{
+  position: fixed;
+  top: 85%;
+  margin-left: -20px;
+}
+.card{
+  width: 60%;
+  margin: 10px auto;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+.label{
+  float: right;
+  background-color: #DA9403;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  height: 25px;
+  margin-top: -10px;
+  margin-right: -25px;
+}
+h2{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.div{width: 80%;
+  margin: auto;
+}
+p{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: smaller;
+  color: dimgray;
+  margin-bottom: 5px;
+}
+.comp{
+  color: #555;
+  font-size: small;
+  font-weight: bold;
+}
+.salary{
+  margin-left: 2px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.p{
+  display: inline-block;
+  margin-top: -1px;
+}
+.more{
+  margin-top: -7px;
+  color: #1295c9;
+  cursor: pointer;
+}
+.date{
+  font-size: x-small;
+  font-style: italic;
+  margin-bottom: -15px;
+}
+h4{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: smaller;
+  font-style: normal;
+  margin-top: -1px;
+  margin-bottom: 10px;
+  color: #1295c9;
+  cursor: pointer;
+}
+.desc{
+  margin-top: -1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2em;
+  height: 2.4em;
+}
+.social_menu{
+  float: right;
+  margin-top: -30px;
+  margin-right: -25px;
+}
+ul {
+  margin-bottom: 10px;
+  margin-left: -15px;
+  margin-top: 5px;
+}
+ul li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 10px;
+
+}
+ul li a {
+  border: solid 1px #c7c7c7;
+  background-color: #003253;
+  border-radius: 50px;
+  width: 35px;
+  height: 28px;
+  display: block;
+  text-align: center;
+  font-size: 17px;
+  padding-top: 6px;
+}
+.loader{
+  margin-top: 150px;
+}
+.noData{
+ font-size: larger;
+  margin-top: 15%;
+}
+@media screen and (max-width: 500px) {
+  .button{
+    position: fixed;
+    top: 85%;
+    margin-left: -10px;
+  }
+  .card{
+    width: 85%;
+    margin-left: 20px;
+  }
+  .label{
+    margin-right: -15px;
+  }
+  .desc{
+    margin-top: -1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2em;
+    height: 2.4em;
+  }
+  .mat-tab-label {
+    min-width: 72px;
+    margin: auto;
+  }
+  .buttondiv{
+    width: 18%;
+  }
+  .p{
+    margin-bottom: 5px;
+  }
+  .div{
+    width: 100%;
+  }
+  .social_menu{
+    margin-right: -15px;
+  }
+  .loader{
+   margin-top: 250px;
+  }
+  .noData{
+    font-size: larger;
+    margin-top: 50%;
+  }
+}
+@media (max-width: 599px) {
+  .card{
+    width: 85%;
+    margin-left: 20px;
+  }
+  .mat-tab-label {
+    min-width: 72px;
+  }
+  .social_menu{
+    margin-right: -15px;
+  }
+  .loader{
+    margin-top: 200px;
+  }
+  .noData{
+    font-size: larger;
+    margin-top: 50%;
+  }
+}
+

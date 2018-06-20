@@ -1,0 +1,73 @@
+
+<div align="center" class="container">
+  <div >
+    <!--<h2>Flexy Managers</h2>-->
+  </div>
+  <div class="border">
+  </div>
+  <mat-card class="card">
+    <div align="center">
+      <h3>Registeration</h3>
+      <form [formGroup]="signupForm">
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Name</mat-label>
+            <input  matInput placeholder="Name" formControlName="name" [(ngModel)]="name" (keyup.enter)="onSuccess()">
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </P>
+
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Organization</mat-label>
+            <input  matInput placeholder="Organization Name" formControlName="orgName" [(ngModel)]="orgName" (keyup.enter)="onSuccess()">
+            <mat-icon matSuffix>account_balance</mat-icon>
+          </mat-form-field>
+        </P>
+      <!--  <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Name</mat-label>
+            <input  matInput placeholder="Name" formControlName="name" [(ngModel)]="name" (keyup.enter)="onSuccess()">
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </P>-->
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Email</mat-label>
+            <input  matInput placeholder="Email" formControlName="email" [(ngModel)]="userEmail" (keyup.enter)="onSuccess()">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </P>
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Mobile</mat-label>
+            <input  matInput placeholder="Mobile" formControlName="contact" [(ngModel)]="userContact" (keyup.enter)="onSuccess()">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </P>
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Password</mat-label>
+            <input  matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="userPassword" (keyup.enter)="onSuccess()">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+        </P>
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Confirm Password</mat-label>
+            <input  matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="confirmPassword" (keyup.enter)="onSuccess()">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+        </P>
+        <div>
+          <button mat-button class="button" (click)="onSuccess()" [disabled]="signupForm.invalid" >Submit</button>
+        </div>
+      </form>
+    </div>
+    <p class="text">Already have an account? <a (click)="goBack()">Login</a></p>
+
+  </mat-card>
+  <div>
+    <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
+  </div>
+</div>

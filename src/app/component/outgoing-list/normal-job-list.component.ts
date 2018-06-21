@@ -19,7 +19,7 @@ export class NormalJobListComponent extends SharedClass implements OnInit {
   isData = true;
   isNetwork = false;
   loading: boolean;
-  cre_ate_date: any;
+  create_date: any;
   position: any;
   salary: any;
   urgency: any;
@@ -74,7 +74,7 @@ export class NormalJobListComponent extends SharedClass implements OnInit {
       this.normalObject.getOutgoingData(passData).subscribe(
         data => {
           this.response = data;
-          this.respData = this.response.data;
+          this.respData = this.response.results;
           if (this.respData.length > 0) {
             this.isData = true;
             this.loading = false;
@@ -87,7 +87,7 @@ export class NormalJobListComponent extends SharedClass implements OnInit {
           if (this.error) {
             this.isNetwork = true;
             this.loading = false;
-            this.toast.error('Please check your internet connection!', 'Data Loading!');
+           // this.toast.error('Please check your internet connection!', 'Data Loading!');
           }
           console.log(this.error);
         }
@@ -100,7 +100,7 @@ export class NormalJobListComponent extends SharedClass implements OnInit {
 
   dateFormat(date: any) {
     // console.log(date);
-     this.cre_ate_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
+     this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
   }
   positionFormet(position: any) {
     this.pos = position.replace(/ /g, '+');

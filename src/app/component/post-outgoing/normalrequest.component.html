@@ -34,7 +34,7 @@
       </p>
       <div class="dropdown">
         <mat-form-field class="gender" appearance="outline">
-          <mat-select placeholder="Mode" [(value)]="selectedMode" >
+          <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
             <mat-option *ngFor="let Mode of mode" [value]="Mode.value" >
               {{ Mode.viewValue }}
             </mat-option>

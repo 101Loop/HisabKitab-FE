@@ -26,9 +26,9 @@ export class FlexyrequestComponent extends SharedClass implements OnInit {
   selectedMode: string;
   response: any;
   mode = [
-    {value: 'C', viewValue: 'Cash'},
-    {value: 'Q', viewValue: 'Cheque'},
-    {value: 'O', viewValue: 'Online'},
+    {value: '1', viewValue: 'Cash'},
+    {value: '2', viewValue: 'Cheque'},
+    {value: '3', viewValue: 'Online'},
   ];
   flexyForm: FormGroup;
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<FlexyrequestComponent>, private flexyObject: ApicallService,
@@ -53,12 +53,11 @@ export class FlexyrequestComponent extends SharedClass implements OnInit {
       data => {
         this.loading = false;
         this.response = data;
-        if (this.response.status_code === 201) {
+        console.log(data);
           // this.toast.success('Post successfully posted', 'Posting');
           this.dialogRef.close();
           const dialogRef = this.dialog.open(SuccessMessageComponent, {
           });
-        }
       }, error => {
         this.loading = false;
         this.response = error;

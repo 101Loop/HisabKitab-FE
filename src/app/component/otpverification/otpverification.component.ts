@@ -39,10 +39,11 @@ goBack() {
       data => {
         this.loading = false;
         this.response = data;
+        console.log(data);
         if (this.response.status_code === 200) {
           localStorage.setItem(this.KEY_TOKEN, this.response.data.token);
           this.toast.success('Login successfully', 'Login');
-          this.rtr.navigate(['/', 'newspage']);
+          this.rtr.navigate(['/', 'dashboard']);
         }
       }, error => {
         this.loading = false;

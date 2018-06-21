@@ -16,7 +16,7 @@ import {FlexyrequestComponent} from '../post-incoming/flexyrequest.component';
   providers: [DatePipe]
 })
 export class FlexyJobListComponent extends SharedClass implements OnInit {
-  isData = false;
+  isData = true;
   isNetwork = false;
   loading: boolean;
   create_date: any;
@@ -70,12 +70,13 @@ export class FlexyJobListComponent extends SharedClass implements OnInit {
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
-/*    if (this.token) {
+    if (this.token) {
       const passData = new GetIncomingData();
       this.flexyObject.getIncomingData(passData).subscribe(
         data => {
           this.response = data;
-          this.respData = this.response.data;
+          console.log(this.response);
+          this.respData = this.response.results;
           if (this.respData.length > 0) {
             this.isData = true;
           this.loading = false;
@@ -88,14 +89,14 @@ export class FlexyJobListComponent extends SharedClass implements OnInit {
           if (this.error) {
             this.isNetwork = true;
             this.loading = false;
-            this.toast.error('Please check your internet connection!', 'Data Loading!');
+           // this.toast.error('Please check your internet connection!', 'Data Loading!');
           }
         }
       );
     } else {
       this.loading = false;
       this.rtr.navigate(['/', 'login']);
-    }*/
+    }
   }
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');

@@ -25,9 +25,9 @@ export class NormalrequestComponent extends SharedClass implements OnInit {
   response: any;
   category = '-';
   mode = [
-    {value: 'C', viewValue: 'Cash'},
-    {value: 'Q', viewValue: 'Cheque'},
-    {value: 'O', viewValue: 'Online'},
+    {value: '1', viewValue: 'Cash'},
+    {value: '2', viewValue: 'Cheque'},
+    {value: '3', viewValue: 'Online'},
   ];
   normalForm: FormGroup;
   slectedFile: any;
@@ -53,12 +53,10 @@ export class NormalrequestComponent extends SharedClass implements OnInit {
       data => {
         this.loading = false;
         this.response = data;
-        if (this.response.status_code === 201) {
         //  this.toast.success('Posting successfully Posted', 'Posting');
           this.dialogRef.close();
           const dialogRef = this.dialog.open(SuccessMessageComponent, {
           });
-        }
       }, error => {
         this.loading = false;
         this.response = error;

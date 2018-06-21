@@ -50,19 +50,19 @@ export class LoginComponent extends SharedClass implements OnInit {
           // Save JWT Token
           localStorage.setItem(this.KEY_TOKEN, this.token);
            this.toast.success('Login successfully', 'Login');
-          this.rtr.navigate(['/', 'newspage']);
+          this.rtr.navigate(['/', 'dashboard']);
           // console.log(this.referral);
           window.location.reload();
         }
       }, error => {
         this.loading = false;
         this.response = error;
-       // console.log(error);
-        if (this.response.error.data) {
+        console.log(error);
+      /*  if (this.response.error.data) {
           this.toast.error(this.response.error.data.non_field_errors, 'Login Denied!');
         } else {
           this.toast.error('Please check your internet connection!', 'Login Denied!');
-        }
+        }*/
       }
     );
   }

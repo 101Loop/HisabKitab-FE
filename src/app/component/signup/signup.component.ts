@@ -45,6 +45,8 @@ export class SignupComponent extends SharedClass implements OnInit {
         if (this.resp.status_code === 201) {
           this.toast.success('Registration Successful', 'Registration');
           this.rtr.navigate(['/', 'login']);
+        } else {
+          this.toast.error('There is some problem, Please try again', 'Registration Denied!');
         }
       }, error => {
         this.loading = false;

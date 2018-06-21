@@ -1,21 +1,27 @@
 import {OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ApicallService} from './service/api-service/apicall.service';
-import {JwtHelper} from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 export abstract class SharedClass implements OnInit {
   KEY_TOKEN = 'TOKEN';
   token: string;
   token_data: any;
-  s_name = 'Dinesh' ;
-  s_email = 'dinesh@gmail.com';
-  s_mobile = '8505825849';
-  constructor(private APIObj: ApicallService, private router: Router) {}
+  s_name: string;
+  s_email: string;
+  result: any;
+  results: any;
+  s_mobile: string;
+  i: number;
+  id: any;
+  mode: any;
+  constructor(private APIObj: ApicallService, private router: Router) {
+  }
   public isLoggedIn() {
     // console.log('Function Triggered for: ' + this.router.url);
     this.token = localStorage.getItem(this.KEY_TOKEN);
     if (this.token) {
-      const jwth = new JwtHelper();
+      const jwth = new JwtHelperService();
       this.token_data = jwth.decodeToken(this.token);
       this.s_name = this.token_data.name;
       this.s_email = this.token_data.email;
@@ -65,5 +71,18 @@ export abstract class SharedClass implements OnInit {
         }
       }
     }
+     this.getMode();
+  }
+  getMode() {
+    this.APIObj.getPaymentMode().subscribe(
+      data => {
+        this.result = data;
+        this.results = this.result.results;
+        for (this.i = 0; this.i < this.results.length; this.i++) {
+    /*      this.id = this.results[this.i].id;
+          this.mode = this.results[this.i].mode;*/
+        }
+      }
+    );
   }
 }

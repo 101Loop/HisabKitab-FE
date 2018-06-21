@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+
 export class Login {
   constructor(public username: string, public password: string ) {}
 }
@@ -32,16 +34,16 @@ export  class AddOutgoing {
 export class ApicallService {
   token = localStorage.getItem('TOKEN');
   headers = new HttpHeaders().set('content-type', 'application/json' ).set('Authorization', this.token );
+  baseUrl = environment.baseUrl;
   data: any;
-  baseUrl = 'https://mtxlit6633.execute-api.ap-south-1.amazonaws.com/production/';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   /* -----for login--------------------------------------------------------------------------------------- */
   login(logObject: Login) {
     this.data = {
       username : logObject.username,
       password : logObject.password
     };
-    return this.http.post(this.baseUrl + 'api/user/login/', this.data);
+    return this.http.post(this.baseUrl + 'api/users/login/', this.data);
   }
   /* -----for registration--------------------------------------------------------------------------------- */
   registration( regObject: Registration) {
@@ -53,14 +55,14 @@ export class ApicallService {
       password : regObject.password,
       organization: regObject.orgName
     };
-    return this.http.post(this.baseUrl + 'api/user/register/', this.data);
+    return this.http.post(this.baseUrl + 'api/users/register/', this.data);
   }
   /*-----for otp sending------------------------------------------------------------------------------------ */
   forgetPassword(forgetObject: ForgetPassword) {
     this.data = {
       value : forgetObject.username
     };
-    return this.http.post(this.baseUrl + 'api/user/loginotp/', this.data);
+    return this.http.post(this.baseUrl + 'api/users/loginotp/', this.data);
   }
   /* -------for otp varification----------------------------------------------------------------------------- */
   verifyOtp( verifyObject: VerifyOtp) {
@@ -68,7 +70,7 @@ export class ApicallService {
       value : verifyObject.username,
       otp: verifyObject.otp
     };
-    return this.http.post(this.baseUrl + 'api/user/loginotp/', this.data);
+    return this.http.post(this.baseUrl + 'api/users/loginotp/', this.data);
   }
   /*----------for get incoming  data-------------------------------------------------------------------------------*/
   getIncomingData(icomingObject: GetIncomingData) {
@@ -103,5 +105,9 @@ export class ApicallService {
       category: outObject.category,
     };
     return this.http.post(this.baseUrl + 'api/transactions/add/', this.data, {headers: this.headers} );
+  }
+  /*------get payment mode-----------------------------------------------------------------------------------------*/
+  getPaymentMode() {
+    return this.http.get('http://192.168.1.5:8000/api/transactions/mode/show/', {headers: this.headers});
   }
 }

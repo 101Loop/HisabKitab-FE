@@ -10,17 +10,17 @@
 
   <div class="content" *ngFor="let i of respData">
     <mat-card class="card" >
-      <button class="label" ></button>
+      <!--<button class="label" ></button>-->
       <div class="div" >
-        <h4>Name: {{i.name}}</h4>
-        <p class="p">Contact:</p>
+        <h4>Name:<span style="display:inline-block; width: 4px;"></span> {{i.name}}</h4>
+        <p class="p">Contact:</p><span style="display:inline-block; width: 4px;"></span>
         <p class="p comp"> {{i.contact}} </p><br>
-        <p class="p"> Amount: <i class="fa fa-inr"></i></p>
+        <p class="p"> Amount:<span style="display:inline-block; width: 4px;"></span> <i class="fa fa-inr"></i></p>
         <p class="p salary"> {{i.amount}}</p><br>
-        <p class="p">Mode: </p>
-        <p class="p salary">{{i.mode}}</p><br>
+        <p class="p">Mode: </p><span style="display:inline-block; width: 4px;"></span>
+        <p class="p salary">{{i.mode.mode}}</p><br>
         <!-- <p class="more" >...view more </p>-->
-        <p class="p date" >Date:{{dateFormat(i.date)}}{{i.cre_ate_date}} </p>
+        <p class="p date" >Date:<span style="display:inline-block; width: 4px;"></span>{{dateFormat(i.create_date)}}{{create_date}} </p>
       </div>
     </mat-card>
   </div>

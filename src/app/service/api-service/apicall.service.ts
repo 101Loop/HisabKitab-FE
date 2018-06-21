@@ -18,14 +18,14 @@ export class GetIncomingData {
   constructor() {}
 }
 export  class AddIncoming {
-  constructor(public date: number, public name: string, public contact: string, public amount: string,
+  constructor(public date: number, public name: string, public amount: string,
               public mode: string, public category: string) {}
 }
 export class GetOutgoingData {
   constructor() {}
 }
 export  class AddOutgoing {
-  constructor(public date: number, public name: string, public contact: string, public amount: string,
+  constructor(public date: number, public name: string, public amount: string,
               public mode: string, public category: string) {}
 }
 @Injectable({
@@ -82,7 +82,6 @@ export class ApicallService {
       status: '1',
       last_modified: inObject.date,
       name : inObject.name,
-      contact: inObject.contact,
       mode: inObject.mode,
       amount: inObject.amount,
       category: inObject.category,
@@ -99,7 +98,6 @@ export class ApicallService {
       status: '1',
       last_modified: outObject.date,
       name : outObject.name,
-      contact: outObject.contact,
       mode: outObject.mode,
       amount: outObject.amount,
       category: outObject.category,
@@ -108,6 +106,6 @@ export class ApicallService {
   }
   /*------get payment mode-----------------------------------------------------------------------------------------*/
   getPaymentMode() {
-    return this.http.get('http://192.168.1.5:8000/api/transactions/mode/show/', {headers: this.headers});
+    return this.http.get(this.baseUrl + 'api/transactions/mode/show/', {headers: this.headers});
   }
 }

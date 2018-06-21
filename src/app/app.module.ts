@@ -69,6 +69,7 @@ import { environment } from '../environments/environment';
     MatTabsModule,
     AppRoutingModule,
     MatDatepickerModule,
+    MatCheckboxModule,
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],

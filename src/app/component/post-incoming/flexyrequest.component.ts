@@ -20,7 +20,6 @@ export class FlexyrequestComponent extends SharedClass implements OnInit {
   date: any = new Date();
   create_date: any;
   name: string;
-  contact: string;
   amount: string;
   category = '+';
   selectedMode: string;
@@ -47,7 +46,7 @@ export class FlexyrequestComponent extends SharedClass implements OnInit {
 
   onSuccess(): void {
     this.loading = true;
-    const passData = new AddIncoming(this.create_date, this.name, this.contact, this.amount, this.selectedMode, this.category);
+    const passData = new AddIncoming(this.create_date, this.name, this.amount, this.selectedMode, this.category);
     // post data to server
     this.flexyObject.postIncoming(passData).subscribe(
       data => {

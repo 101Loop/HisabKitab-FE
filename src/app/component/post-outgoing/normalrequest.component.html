@@ -13,13 +13,6 @@
       </p>
       <p>
         <mat-form-field appearance="outline" class="inputfield">
-          <mat-label>Contact</mat-label>
-          <input matInput placeholder="Contact" [(ngModel)]="contact" formControlName="org">
-          <mat-icon matSuffix></mat-icon>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline" class="inputfield">
           <mat-label>Amount</mat-label>
           <input matInput placeholder="Amount" [(ngModel)]="amount" formControlName="org">
           <mat-icon matSuffix></mat-icon>
@@ -32,6 +25,9 @@
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
+
+      <mat-checkbox *ngFor="let m of paymentmode ">{{m.viewValue}}</mat-checkbox>
+
       <div class="dropdown">
         <mat-form-field class="gender" appearance="outline">
           <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >

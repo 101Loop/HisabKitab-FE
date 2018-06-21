@@ -19,11 +19,13 @@ export class NormalrequestComponent extends SharedClass implements OnInit {
   date: any = new Date();
   create_date: any;
   name: string;
-  contact: string;
   amount: string;
   selectedMode: string;
   response: any;
   category = '-';
+  paymentmode = [
+    { value: this.Mid, viewValue: this.Pmode }
+    ];
   mode = [
     {value: '1', viewValue: 'Cash'},
     {value: '2', viewValue: 'Cheque'},
@@ -48,7 +50,7 @@ export class NormalrequestComponent extends SharedClass implements OnInit {
   }
   onSuccess(): void {
     this.loading = true;
-    const passData = new AddOutgoing(this.create_date, this.name, this.contact, this.amount, this.selectedMode, this.category);
+    const passData = new AddOutgoing(this.create_date, this.name, this.amount, this.selectedMode, this.category);
     this.postObject.postOutgoing(passData).subscribe(
       data => {
         this.loading = false;

@@ -13,8 +13,8 @@ export abstract class SharedClass implements OnInit {
   results: any;
   s_mobile: string;
   i: number;
-  id: any;
-  mode: any;
+  Mid: any;
+  Pmode: any;
   constructor(private APIObj: ApicallService, private router: Router) {
   }
   public isLoggedIn() {
@@ -79,8 +79,8 @@ export abstract class SharedClass implements OnInit {
         this.result = data;
         this.results = this.result.results;
         for (this.i = 0; this.i < this.results.length; this.i++) {
-    /*      this.id = this.results[this.i].id;
-          this.mode = this.results[this.i].mode;*/
+          this.Mid = this.results[this.i].id;
+          this.Pmode = this.results[this.i].mode;
         }
       }
     );

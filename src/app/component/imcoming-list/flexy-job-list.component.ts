@@ -89,7 +89,7 @@ export class FlexyJobListComponent extends SharedClass implements OnInit {
           if (this.error) {
             this.isNetwork = true;
             this.loading = false;
-           // this.toast.error('Please check your internet connection!', 'Data Loading!');
+            this.toast.error('Please check your internet connection!', 'Data Loading!');
           }
         }
       );

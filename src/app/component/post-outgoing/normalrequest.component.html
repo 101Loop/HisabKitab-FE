@@ -26,21 +26,22 @@
         </mat-form-field>
       </p>
 
-      <mat-checkbox *ngFor="let m of paymentmode ">{{m.viewValue}}</mat-checkbox>
 
-      <div class="dropdown">
-        <mat-form-field class="gender" appearance="outline">
-          <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
-            <mat-option *ngFor="let Mode of mode" [value]="Mode.value" >
-              {{ Mode.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+        <mat-checkbox style=" margin: 0 5px;" *ngFor="let m of results">{{checkBoxData(m)}}{{mode1}}</mat-checkbox>
+
+      <!--  <div class="dropdown">
+          <mat-form-field class="gender" appearance="outline">
+            <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
+              <mat-option *ngFor="let Mode of modes" [value]="Mode.value" >
+                {{ Mode.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>-->
       <!--<input type="file" class="uploder">-->
     </div>
 
-    <div align="center">
+    <div align="below"  style="margin-top: 30px">
       <button mat-button class="button" (click)="onSuccess()" [disabled]="normalForm.invalid">Submit</button>
     </div>
   </div>

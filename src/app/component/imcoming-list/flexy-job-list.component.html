@@ -7,6 +7,9 @@
   <div *ngIf="isNetwork" class="noData" align="center">
     <p>Please check your internet connection!</p>
   </div>
+  <div *ngIf="isServerError" class="noData" align="center">
+    <p>Server Error!</p>
+  </div>
   <div class="content" *ngFor="let i of respData">
     <mat-card class="card" >
       <!--<button class="label" ></button>-->

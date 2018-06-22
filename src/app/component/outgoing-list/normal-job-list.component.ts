@@ -18,6 +18,7 @@ import {NormalrequestComponent} from '../post-outgoing/normalrequest.component';
 export class NormalJobListComponent extends SharedClass implements OnInit {
   isData = true;
   isNetwork = false;
+  isServerError = false;
   loading: boolean;
   create_date: any;
   position: any;
@@ -28,7 +29,7 @@ export class NormalJobListComponent extends SharedClass implements OnInit {
   desc: any;
   stat_us: any;
   post_id: any;
-  error: string;
+  error: any;
   organization: string;
   title = 'Outgoing';
   response: any;
@@ -83,13 +84,16 @@ export class NormalJobListComponent extends SharedClass implements OnInit {
             this.isData = false;
           }
         }, error => {
-          this.error = error;
-          if (this.error) {
+          this.error = error.status;
+          if (this.error >= 500) {
+            this.isServerError = true;
+            this.loading = false;
+            this.toast.error('Server Error!', 'Error');
+            } else {
             this.isNetwork = true;
             this.loading = false;
-            this.toast.error('Please check your internet connection!', 'Data Loading!');
+            this.toast.error('Please check your internet connection!', 'Data Loading');
           }
-          console.log(this.error);
         }
       );
     } else {

@@ -22,11 +22,10 @@ export class NormalrequestComponent extends SharedClass implements OnInit {
   amount: string;
   selectedMode: string;
   response: any;
+  list: any;
+  mode1: string;
   category = '-';
-  paymentmode = [
-    { value: this.Mid, viewValue: this.Pmode }
-    ];
-  mode = [
+  modes = [
     {value: '1', viewValue: 'Cash'},
     {value: '2', viewValue: 'Cheque'},
     {value: '3', viewValue: 'Online'},
@@ -38,16 +37,22 @@ export class NormalrequestComponent extends SharedClass implements OnInit {
               private apiObject: ApicallService, private dateFormatter: DatePipe) {
     super(apiObject, rtr);
     this.dateFormat(this.date);
+    this.list = this.results;
   }
   ngOnInit() {
     super.ngOnInit();
     this.normalForm = new FormGroup({
-      'position' : new FormControl('', [Validators.required]),
-      'org' : new FormControl('', [Validators.required]),
-      'salary' : new FormControl('', [Validators.required]),
-      'desc' : new FormControl('', ),
+      'position': new FormControl('', [Validators.required]),
+      'org': new FormControl('', [Validators.required]),
+      'salary': new FormControl('', [Validators.required]),
+      'desc': new FormControl('',),
     });
   }
+  /**Passing check box modes**/
+  checkBoxData(m: any) {
+   this.mode1 =  m.mode;
+  }
+
   onSuccess(): void {
     this.loading = true;
     const passData = new AddOutgoing(this.create_date, this.name, this.amount, this.selectedMode, this.category);

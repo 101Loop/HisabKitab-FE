@@ -27,21 +27,24 @@
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
-      <div class="dropdown">
+
+      <mat-checkbox  style=" margin: 0 5px;" value="after" *ngFor="let m of results">{{checkBoxData(m)}}{{boxmode}}</mat-checkbox>
+
+      <!--<div class="dropdown">
         <mat-form-field class="gender" appearance="outline">
           <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
-            <mat-option *ngFor="let Mode of mode" [value]="Mode.value" >
+            <mat-option *ngFor="let Mode of modes" [value]="Mode.value" >
               {{ Mode.viewValue }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <!--</mat-form-field>
+        &lt;!&ndash;</mat-form-field>
         <mat-form-field class="urgency"  appearance="outline" >
           <mat-label>Time Peroid</mat-label>
           <input matInput placeholder="Time Peroid" [(ngModel)]="selectedPeriod" name="sal" formControlName="salary">
           <mat-icon matSuffix></mat-icon>
-        </mat-form-field>-->
-      </div>
+        </mat-form-field>&ndash;&gt;
+      </div>-->
 
  <!--     <p >
       <mat-form-field appearance="outline" class="inputfield linkField">
@@ -54,7 +57,7 @@
     </div>
     <!--<a href="https://dl.dropboxusercontent.com/s/ejp2gsdou4fx5hb/advice.png" class="dropbox-saver"></a>-->
     <a id="dropButton"></a>
-    <div align="center">
+    <div align="center" style="margin-top: 30px">
       <button mat-button class="button" (click)="onSuccess()" [disabled]="flexyForm.invalid">Submit</button>
     </div>
   </div>

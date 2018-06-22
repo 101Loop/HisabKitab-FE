@@ -18,6 +18,7 @@ import {FlexyrequestComponent} from '../post-incoming/flexyrequest.component';
 export class FlexyJobListComponent extends SharedClass implements OnInit {
   isData = true;
   isNetwork = false;
+  isServerError = false;
   loading: boolean;
   create_date: any;
   position: string;
@@ -29,7 +30,7 @@ export class FlexyJobListComponent extends SharedClass implements OnInit {
   status: string;
   post_id: string;
   organization: string;
-  error: string;
+  error: any;
   response: any;
   respData: any[];
   title = 'Incoming';
@@ -85,11 +86,15 @@ export class FlexyJobListComponent extends SharedClass implements OnInit {
             this.isData = false;
           }
         }, error => {
-          this.error = error;
-          if (this.error) {
+          this.error = error.status;
+          if (this.error >= 500) {
+            this.isServerError = true;
+            this.loading = false;
+            this.toast.error('Server Error!', 'Error!');
+          } else {
             this.isNetwork = true;
             this.loading = false;
-            this.toast.error('Please check your internet connection!', 'Data Loading!');
+            this.toast.error('Please check your internet connection!', 'Data Loading');
           }
         }
       );

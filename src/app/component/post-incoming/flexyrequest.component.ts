@@ -24,7 +24,8 @@ export class FlexyrequestComponent extends SharedClass implements OnInit {
   category = '+';
   selectedMode: string;
   response: any;
-  mode = [
+  boxmode: string;
+  modes = [
     {value: '1', viewValue: 'Cash'},
     {value: '2', viewValue: 'Cheque'},
     {value: '3', viewValue: 'Online'},
@@ -43,7 +44,10 @@ export class FlexyrequestComponent extends SharedClass implements OnInit {
       'desc' : new FormControl('', ),
     });
   }
-
+  /**Passing check box modes**/
+  checkBoxData(m: any) {
+    this.boxmode = m.mode;
+  }
   onSuccess(): void {
     this.loading = true;
     const passData = new AddIncoming(this.create_date, this.name, this.amount, this.selectedMode, this.category);

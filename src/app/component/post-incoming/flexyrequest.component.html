@@ -23,14 +23,14 @@
       <p>
         <mat-form-field appearance="outline" class="inputfield">
           <mat-label>Date</mat-label>
-          <input matInput placeholder="Date" [(ngModel)]="create_date" value="{{create_date}}" name="sal" formControlName="salary">
+          <input matInput placeholder="Date" [(ngModel)]="create_date" value="{{create_date}}" name="sal" formControlName="salary" type="date" >
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
 
       <mat-checkbox  style=" margin: 0 5px;" value="after" *ngFor="let m of results">{{checkBoxData(m)}}{{boxmode}}</mat-checkbox>
 
-      <!--<div class="dropdown">
+   <!--   <div class="dropdown">
         <mat-form-field class="gender" appearance="outline">
           <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
             <mat-option *ngFor="let Mode of modes" [value]="Mode.value" >
@@ -57,7 +57,7 @@
     </div>
     <!--<a href="https://dl.dropboxusercontent.com/s/ejp2gsdou4fx5hb/advice.png" class="dropbox-saver"></a>-->
     <a id="dropButton"></a>
-    <div align="center" style="margin-top: 30px">
+    <div align="center" style="margin-top: 100px">
       <button mat-button class="button" (click)="onSuccess()" [disabled]="flexyForm.invalid">Submit</button>
     </div>
   </div>

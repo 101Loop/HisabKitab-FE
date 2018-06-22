@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlexyrequestComponent } from './flexyrequest.component';
+import { DebitlistComponent } from './debitlist.component';
 
-describe('FlexyrequestComponent', () => {
-  let component: FlexyrequestComponent;
-  let fixture: ComponentFixture<FlexyrequestComponent>;
+describe('DebitlistComponent', () => {
+  let component: DebitlistComponent;
+  let fixture: ComponentFixture<DebitlistComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlexyrequestComponent ]
+      declarations: [ DebitlistComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlexyrequestComponent);
+    fixture = TestBed.createComponent(DebitlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

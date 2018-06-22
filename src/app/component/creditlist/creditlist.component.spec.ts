@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlexyJobListComponent } from './flexy-job-list.component';
+import { CreditlistComponent } from './creditlist.component';
 
-describe('FlexyJobListComponent', () => {
-  let component: FlexyJobListComponent;
-  let fixture: ComponentFixture<FlexyJobListComponent>;
+describe('CreditlistComponent', () => {
+  let component: CreditlistComponent;
+  let fixture: ComponentFixture<CreditlistComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlexyJobListComponent ]
+      declarations: [ CreditlistComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlexyJobListComponent);
+    fixture = TestBed.createComponent(CreditlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

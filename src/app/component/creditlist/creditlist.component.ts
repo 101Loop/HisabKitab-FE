@@ -7,15 +7,15 @@ import {DataService} from '../../service/data-service/data.service';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
 import {ApicallService, GetIncomingData} from '../../service/api-service/apicall.service';
 import {SharedClass} from '../../shared-class';
-import {FlexyrequestComponent} from '../post-incoming/flexyrequest.component';
+import {PostcreditComponent} from '../postcredit/postcredit.component';
 
  @Component({
   selector: 'app-flexy-job-list',
-  templateUrl: './flexy-job-list.component.html',
-  styleUrls: ['./flexy-job-list.component.css'],
+  templateUrl: './creditlist.component.html',
+  styleUrls: ['./creditlist.component.css'],
   providers: [DatePipe]
 })
-export class FlexyJobListComponent extends SharedClass implements OnInit {
+export class CreditlistComponent extends SharedClass implements OnInit {
   isData = true;
   isNetwork = false;
   isServerError = false;
@@ -43,7 +43,7 @@ export class FlexyJobListComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
   }
   openDialog(): void {
-    const dialogRef = this.dialog.open(FlexyrequestComponent, {
+    const dialogRef = this.dialog.open(PostcreditComponent, {
       height: '480px',
       width: '400px'
     });

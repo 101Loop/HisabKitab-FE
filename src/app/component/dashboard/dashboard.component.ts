@@ -9,11 +9,11 @@ import {NavbarService} from '../../service/navigation-bar/navbar.service';
 
 @Component({
   selector: 'app-newspage',
-  templateUrl: './newspage.component.html',
-  styleUrls: ['./newspage.component.css'],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
   providers: [DatePipe]
 })
-export class NewspageComponent extends SharedClass implements OnInit {
+export class DashboardComponent extends SharedClass implements OnInit {
   loading: boolean;
   title = 'Jyess Trading';
   isNet = false;

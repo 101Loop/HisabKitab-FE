@@ -10,15 +10,15 @@ import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-normalrequest',
-  templateUrl: './normalrequest.component.html',
-  styleUrls: ['./normalrequest.component.css'],
+  templateUrl: './postdebit.component.html',
+  styleUrls: ['./postdebit.component.css'],
   providers: [DatePipe]
 })
-export class NormalrequestComponent extends SharedClass implements OnInit {
+export class PostdebitComponent extends SharedClass implements OnInit {
   loading: boolean;
   date: any = new Date();
   create_date: any;
-  name: string;
+  contact: string;
   amount: string;
   selectedMode: string;
   response: any;
@@ -32,7 +32,7 @@ export class NormalrequestComponent extends SharedClass implements OnInit {
   ];
   normalForm: FormGroup;
   slectedFile: any;
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<NormalrequestComponent>,
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostdebitComponent>,
               private postObject: ApicallService, private toast: ToastrService, private rtr: Router,
               private apiObject: ApicallService, private dateFormatter: DatePipe) {
     super(apiObject, rtr);
@@ -55,7 +55,7 @@ export class NormalrequestComponent extends SharedClass implements OnInit {
 
   onSuccess(): void {
     this.loading = true;
-    const passData = new AddOutgoing(this.create_date, this.name, this.amount, this.selectedMode, this.category);
+    const passData = new AddOutgoing(this.create_date, this.contact, this.amount, this.selectedMode, this.category);
     this.postObject.postOutgoing(passData).subscribe(
       data => {
         this.loading = false;

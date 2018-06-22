@@ -20,13 +20,13 @@ import {SignupComponent} from './component/signup/signup.component';
 import {ForgetpasswordComponent} from './component/forgetpassword/forgetpassword.component';
 import {ToastrModule} from 'ngx-toastr';
 import {OtpverificationComponent} from './component/otpverification/otpverification.component';
-import {NewspageComponent} from './component/dashboard/newspage.component';
-import {FlexyJobListComponent} from './component/imcoming-list/flexy-job-list.component';
+import {DashboardComponent} from './component/dashboard/dashboard.component';
+import {CreditlistComponent} from './component/creditlist/creditlist.component';
 import {LogoutDialogComponent} from './component/logout-dialog/logout-dialog.component';
-import {FlexyrequestComponent} from './component/post-incoming/flexyrequest.component';
+import {PostcreditComponent} from './component/postcredit/postcredit.component';
 import {SuccessMessageComponent} from './component/success-message/success-message.component';
-import {NormalJobListComponent} from './component/outgoing-list/normal-job-list.component';
-import {NormalrequestComponent} from './component/post-outgoing/normalrequest.component';
+import {DebitlistComponent} from './component/debitlist/debitlist.component';
+import {PostdebitComponent} from './component/postdebit/postdebit.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -37,12 +37,12 @@ import { environment } from '../environments/environment';
     SignupComponent,
     ForgetpasswordComponent,
     OtpverificationComponent,
-    NewspageComponent,
-    FlexyJobListComponent,
+    DashboardComponent,
+    CreditlistComponent,
     LogoutDialogComponent,
-    FlexyrequestComponent,
-    NormalJobListComponent,
-    NormalrequestComponent,
+    PostcreditComponent,
+    DebitlistComponent,
+    PostdebitComponent,
     SuccessMessageComponent
   ],
   imports: [

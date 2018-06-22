@@ -8,14 +8,14 @@ import {SharedClass} from '../../shared-class';
 import {DataService} from '../../service/data-service/data.service';
 import {ApicallService, GetOutgoingData} from '../../service/api-service/apicall.service';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
-import {NormalrequestComponent} from '../post-outgoing/normalrequest.component';
+import {PostdebitComponent} from '../postdebit/postdebit.component';
 @Component({
   selector: 'app-normal-job-list',
-  templateUrl: './normal-job-list.component.html',
-  styleUrls: ['./normal-job-list.component.css'],
+  templateUrl: './debitlist.component.html',
+  styleUrls: ['./debitlist.component.css'],
   providers: [DatePipe]
 })
-export class NormalJobListComponent extends SharedClass implements OnInit {
+export class DebitlistComponent extends SharedClass implements OnInit {
   isData = true;
   isNetwork = false;
   isServerError = false;
@@ -42,7 +42,7 @@ export class NormalJobListComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
   }
   openDialog(): void {
-    const dialogRef = this.dialog.open(NormalrequestComponent, {
+    const dialogRef = this.dialog.open(PostdebitComponent, {
       height: '480px',
       width: '400px'
     });

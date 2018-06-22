@@ -10,16 +10,16 @@ import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-flexyrequest',
-  templateUrl: './flexyrequest.component.html',
-  styleUrls: ['./flexyrequest.component.css'],
+  templateUrl: './postcredit.component.html',
+  styleUrls: ['./postcredit.component.css'],
   providers: [DatePipe]
 })
-export class FlexyrequestComponent extends SharedClass implements OnInit {
+export class PostcreditComponent extends SharedClass implements OnInit {
   loading: boolean;
   message: string;
   date: any = new Date();
   create_date: any;
-  name: string;
+  contact: string;
   amount: string;
   category = '+';
   selectedMode: string;
@@ -31,7 +31,7 @@ export class FlexyrequestComponent extends SharedClass implements OnInit {
     {value: '3', viewValue: 'Online'},
   ];
   flexyForm: FormGroup;
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<FlexyrequestComponent>, private flexyObject: ApicallService,
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostcreditComponent>, private flexyObject: ApicallService,
               private toast: ToastrService, private rtr: Router, private apiObject: ApicallService,
               private dateFormatter: DatePipe) { super(apiObject, rtr);
   this.dateFormat(this.date); }
@@ -50,7 +50,7 @@ export class FlexyrequestComponent extends SharedClass implements OnInit {
   }
   onSuccess(): void {
     this.loading = true;
-    const passData = new AddIncoming(this.create_date, this.name, this.amount, this.selectedMode, this.category);
+    const passData = new AddIncoming(this.create_date, this.contact, this.amount, this.selectedMode, this.category);
     // post data to server
     this.flexyObject.postIncoming(passData).subscribe(
       data => {

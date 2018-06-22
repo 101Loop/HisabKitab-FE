@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NormalrequestComponent } from './normalrequest.component';
+import { PostcreditComponent } from './postcredit.component';
 
-describe('NormalrequestComponent', () => {
-  let component: NormalrequestComponent;
-  let fixture: ComponentFixture<NormalrequestComponent>;
+describe('PostcreditComponent', () => {
+  let component: PostcreditComponent;
+  let fixture: ComponentFixture<PostcreditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NormalrequestComponent ]
+      declarations: [ PostcreditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NormalrequestComponent);
+    fixture = TestBed.createComponent(PostcreditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

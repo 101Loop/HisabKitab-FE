@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NormalJobListComponent } from './normal-job-list.component';
+import { PostdebitComponent } from './postdebit.component';
 
-describe('NormalJobListComponent', () => {
-  let component: NormalJobListComponent;
-  let fixture: ComponentFixture<NormalJobListComponent>;
+describe('PostdebitComponent', () => {
+  let component: PostdebitComponent;
+  let fixture: ComponentFixture<PostdebitComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NormalJobListComponent ]
+      declarations: [ PostdebitComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NormalJobListComponent);
+    fixture = TestBed.createComponent(PostdebitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,12 +5,12 @@ import {LoginComponent} from './component/login/login.component';
 import {SignupComponent} from './component/signup/signup.component';
 import {ForgetpasswordComponent} from './component/forgetpassword/forgetpassword.component';
 import {OtpverificationComponent} from './component/otpverification/otpverification.component';
-import {NewspageComponent} from './component/dashboard/newspage.component';
-import {FlexyJobListComponent} from './component/imcoming-list/flexy-job-list.component';
+import {DashboardComponent} from './component/dashboard/dashboard.component';
+import {CreditlistComponent} from './component/creditlist/creditlist.component';
 import {LogoutDialogComponent} from './component/logout-dialog/logout-dialog.component';
-import {FlexyrequestComponent} from './component/post-incoming/flexyrequest.component';
-import {NormalJobListComponent} from './component/outgoing-list/normal-job-list.component';
-import {NormalrequestComponent} from './component/post-outgoing/normalrequest.component';
+import {PostcreditComponent} from './component/postcredit/postcredit.component';
+import {DebitlistComponent} from './component/debitlist/debitlist.component';
+import {PostdebitComponent} from './component/postdebit/postdebit.component';
 import {SuccessMessageComponent} from './component/success-message/success-message.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,11 +18,11 @@ const routes: Routes = [
    { path: 'signup', component: SignupComponent },
    { path: 'forgetpassword', component: ForgetpasswordComponent },
    { path: 'otpverification', component: OtpverificationComponent },
-   { path: 'normalrequest', component: NormalrequestComponent },
-   { path: 'flexyrequest', component: FlexyrequestComponent },
-   { path: 'dashboard', component: NewspageComponent },
-   { path: 'outgoing', component: NormalJobListComponent },
-   { path: 'incoming', component: FlexyJobListComponent },
+   { path: 'normalrequest', component: PostdebitComponent },
+   { path: 'flexyrequest', component: PostcreditComponent },
+   { path: 'dashboard', component: DashboardComponent },
+   { path: 'outgoing', component: DebitlistComponent },
+   { path: 'incoming', component: CreditlistComponent },
    { path: 'logout', component: LogoutDialogComponent },
   { path: 'success', component: SuccessMessageComponent },
 ];

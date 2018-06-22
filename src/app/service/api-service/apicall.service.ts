@@ -18,14 +18,14 @@ export class GetIncomingData {
   constructor() {}
 }
 export  class AddIncoming {
-  constructor(public date: number, public name: string, public amount: string,
+  constructor(public date: number, public contact: string, public amount: string,
               public mode: string, public category: string) {}
 }
 export class GetOutgoingData {
   constructor() {}
 }
 export  class AddOutgoing {
-  constructor(public date: number, public name: string, public amount: string,
+  constructor(public date: number, public contact: string, public amount: string,
               public mode: string, public category: string) {}
 }
 @Injectable({
@@ -81,7 +81,7 @@ export class ApicallService {
     this.data = {
       status: '1',
       last_modified: inObject.date,
-      name : inObject.name,
+      name : inObject.contact,
       mode: inObject.mode,
       amount: inObject.amount,
       category: inObject.category,
@@ -97,7 +97,7 @@ export class ApicallService {
     this.data = {
       status: '1',
       last_modified: outObject.date,
-      name : outObject.name,
+      name : outObject.contact,
       mode: outObject.mode,
       amount: outObject.amount,
       category: outObject.category,

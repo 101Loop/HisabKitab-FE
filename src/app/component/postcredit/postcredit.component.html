@@ -14,22 +14,24 @@
       </p>
 
       <p>
-        <mat-form-field appearance="outline" class="inputfield">
+        <mat-form-field style="margin-top: 10px" appearance="outline" class="inputfield">
           <mat-label>Amount</mat-label >
           <input matInput placeholder="Amount" [(ngModel)]="amount" name="sal" formControlName="org">
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field appearance="outline" class="inputfield">
+        <mat-form-field  style="margin-top: 10px" appearance="outline" class="inputfield">
           <mat-label>Date</mat-label>
           <input matInput placeholder="Date" [(ngModel)]="create_date" value="{{create_date}}" name="sal" formControlName="salary" type="date" >
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
 
-      <mat-checkbox  style=" margin: 0 5px;" value="after" *ngFor="let m of results">{{checkBoxData(m)}}{{boxmode}}</mat-checkbox>
-
+      <div style="margin-top: 40px; line-height: normal">
+        <p>Payment Mode:</p>
+      <mat-checkbox  style=" margin: 0 5px; " value="after" *ngFor="let m of results">{{checkBoxData(m)}}{{boxmode}}</mat-checkbox>
+      </div>
    <!--   <div class="dropdown">
         <mat-form-field class="gender" appearance="outline">
           <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
@@ -57,7 +59,7 @@
     </div>
     <!--<a href="https://dl.dropboxusercontent.com/s/ejp2gsdou4fx5hb/advice.png" class="dropbox-saver"></a>-->
     <a id="dropButton"></a>
-    <div align="center" style="margin-top: 100px">
+    <div align="center" style="margin-top: 50px">
       <button mat-button class="button" (click)="onSuccess()" [disabled]="flexyForm.invalid">Submit</button>
     </div>
   </div>

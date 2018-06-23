@@ -12,14 +12,14 @@
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field style="margin-top: 7px" appearance="outline" class="inputfield">
+        <mat-form-field style="margin-top: 10px" appearance="outline" class="inputfield">
           <mat-label>Amount</mat-label>
           <input matInput placeholder="Amount" [(ngModel)]="amount" formControlName="org">
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field style="margin-top: 7px" appearance="outline" class="inputfield">
+        <mat-form-field style="margin-top: 10px" appearance="outline" class="inputfield">
           <mat-label>Date</mat-label>
           <input matInput placeholder="Date" type="date" [(ngModel)]="create_date" value="{{create_date}}" name="sal" formControlName="salary">
           <mat-icon matSuffix></mat-icon>
@@ -27,8 +27,10 @@
       </p>
 
 
-        <mat-checkbox style=" margin: 7px 5px" *ngFor="let m of results">{{checkBoxData(m)}}{{mode1}}</mat-checkbox>
-
+      <div style="margin-top: 40px; line-height: normal">
+        <p>Payment Mode:</p>
+        <mat-checkbox style=" margin:5px;" *ngFor="let m of results">{{checkBoxData(m)}}{{mode1}}</mat-checkbox>
+      </div>
       <!--  <div class="dropdown">
           <mat-form-field class="gender" appearance="outline">
             <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
@@ -41,7 +43,7 @@
       <!--<input type="file" class="uploder">-->
     </div>
 
-    <div align="below"  style="margin-top: 30px">
+    <div align="below"  style="margin-top: 50px">
       <button mat-button class="button" (click)="onSuccess()" [disabled]="normalForm.invalid">Submit</button>
     </div>
   </div>

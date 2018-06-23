@@ -28,9 +28,9 @@
         </mat-form-field>
       </p>
 
-      <div style="margin-top: 40px; line-height: normal">
+      <div class="Checkbox">
         <p>Payment Mode:</p>
-      <mat-checkbox  style=" margin: 0 5px; " value="after" *ngFor="let m of results">{{checkBoxData(m)}}{{boxmode}}</mat-checkbox>
+      <mat-checkbox  class="checkpos" value="after" *ngFor="let m of results">{{checkBoxData(m)}}{{boxmode}}</mat-checkbox>
       </div>
    <!--   <div class="dropdown">
         <mat-form-field class="gender" appearance="outline">
@@ -59,7 +59,7 @@
     </div>
     <!--<a href="https://dl.dropboxusercontent.com/s/ejp2gsdou4fx5hb/advice.png" class="dropbox-saver"></a>-->
     <a id="dropButton"></a>
-    <div align="center" style="margin-top: 50px">
+    <div align="center" class="submitbutton">
       <button mat-button class="button" (click)="onSuccess()" [disabled]="flexyForm.invalid">Submit</button>
     </div>
   </div>

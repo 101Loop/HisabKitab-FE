@@ -53,13 +53,34 @@ h3{
   top: 50%;
   margin-left: -30px;
 }
+.Checkbox{
+  margin-top: 40px;
+  line-height: normal;
+}
+.submitbutton{
+  margin-top: 50px;
+}
+.checkpos{
+  margin: 0 5px;
+}
 mat-form-field.mat-form-field {
   font-size: 14px;
 }
+
+/**For media screen size of max-width 700px**/
 @media screen and (max-width: 700px) {
   .dropdown {
     width: 100%;
   }
+  .Checkbox{
+    margin-top: 2px;
+    float: left;
+    text-align: left;
+    display: inline-grid;
+  }
+  .checkpos{
+    margin: 0 0 0 0 ;
+    }
   .inputfield{
     width: 100%;
   }
@@ -74,6 +95,9 @@ mat-form-field.mat-form-field {
   }
   .card{
     margin: auto;
+  }
+  .submitbutton{
+    margin-top: 25px;
   }
 }
 

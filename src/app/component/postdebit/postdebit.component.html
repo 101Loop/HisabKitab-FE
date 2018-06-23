@@ -27,9 +27,9 @@
       </p>
 
 
-      <div style="margin-top: 40px; line-height: normal">
+      <div class="Checkbox">
         <p>Payment Mode:</p>
-        <mat-checkbox style=" margin:5px;" *ngFor="let m of results">{{checkBoxData(m)}}{{mode1}}</mat-checkbox>
+        <mat-checkbox class="checkpos" *ngFor="let m of results">{{checkBoxData(m)}}{{mode1}}</mat-checkbox>
       </div>
       <!--  <div class="dropdown">
           <mat-form-field class="gender" appearance="outline">
@@ -43,7 +43,7 @@
       <!--<input type="file" class="uploder">-->
     </div>
 
-    <div align="below"  style="margin-top: 50px">
+    <div align="below"  class="submitbutton">
       <button mat-button class="button" (click)="onSuccess()" [disabled]="normalForm.invalid">Submit</button>
     </div>
   </div>

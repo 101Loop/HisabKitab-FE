@@ -20,24 +20,19 @@ export class PostdebitComponent extends SharedClass implements OnInit {
   create_date: any;
   contact: string;
   amount: string;
+  boxid: string;
   selectedMode: string;
   response: any;
   list: any;
   mode1: string;
   category = '-';
-  modes = [
-    {value: '1', viewValue: 'Cash'},
-    {value: '2', viewValue: 'Cheque'},
-    {value: '3', viewValue: 'Online'},
-  ];
   normalForm: FormGroup;
-  slectedFile: any;
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostdebitComponent>,
               private postObject: ApicallService, private toast: ToastrService, private rtr: Router,
               private apiObject: ApicallService, private dateFormatter: DatePipe) {
     super(apiObject, rtr);
     this.dateFormat(this.date);
-    this.list = this.results;
+    this.list = this.mode_api_results;
   }
   ngOnInit() {
     super.ngOnInit();
@@ -45,12 +40,9 @@ export class PostdebitComponent extends SharedClass implements OnInit {
       'position': new FormControl('', [Validators.required]),
       'org': new FormControl('', [Validators.required]),
       'salary': new FormControl('', [Validators.required]),
-      'desc': new FormControl('',),
+      'desc': new FormControl('', [Validators.required])
     });
-  }
-  /**Passing check box modes**/
-  checkBoxData(m: any) {
-   this.mode1 =  m.mode;
+    this.getMode();
   }
 
   onSuccess(): void {
@@ -70,8 +62,10 @@ export class PostdebitComponent extends SharedClass implements OnInit {
         console.log(this.response);
         if (this.response.error.data) {
           this.toast.error(this.response.error.data.non_field_errors, 'Posting Denied!');
-        } else {
-          this.toast.error('Please check your internet connection!', 'Posting Denied!');
+        } else if (this.response.status >= 500) {
+          this.toast.error('Internal Server Error!', 'Posting Denied!');
+        } else if (this.response.status === 0 ) {
+          this.toast.error('Please check your connection!', 'Posting Denied!');
         }
       }
     );

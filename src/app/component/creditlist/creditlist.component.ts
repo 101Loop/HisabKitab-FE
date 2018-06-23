@@ -91,7 +91,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
             this.isServerError = true;
             this.loading = false;
             this.toast.error('Server Error!', 'Error!');
-          } else {
+          } else if (this.error === 0) {
             this.isNetwork = true;
             this.loading = false;
             this.toast.error('Please check your internet connection!', 'Data Loading');

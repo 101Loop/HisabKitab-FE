@@ -62,7 +62,7 @@ export class LoginComponent extends SharedClass implements OnInit {
           this.toast.error(this.response.error.data.non_field_errors, 'Login Denied!');
         } else if (this.response.status >= 500) {
           this.toast.error('Server Error!', 'Login Denied!');
-        } else {
+        } else if (this.response.status === 0) {
           this.toast.error('Please check your Internet Connection!', 'Login Denied!');
         }
       }

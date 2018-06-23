@@ -51,8 +51,10 @@ goBack() {
         console.log(this.response);
         if (this.response.error.data) {
           this.toast.error(this.response.error.data.OTP, 'OTP Verification Denied!');
-        } else {
-          this.toast.error('Please check your internet connection!', 'OTP Verification Denied!');
+        } if (this.response.status >= 500) {
+          this.toast.error('Internal Server Error!', 'OTP Verification Denied');
+        } else if (this.response.status === 0 ) {
+          this.toast.error('Please check your connection!', 'OTP Verification Denied!');
         }
       }
     );

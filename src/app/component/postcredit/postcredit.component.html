@@ -30,32 +30,37 @@
 
       <div class="Checkbox">
         <p>Payment Mode:</p>
-      <mat-checkbox  class="checkpos" value="after" *ngFor="let m of results">{{checkBoxData(m)}}{{boxmode}}</mat-checkbox>
+        <mat-radio-group [(ngModel)]="boxid" [ngModelOptions]="{standalone: true}">
+          <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
+        </mat-radio-group>
+        <!--
+              <mat-checkbox  class="checkpos" value="after" *ngFor="let m of results">{{checkBoxData(m)}}{{boxmode}}</mat-checkbox>
+        -->
       </div>
-   <!--   <div class="dropdown">
-        <mat-form-field class="gender" appearance="outline">
-          <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
-            <mat-option *ngFor="let Mode of modes" [value]="Mode.value" >
-              {{ Mode.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        &lt;!&ndash;</mat-form-field>
-        <mat-form-field class="urgency"  appearance="outline" >
-          <mat-label>Time Peroid</mat-label>
-          <input matInput placeholder="Time Peroid" [(ngModel)]="selectedPeriod" name="sal" formControlName="salary">
-          <mat-icon matSuffix></mat-icon>
-        </mat-form-field>&ndash;&gt;
-      </div>-->
+      <!--   <div class="dropdown">
+           <mat-form-field class="gender" appearance="outline">
+             <mat-select placeholder="Payment Mode" [(value)]="selectedMode" >
+               <mat-option *ngFor="let Mode of modes" [value]="Mode.value" >
+                 {{ Mode.viewValue }}
+               </mat-option>
+             </mat-select>
+           </mat-form-field>
+           &lt;!&ndash;</mat-form-field>
+           <mat-form-field class="urgency"  appearance="outline" >
+             <mat-label>Time Peroid</mat-label>
+             <input matInput placeholder="Time Peroid" [(ngModel)]="selectedPeriod" name="sal" formControlName="salary">
+             <mat-icon matSuffix></mat-icon>
+           </mat-form-field>&ndash;&gt;
+         </div>-->
 
- <!--     <p >
-      <mat-form-field appearance="outline" class="inputfield linkField">
-        <mat-label>Post File Link</mat-label>
-        <input matInput placeholder="Post File Link" [(ngModel)]="fileLink" name="sal" formControlName="salary">
-        <mat-icon matSuffix></mat-icon>
-      </mat-form-field>
-      </p>
-      <input type="file" class="uploder" (change)="handleSignInClick($event)">-->
+      <!--     <p >
+           <mat-form-field appearance="outline" class="inputfield linkField">
+             <mat-label>Post File Link</mat-label>
+             <input matInput placeholder="Post File Link" [(ngModel)]="fileLink" name="sal" formControlName="salary">
+             <mat-icon matSuffix></mat-icon>
+           </mat-form-field>
+           </p>
+           <input type="file" class="uploder" (change)="handleSignInClick($event)">-->
     </div>
     <!--<a href="https://dl.dropboxusercontent.com/s/ejp2gsdou4fx5hb/advice.png" class="dropbox-saver"></a>-->
     <a id="dropButton"></a>

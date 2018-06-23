@@ -81,7 +81,7 @@ export class ApicallService {
     this.data = {
       status: '1',
       last_modified: inObject.date,
-      name : inObject.contact,
+      contact: inObject.contact,
       mode: inObject.mode,
       amount: inObject.amount,
       category: inObject.category,
@@ -97,7 +97,7 @@ export class ApicallService {
     this.data = {
       status: '1',
       last_modified: outObject.date,
-      name : outObject.contact,
+      contact: outObject.contact,
       mode: outObject.mode,
       amount: outObject.amount,
       category: outObject.category,

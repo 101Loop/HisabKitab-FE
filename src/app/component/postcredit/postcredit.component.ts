@@ -21,20 +21,14 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   create_date: any;
   contact: string;
   amount: string;
-  category = '+';
-  selectedMode: string;
+  category = 'C';
   response: any;
-  boxmode: string;
-  modes = [
-    {value: '1', viewValue: 'Cash'},
-    {value: '2', viewValue: 'Cheque'},
-    {value: '3', viewValue: 'Online'},
-  ];
+  boxid: string;
   flexyForm: FormGroup;
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostcreditComponent>, private flexyObject: ApicallService,
               private toast: ToastrService, private rtr: Router, private apiObject: ApicallService,
               private dateFormatter: DatePipe) { super(apiObject, rtr);
-  this.dateFormat(this.date); }
+  this.dateFormat(this.create_date); }
   ngOnInit() {
     super.ngOnInit();
     this.flexyForm = new FormGroup({
@@ -43,14 +37,11 @@ export class PostcreditComponent extends SharedClass implements OnInit {
       'salary' : new FormControl('', [Validators.required]),
       'desc' : new FormControl('', ),
     });
-  }
-  /**Passing check box modes**/
-  checkBoxData(m: any) {
-    this.boxmode = m.mode;
+    this.getMode();
   }
   onSuccess(): void {
     this.loading = true;
-    const passData = new AddIncoming(this.create_date, this.contact, this.amount, this.selectedMode, this.category);
+    const passData = new AddIncoming(this.create_date, this.contact, this.amount, this.boxid, this.category);
     // post data to server
     this.flexyObject.postIncoming(passData).subscribe(
       data => {
@@ -67,12 +58,15 @@ export class PostcreditComponent extends SharedClass implements OnInit {
         console.log(this.response);
         if (this.response.error.data) {
           this.toast.error(this.response.error.data.non_field_errors, 'Posting Denied!');
-        } else {
-          this.toast.error('Please check your internet connection!', 'Posting Denied!');
+        } else if (this.response.status >= 500) {
+          this.toast.error('Internal Server Error!', 'Posting Denied!');
+        } else if (this.response.status === 0 ) {
+          this.toast.error('Please check your connection!', 'Posting Denied!');
         }
       }
     );
   }
+  /**To tranform date to this "dd-MM-yyyy" standard format**/
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
   }

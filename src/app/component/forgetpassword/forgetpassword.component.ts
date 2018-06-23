@@ -53,8 +53,10 @@ export class ForgetpasswordComponent extends SharedClass implements OnInit {
         console.log(this.response);
         if (this.response.error.data) {
           this.toast.error(this.response.error.data.message, 'Forget Password');
-        } else {
+        } else if (this.response.status === 0) {
           this.toast.error('Please check your internet connection!', 'Login Denied!');
+        } else if (this.response.status >= 500) {
+          this.toast.error('Internal Server Error', 'Login Denied');
         }
       }
     );

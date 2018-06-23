@@ -9,8 +9,7 @@ export abstract class SharedClass implements OnInit {
   token_data: any;
   s_name: string;
   s_email: string;
-  result: any;
-  results: any;
+  mode_api_results: any;
   s_mobile: string;
   i: number;
   Mid: any;
@@ -71,16 +70,14 @@ export abstract class SharedClass implements OnInit {
         }
       }
     }
-     this.getMode();
   }
   getMode() {
     this.APIObj.getPaymentMode().subscribe(
       data => {
-        this.result = data;
-        this.results = this.result.results;
-        for (this.i = 0; this.i < this.results.length; this.i++) {
-          this.Mid = this.results[this.i].id;
-          this.Pmode = this.results[this.i].mode;
+        this.mode_api_results = data['results'];
+        for (this.i = 0; this.i < this.mode_api_results.length; this.i++) {
+          this.Mid = this.mode_api_results[this.i].id;
+          this.Pmode = this.mode_api_results[this.i].mode;
         }
       }
     );

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/JyessTrading",
+    "public": "dist/HisabKitab",
     "ignore": [
       "firebase.json",
       "**/.*",

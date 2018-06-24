@@ -28,9 +28,8 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   response: any;
   respData: any[];
   title = 'Credit History';
-  constructor(public dialog: MatDialog, private data: DataService, private navbar: NavbarService, private dateFormatter: DatePipe, private rtr: Router,
-              private apiObject: APICallService, private toast: ToastrService) {
-    // public dialog: MatDialog,
+  constructor(public dialog: MatDialog, private data: DataService, private navbar: NavbarService, private dateFormatter: DatePipe,
+              private rtr: Router, private apiObject: APICallService, private toast: ToastrService) {
     super(apiObject, rtr);
     this.data.changeMessage(this.title);
     this.navbar.invisi();

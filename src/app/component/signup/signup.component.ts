@@ -83,7 +83,7 @@ export class SignupComponent extends SharedClass implements OnInit {
       'referral' : new FormControl('', )
     });
   }
-  // goBack() {
-  //   this.location.back();
-  // }
+  goBack() {
+    this.location.back();
+  }
 }

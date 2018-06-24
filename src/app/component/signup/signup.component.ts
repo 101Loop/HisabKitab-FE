@@ -21,7 +21,6 @@ export class SignupComponent extends SharedClass implements OnInit {
   hide = true;
   signupForm: FormGroup;
   name: string;
-  orgName: string;
   userEmail: string;
   userContact: string;
   userPassword: string;
@@ -38,7 +37,7 @@ export class SignupComponent extends SharedClass implements OnInit {
     if (this.userPassword === this.confirmPassword) {
     this.loading = true;
       console.log('match');
-    this.apiObject.register(this.name, this.orgName, this.userEmail, this.userPassword, this.userContact).subscribe(
+    this.apiObject.register(this.name, this.userEmail, this.userPassword, this.userContact).subscribe(
       data => {
         this.loading = false;
         this.resp = data;

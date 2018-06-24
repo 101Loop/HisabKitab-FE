@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ApicallService } from './apicall.service';
+import { APICallService } from './apicall.service';
 
 describe('ApicallService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ApicallService]
+      providers: [APICallService]
     });
   });
 
-  it('should be created', inject([ApicallService], (service: ApicallService) => {
+  it('should be created', inject([APICallService], (service: APICallService) => {
     expect(service).toBeTruthy();
   }));
 });

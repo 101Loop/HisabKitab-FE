@@ -22,14 +22,13 @@ export class APICallService {
     return this.http.post(this.baseUrl + 'api/users/login/', this.data);
   }
   /* -----for registration--------------------------------------------------------------------------------- */
-  register(userFullName: string, userOrganization: string, userEmail: string, userPassword: string, userMobile: string) {
+  register(userFullName: string, userEmail: string, userPassword: string, userMobile: string) {
     this.data = {
       username : userMobile,
       mobile :  userMobile,
       email : userEmail,
       name : userFullName,
-      password : userPassword,
-      organization: userOrganization
+      password : userPassword
     };
     return this.http.post(this.baseUrl + 'api/users/register/', this.data);
   }

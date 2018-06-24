@@ -12,7 +12,7 @@ import {SharedClass} from '../../shared-class';
 // import {PostcreditComponent} from '../postcredit/postcredit.component';
 
 @Component({
-  selector: 'app-dhaniti-job-list',
+  selector: 'app-hisabkitab-job-list',
   templateUrl: './creditlist.component.html',
   styleUrls: ['./creditlist.component.css'],
   providers: [DatePipe]

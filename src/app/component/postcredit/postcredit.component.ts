@@ -11,7 +11,7 @@ import {APICallService} from '../../service/api-service/apicall.service';
 import {SuccessMessageComponent} from '../success-message/success-message.component';
 
 @Component({
-  selector: 'app-dhanitirequest',
+  selector: 'app-hisabkitabrequest',
   templateUrl: './postcredit.component.html',
   styleUrls: ['./postcredit.component.css'],
   providers: [DatePipe]
@@ -26,7 +26,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   category = 'C';
   response: any;
   modeID: number;
-  dhanitiForm: FormGroup;
+  hisabkitabForm: FormGroup;
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostcreditComponent>, private apiObject: APICallService,
               private toast: ToastrService, private rtr: Router, private dateFormatter: DatePipe) {
     super(apiObject, rtr);
@@ -34,7 +34,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   }
   ngOnInit() {
     super.ngOnInit();
-    this.dhanitiForm = new FormGroup({
+    this.hisabkitabForm = new FormGroup({
       'position' : new FormControl('', [Validators.required]),
       'org' : new FormControl('', [Validators.required]),
       'salary' : new FormControl('', [Validators.required]),

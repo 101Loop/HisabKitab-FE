@@ -19,7 +19,7 @@ const routes: Routes = [
    { path: 'forgetpassword', component: ForgetpasswordComponent },
    { path: 'otpverification', component: OtpverificationComponent },
    { path: 'normalrequest', component: PostdebitComponent },
-   { path: 'dhanitirequest', component: PostcreditComponent },
+   { path: 'hisabkitabrequest', component: PostcreditComponent },
    { path: 'dashboard', component: DashboardComponent },
    { path: 'outgoing', component: DebitlistComponent },
    { path: 'incoming', component: CreditlistComponent },

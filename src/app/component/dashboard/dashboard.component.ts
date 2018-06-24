@@ -17,7 +17,7 @@ import {NavbarService} from '../../service/navigation-bar/navbar.service';
 })
 export class DashboardComponent extends SharedClass implements OnInit {
   loading: boolean;
-  title = 'Dhan Niti (धननीति)';
+  title = 'Hisab Kitab (हिसाब किताब)';
   // isNet = false;
   constructor(private newsObject: APICallService, public navbar: NavbarService, private data: DataService, private rtr: Router) {
     // private toast: ToastrService

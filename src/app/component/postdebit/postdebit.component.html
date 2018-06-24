@@ -7,27 +7,27 @@
       <p>
         <mat-form-field appearance="outline" class="inputfield">
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" [(ngModel)]="contact" formControlName="position">
+          <input matInput placeholder="Name" [(ngModel)]="contact" formControlName="contactname">
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field style="margin-top: 10px" appearance="outline" class="inputfield">
           <mat-label>Amount</mat-label>
-          <input matInput placeholder="Amount" [(ngModel)]="amount" formControlName="org">
+          <input matInput placeholder="Amount" [(ngModel)]="amount" formControlName="amount">
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field style="margin-top: 10px" appearance="outline" class="inputfield">
           <mat-label>Date</mat-label>
-          <input matInput placeholder="Date" type="date" [(ngModel)]="create_date" value="{{create_date}}" name="sal" formControlName="salary">
+          <input matInput placeholder="Date" type="date" [(ngModel)]="create_date" value="{{create_date}}" name="sal" formControlName="date">
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
 
 
-      <div class="Checkbox">
+      <div class="radiobox">
         <p>Payment Mode:</p>
         <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
           <mat-radio-button class="checkpos" value="{{m.id}}" *ngFor="let m of mode_api_results"[value]=m.id>{{m.mode}}</mat-radio-button>

@@ -36,9 +36,9 @@ export class PostdebitComponent extends SharedClass implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.normalForm = new FormGroup({
-      'position': new FormControl('', [Validators.required]),
-      'org': new FormControl('', [Validators.required]),
-      'salary': new FormControl('', [Validators.required]),
+      'contactname': new FormControl('', [Validators.required]),
+      'amount': new FormControl('', [Validators.required]),
+      'date': new FormControl('', [Validators.required]),
       'desc': new FormControl('', )
     });
     this.getMode();

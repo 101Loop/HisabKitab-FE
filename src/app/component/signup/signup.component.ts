@@ -27,7 +27,7 @@ export class SignupComponent extends SharedClass implements OnInit {
   userPassword: string;
   confirmPassword: string;
   resp: any;
-  constructor(private location: Location, public navbar: NavbarService, private http: HttpClient, private rtr: Router,
+  constructor(public location: Location, public navbar: NavbarService, private http: HttpClient, private rtr: Router,
               private apiObject: APICallService, private toast: ToastrService) {
     // public dialog: MatDialog
     super(apiObject, rtr);
@@ -82,8 +82,5 @@ export class SignupComponent extends SharedClass implements OnInit {
       'password' : new FormControl('', [Validators.required]),
       'referral' : new FormControl('', )
     });
-  }
-  goBack() {
-    this.location.back();
   }
 }

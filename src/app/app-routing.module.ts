@@ -21,8 +21,8 @@ const routes: Routes = [
    { path: 'normalrequest', component: PostdebitComponent },
    { path: 'hisabkitabrequest', component: PostcreditComponent },
    { path: 'dashboard', component: DashboardComponent },
-   { path: 'outgoing', component: DebitlistComponent },
-   { path: 'incoming', component: CreditlistComponent },
+   { path: 'debithistory', component: DebitlistComponent },
+   { path: 'credithistory', component: CreditlistComponent },
    { path: 'logout', component: LogoutDialogComponent },
   { path: 'success', component: SuccessMessageComponent },
 ];

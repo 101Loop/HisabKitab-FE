@@ -35,9 +35,6 @@ export class ForgetpasswordComponent extends SharedClass implements OnInit {
       'email' : new FormControl('', Validators.required)
     });
   }
-  /*goBack() {
-    this.location.back();
-  }*/
   getOtp() {
     this.loading = true;
     this.data.changeMessage(this.userInput);

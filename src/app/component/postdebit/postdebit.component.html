@@ -32,9 +32,7 @@
         <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
           <mat-radio-button class="checkpos" value="{{m.id}}" *ngFor="let m of mode_api_results"[value]=m.id>{{m.mode}}</mat-radio-button>
         </mat-radio-group>
-<!--
-        <mat-checkbox class="checkpos" *ngFor="let m of results">{{checkBoxData(m)}}{{mode1}}</mat-checkbox>
--->
+
       </div>
 
       <!--  <div class="dropdown">

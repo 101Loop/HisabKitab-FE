@@ -22,7 +22,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   title = 'Flexy Managers';
   private readonly _mobileQueryListener: () => void;
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
-              private data: DataService, private location: Location, private rtr: Router, private apiObject: APICallService) {
+              private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService) {
     // public dialog: MatDialog,
     super(apiObject, rtr);
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -35,9 +35,6 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-  goBack() {
-    this.location.back();
   }
   onLogout() {
     const dialogRef = this.dialog.open(LogoutDialogComponent, {

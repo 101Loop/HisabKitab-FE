@@ -17,9 +17,6 @@ export class LogoutDialogComponent extends SharedClass implements OnInit {
   }
 
   ngOnInit() {}
-  onNo() {
-    this.dialogRef.close();
-  }
   onYes() {
     // TODO: Implement Promise function of navigate
     this.rtr.navigate(['/', 'login']);

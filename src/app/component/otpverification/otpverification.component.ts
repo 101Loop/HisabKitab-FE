@@ -30,9 +30,6 @@ export class OtpverificationComponent extends SharedClass implements OnInit {
     super.ngOnInit();
     this.data.currentMessage.subscribe(message => this.output = message);
   }
-  /*goBack() {
-    this.location.back();
-  }*/
   verifyOtp () {
     this.loading = true;
     this.apiObject.loginwithOTP(this.output, this.otp).subscribe(

@@ -39,7 +39,7 @@ export class PostdebitComponent extends SharedClass implements OnInit {
       'position': new FormControl('', [Validators.required]),
       'org': new FormControl('', [Validators.required]),
       'salary': new FormControl('', [Validators.required]),
-      'desc': new FormControl('', [Validators.required])
+      'desc': new FormControl('', )
     });
     this.getMode();
   }
@@ -68,6 +68,7 @@ export class PostdebitComponent extends SharedClass implements OnInit {
       }
     );
   }
+  /**To tranform date to this "dd-MM-yyyy" standard format**/
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
   }

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {SuccessMessageComponent} from '../success-message/success-message.component';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
-import {SharedClass} from '../../shared-class';
-import {AddOutgoing, ApicallService} from '../../service/api-service/apicall.service';
 import {DatePipe} from '@angular/common';
+import {Router} from '@angular/router';
+
+import {ToastrService} from 'ngx-toastr';
+
+import {SharedClass} from '../../shared-class';
+import {SuccessMessageComponent} from '../success-message/success-message.component';
+import {APICallService} from '../../service/api-service/apicall.service';
 
 @Component({
   selector: 'app-normalrequest',
@@ -19,17 +21,14 @@ export class PostdebitComponent extends SharedClass implements OnInit {
   date: any = new Date();
   create_date: any;
   contact: string;
-  amount: string;
-  boxid: string;
-  selectedMode: string;
+  amount: number;
+  modeID: number;
   response: any;
   list: any;
-  mode1: string;
-  category = '-';
+  category = 'D';
   normalForm: FormGroup;
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostdebitComponent>,
-              private postObject: ApicallService, private toast: ToastrService, private rtr: Router,
-              private apiObject: ApicallService, private dateFormatter: DatePipe) {
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostdebitComponent>, private toast: ToastrService,
+              private rtr: Router, private apiObject: APICallService, private dateFormatter: DatePipe) {
     super(apiObject, rtr);
     this.dateFormat(this.date);
     this.list = this.mode_api_results;
@@ -47,8 +46,7 @@ export class PostdebitComponent extends SharedClass implements OnInit {
 
   onSuccess(): void {
     this.loading = true;
-    const passData = new AddOutgoing(this.create_date, this.contact, this.amount, this.selectedMode, this.category);
-    this.postObject.postOutgoing(passData).subscribe(
+    this.apiObject.addTransactions(this.contact, this.modeID, this.amount, this.category).subscribe(
       data => {
         this.loading = false;
         this.response = data;

@@ -37,8 +37,7 @@ export class SignupComponent extends SharedClass implements OnInit {
     if (this.userPassword === this.confirmPassword) {
     this.loading = true;
       console.log('match');
-    const passData = new Registration(this.name, this.orgName, this.userEmail, this.userPassword, this.userContact);
-    this.apiObject.registration(passData).subscribe(
+    this.apiObject.registration(this.name, this.orgName, this.userEmail, this.userPassword, this.userContact).subscribe(
       data => {
         this.loading = false;
         this.resp = data;

@@ -1,4 +1,4 @@
-<H2>Outgoing</H2>
+<H2>Debit History</H2>
 <div class="container">
   <div *ngIf="!isData" class="noData" align="center">
     <p>No Data Found<Br>
@@ -13,14 +13,12 @@
 
   <div class="content" *ngFor="let i of respData">
     <mat-card class="card" >
-      <!--<button class="label" ></button>-->
       <div class="div" >
         <h4>Name:<span style="display:inline-block; width: 4px;"></span> {{i.contact.name}}</h4>
         <p class="p"> Amount:<span style="display:inline-block; width: 4px;"></span> <i class="fa fa-inr"></i></p>
         <p class="p salary"> {{i.amount}}</p><br>
         <p class="p">Mode: </p><span style="display:inline-block; width: 4px;"></span>
         <p class="p salary">{{i.mode.mode}}</p><br>
-        <!-- <p class="more" >...view more </p>-->
         <p class="p date" >Date:<span style="display:inline-block; width: 4px;"></span>{{dateFormat(i.create_date)}}{{create_date}} </p>
       </div>
     </mat-card>

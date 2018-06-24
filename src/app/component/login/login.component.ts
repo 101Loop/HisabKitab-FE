@@ -2,12 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+
 import {ToastrService} from 'ngx-toastr';
+
 import {SharedClass} from '../../shared-class';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
-import {ApicallService, Login} from '../../service/api-service/apicall.service';
+import {APICallService} from '../../service/api-service/apicall.service';
 
- @Component({
+@Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -15,7 +17,7 @@ import {ApicallService, Login} from '../../service/api-service/apicall.service';
 export class LoginComponent extends SharedClass implements OnInit {
   loading: boolean;
   hide = true;
-  userName: string;
+  username: string;
   password: string;
   token: string;
   response: any;
@@ -23,8 +25,8 @@ export class LoginComponent extends SharedClass implements OnInit {
   mail = new FormControl('', [Validators.required]);
   loginForm: FormGroup;
 
-  constructor(public navbar: NavbarService, private http: HttpClient, private toast: ToastrService,
-              private rtr: Router, private apiObject: ApicallService) {
+  constructor(public navbar: NavbarService, private http: HttpClient, private toast: ToastrService, private rtr: Router,
+              private apiObject: APICallService) {
     super(apiObject, rtr);
     this.navbar.hide();
     this.navbar.invisi();
@@ -37,10 +39,8 @@ export class LoginComponent extends SharedClass implements OnInit {
     });
   }
   onClick() {
-    // this.rtr.navigate(['/', 'newspage']);
     this.loading = true;
-    const passData = new Login(this.userName, this.password);
-    this.apiObject.login(passData).subscribe(
+    this.apiObject.login(this.username, this.password).subscribe(
       data => {
         this.loading = false;
         this.response = data;
@@ -51,7 +51,6 @@ export class LoginComponent extends SharedClass implements OnInit {
           localStorage.setItem(this.KEY_TOKEN, this.token);
            this.toast.success('Login successfully', 'Login');
           this.rtr.navigate(['/', 'dashboard']);
-          // console.log(this.referral);
           window.location.reload();
         }
       }, error => {

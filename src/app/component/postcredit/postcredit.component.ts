@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
-import {SharedClass} from '../../shared-class';
-import {AddIncoming, ApicallService} from '../../service/api-service/apicall.service';
-import {SuccessMessageComponent} from '../success-message/success-message.component';
 import {DatePipe} from '@angular/common';
 
+import {ToastrService} from 'ngx-toastr';
+
+import {SharedClass} from '../../shared-class';
+import {APICallService} from '../../service/api-service/apicall.service';
+import {SuccessMessageComponent} from '../success-message/success-message.component';
+
 @Component({
-  selector: 'app-flexyrequest',
+  selector: 'app-dhanitirequest',
   templateUrl: './postcredit.component.html',
   styleUrls: ['./postcredit.component.css'],
   providers: [DatePipe]
@@ -20,18 +22,19 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   date: any = new Date();
   create_date: any;
   contact: string;
-  amount: string;
+  amount: number;
   category = 'C';
   response: any;
-  boxid: string;
-  flexyForm: FormGroup;
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostcreditComponent>, private flexyObject: ApicallService,
-              private toast: ToastrService, private rtr: Router, private apiObject: ApicallService,
-              private dateFormatter: DatePipe) { super(apiObject, rtr);
-  this.dateFormat(this.create_date); }
+  modeID: number;
+  dhanitiForm: FormGroup;
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostcreditComponent>, private apiObject: APICallService,
+              private toast: ToastrService, private rtr: Router, private dateFormatter: DatePipe) {
+    super(apiObject, rtr);
+    this.dateFormat(this.create_date);
+  }
   ngOnInit() {
     super.ngOnInit();
-    this.flexyForm = new FormGroup({
+    this.dhanitiForm = new FormGroup({
       'position' : new FormControl('', [Validators.required]),
       'org' : new FormControl('', [Validators.required]),
       'salary' : new FormControl('', [Validators.required]),
@@ -41,9 +44,8 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   }
   onSuccess(): void {
     this.loading = true;
-    const passData = new AddIncoming(this.create_date, this.contact, this.amount, this.boxid, this.category);
     // post data to server
-    this.flexyObject.postIncoming(passData).subscribe(
+    this.apiObject.addTransactions(this.contact, this.modeID, this.amount, this.category).subscribe(
       data => {
         this.loading = false;
         this.response = data;

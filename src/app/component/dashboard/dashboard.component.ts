@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
+
+// import {ToastrService} from 'ngx-toastr';
+
 import {SharedClass} from '../../shared-class';
-import {ApicallService} from '../../service/api-service/apicall.service';
+import {APICallService} from '../../service/api-service/apicall.service';
 import {DataService} from '../../service/data-service/data.service';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
 
@@ -15,10 +17,11 @@ import {NavbarService} from '../../service/navigation-bar/navbar.service';
 })
 export class DashboardComponent extends SharedClass implements OnInit {
   loading: boolean;
-  title = 'Jyess Trading';
-  isNet = false;
-  constructor(private newsObject: ApicallService, public navbar: NavbarService, private data: DataService, public dateFormatter: DatePipe,
-              private rtr: Router, private toast: ToastrService) {
+  title = 'Dhan Niti (धननीति)';
+  // isNet = false;
+  constructor(private newsObject: APICallService, public navbar: NavbarService, private data: DataService, private rtr: Router) {
+    // private toast: ToastrService
+    // public dateFormatter: DatePipe
     super(newsObject, rtr);
     this.navbar.show();
     this.navbar.invisi();

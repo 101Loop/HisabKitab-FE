@@ -1,7 +1,9 @@
 import {OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ApicallService} from './service/api-service/apicall.service';
+
 import { JwtHelperService } from '@auth0/angular-jwt';
+
+import {APICallService} from './service/api-service/apicall.service';
 
 export abstract class SharedClass implements OnInit {
   KEY_TOKEN = 'TOKEN';
@@ -14,10 +16,8 @@ export abstract class SharedClass implements OnInit {
   i: number;
   Mid: any;
   Pmode: any;
-  constructor(private APIObj: ApicallService, private router: Router) {
-  }
+  protected constructor(private APIObj: APICallService, private router: Router) {}
   public isLoggedIn() {
-    // console.log('Function Triggered for: ' + this.router.url);
     this.token = localStorage.getItem(this.KEY_TOKEN);
     if (this.token) {
       const jwth = new JwtHelperService();
@@ -31,40 +31,37 @@ export abstract class SharedClass implements OnInit {
     }
   }
   ngOnInit() {
+    // TODO: Implement Promise returned by each navigate
     const url = this.router.url;
     if (this.isLoggedIn()) {
-      // console.log('Welcome to Flexy Managers ' + this.name);
       switch (url) {
         case '/login': {
-          this.router.navigate(['/', 'newspage']);
+          this.router.navigate(['/', 'dashboard']);
           break;
         }
         case '/forgetpassword': {
-          this.router.navigate(['/', 'newspage']);
+          this.router.navigate(['/', 'dashboard']);
           break;
         }
         case '/signup': {
-          this.router.navigate(['/', 'newspage']);
+          this.router.navigate(['/', 'dashboard']);
           break;
         }
         case '/otpverification': {
-          this.router.navigate(['/', 'newspage']);
+          this.router.navigate(['/', 'dashboard']);
           break;
         }
         default: { break; }
       }
     } else {
-      // console.log('Hey there Sneaky!');
       switch (url) {
         case '/': {break; }
         case '/login': {break; }
         case '/forgetpassword': {
-          //  console.log('Its on forgetpassword');
           break; }
         case '/signup': {break; }
         case '/otpverification': {break; }
         default: {
-          // console.log('Default case triggered!');
           this.router.navigate(['/', 'login']);
           break;
         }

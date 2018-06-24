@@ -1,106 +1,60 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 import {environment} from '../../../environments/environment';
 
-export class Login {
-  constructor(public username: string, public password: string ) {}
-}
-export class Registration {
-  constructor( public name: string,  public orgName: string, public email: string,  public password: string,  public contact: string) {}
-}
-export class ForgetPassword {
-  constructor(public username: string) {}
-}
-export class VerifyOtp {
-  constructor(public username: string, public otp: string) {}
-}
-export class GetIncomingData {
-  constructor() {}
-}
-export  class AddIncoming {
-  constructor(public date: number, public contact: string, public amount: string,
-              public mode: string, public category: string) {}
-}
-export class GetOutgoingData {
-  constructor() {}
-}
-export  class AddOutgoing {
-  constructor(public date: number, public contact: string, public amount: string,
-              public mode: string, public category: string) {}
-}
+
 @Injectable({
   providedIn: 'root'
 })
-export class ApicallService {
+export class APICallService {
   token = localStorage.getItem('TOKEN');
   headers = new HttpHeaders().set('content-type', 'application/json' ).set('Authorization', this.token );
   baseUrl = environment.baseUrl;
   data: any;
   constructor(private http: HttpClient) {}
   /* -----for login--------------------------------------------------------------------------------------- */
-  login(logObject: Login) {
+  login(username: string, password: string) {
     this.data = {
-      username : logObject.username,
-      password : logObject.password
+      username : username,
+      password : password
     };
     return this.http.post(this.baseUrl + 'api/users/login/', this.data);
   }
   /* -----for registration--------------------------------------------------------------------------------- */
-  registration( regObject: Registration) {
+  register(userFullName: string, userOrganization: string, userEmail: string, userPassword: string, userMobile: string) {
     this.data = {
-      username : regObject.contact,
-      mobile :  regObject.contact,
-      email : regObject.email,
-      name : regObject.name,
-      password : regObject.password,
-      organization: regObject.orgName
+      username : userMobile,
+      mobile :  userMobile,
+      email : userEmail,
+      name : userFullName,
+      password : userPassword,
+      organization: userOrganization
     };
     return this.http.post(this.baseUrl + 'api/users/register/', this.data);
   }
-  /*-----for otp sending------------------------------------------------------------------------------------ */
-  forgetPassword(forgetObject: ForgetPassword) {
+  /*-----login with OTP------------------------------------------------------------------------------------ */
+  loginwithOTP(username: string, otp: string = null) {
     this.data = {
-      value : forgetObject.username
+      value : username
     };
+    if (otp != null) {this.data.otp = otp; }
     return this.http.post(this.baseUrl + 'api/users/loginotp/', this.data);
   }
-  /* -------for otp varification----------------------------------------------------------------------------- */
-  verifyOtp( verifyObject: VerifyOtp) {
+  /*----------for fetching transactions-------------------------------------------------------------------------------*/
+  fetchTransactions(category: string) {
     this.data = {
-      value : verifyObject.username,
-      otp: verifyObject.otp
+      category: category
     };
-    return this.http.post(this.baseUrl + 'api/users/loginotp/', this.data);
+    return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: this.data});
   }
-  /*----------for get incoming  data-------------------------------------------------------------------------------*/
-  getIncomingData(icomingObject: GetIncomingData) {
-    return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers});
-  }
-  /*-------for add incoming ---------------------------------------------------------------------------------*/
-  postIncoming(inObject: AddIncoming) {
+  /*-------for adding transactions ---------------------------------------------------------------------------------*/
+  addTransactions(contact: string, mode: number, amount: number, category: string) {
     this.data = {
-      status: '1',
-      last_modified: inObject.date,
-      contact: inObject.contact,
-      mode: inObject.mode,
-      amount: inObject.amount,
-      category: inObject.category,
-    };
-    return this.http.post(this.baseUrl + 'api/transactions/add/', this.data, {headers: this.headers} );
-  }
-  /*----------for get outgoing data------------------------------------------------------------------------------*/
-  getOutgoingData(normalObject: GetOutgoingData) {
-    return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers});
-  }
-  /*-------for add outgoing ---------------------------------------------------------------------------------*/
-  postOutgoing(outObject: AddOutgoing) {
-    this.data = {
-      status: '1',
-      last_modified: outObject.date,
-      contact: outObject.contact,
-      mode: outObject.mode,
-      amount: outObject.amount,
-      category: outObject.category,
+      contact: contact,
+      mode: mode,
+      amount: amount,
+      category: category,
     };
     return this.http.post(this.baseUrl + 'api/transactions/add/', this.data, {headers: this.headers} );
   }

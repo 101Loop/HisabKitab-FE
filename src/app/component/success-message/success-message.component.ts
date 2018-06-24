@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-import {GetIncomingData} from '../../service/api-service/apicall.service';
 @Component({
   selector: 'app-success-message',
   templateUrl: './success-message.component.html',
@@ -8,12 +7,10 @@ import {GetIncomingData} from '../../service/api-service/apicall.service';
 })
 export class SuccessMessageComponent implements OnInit {
   isShow = true;
-  constructor( public dialogRef: MatDialogRef<SuccessMessageComponent>) { }
-
-  ngOnInit() {
-  }
+  constructor( public dialogRef: MatDialogRef<SuccessMessageComponent>) {}
+  ngOnInit() {}
 hide() {
-  const passData = new GetIncomingData();
+  // const passData = new FetchCredit();
   window.location.reload();
   this.dialogRef.close();
 }

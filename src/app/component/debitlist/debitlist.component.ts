@@ -1,14 +1,16 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
 import {DatePipe} from '@angular/common';
-import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+
 import {ToastrService} from 'ngx-toastr';
+
 import {SharedClass} from '../../shared-class';
 import {DataService} from '../../service/data-service/data.service';
-import {ApicallService, GetOutgoingData} from '../../service/api-service/apicall.service';
+import {APICallService} from '../../service/api-service/apicall.service';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
 import {PostdebitComponent} from '../postdebit/postdebit.component';
+
 @Component({
   selector: 'app-normal-job-list',
   templateUrl: './debitlist.component.html',
@@ -22,22 +24,13 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   loading: boolean;
   create_date: any;
   position: any;
-  salary: any;
-  urgency: any;
-  creat_ed_by: any;
-  gender: any;
-  desc: any;
-  stat_us: any;
-  post_id: any;
   error: any;
-  organization: string;
-  title = 'Outgoing';
+  title = 'Debit History';
   response: any;
   respData: any[];
-  pos: string;
-  constructor(public dialog: MatDialog, public data: DataService, private navbar: NavbarService, private normalObject: ApicallService,
+  constructor(public dialog: MatDialog, public data: DataService, private navbar: NavbarService, private apiObject: APICallService,
               private dateFormatter: DatePipe, private rtr: Router,  private toast: ToastrService) {
-    super(normalObject, rtr);
+    super(apiObject, rtr);
     this.data.changeMessage(this.title);
     this.navbar.invisi();
   }
@@ -47,32 +40,12 @@ export class DebitlistComponent extends SharedClass implements OnInit {
       width: '400px'
     });
   }
-  openStatus(i: any): void {
- /*   this.position = i.position;
-    this.salary = i.salary;
-    this.urgency = i.urgency;
-    this.gender = i.gender;
-    this.desc = i.description;
-    this.post_id = i.id;
-    this.organization = this.org;
-    this.data.passPosition(this.position);
-    this.data.passSalary(this.salary);
-    this.data.passUrgency(this.urgency);
-    this.data.passGender(this.gender);
-    this.data.passDesc(this.desc);
-    this.data.passPost(this.post_id);
-    this.data.passOrg(this.organization);
-    const dialogRef = this.dialog.open(VacancyStatusComponent, {
-      height: '560px'
-    });*/
-  }
+  // openStatus(i: any): void {}
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
-    /* To check if user is logged in or logged out, if logout then it will redirect user to login page */
-    if (this.token) {
-      const passData = new GetOutgoingData();
-      this.normalObject.getOutgoingData(passData).subscribe(
+    if (this.isLoggedIn()) {
+      this.apiObject.fetchTransactions('D').subscribe(
         data => {
           this.response = data;
           this.respData = this.response.results;
@@ -97,7 +70,6 @@ export class DebitlistComponent extends SharedClass implements OnInit {
         }
       );
     } else {
-      console.log('Redirected to Login!');
       this.rtr.navigate(['/', 'login']);
     }
   }
@@ -105,8 +77,5 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   dateFormat(date: any) {
     // console.log(date);
      this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
-  }
-  positionFormet(position: any) {
-    this.pos = position.replace(/ /g, '+');
   }
 }

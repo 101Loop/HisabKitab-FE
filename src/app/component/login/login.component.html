@@ -12,7 +12,7 @@
               <P>
                 <mat-form-field appearance="outline" class="inputfield">
                   <mat-label>Email/Mobile</mat-label>
-                  <input  matInput placeholder="Email/Mobile" [(ngModel)]="userName" name="email" formControlName="mail" (keyup.enter)="onClick()" >
+                  <input  matInput placeholder="Email/Mobile" [(ngModel)]="username" name="email" formControlName="mail" (keyup.enter)="onClick()" >
                   <mat-error *ngIf="mail.invalid">{{getMailError()}}</mat-error>
                   <mat-icon matSuffix>email</mat-icon>
                 </mat-form-field>

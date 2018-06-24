@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
-import {MatDialog} from '@angular/material';
+// import {MatDialog} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {SharedClass} from '../../shared-class';
-import {ToastrService} from 'ngx-toastr';
-import {NavbarService} from '../../service/navigation-bar/navbar.service';
-import {ApicallService, Registration} from '../../service/api-service/apicall.service';
 
- @Component({
+import {ToastrService} from 'ngx-toastr';
+
+import {SharedClass} from '../../shared-class';
+import {NavbarService} from '../../service/navigation-bar/navbar.service';
+import {APICallService} from '../../service/api-service/apicall.service';
+
+@Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
@@ -18,7 +20,6 @@ export class SignupComponent extends SharedClass implements OnInit {
   loading: boolean;
   hide = true;
   signupForm: FormGroup;
-  userName: string;
   name: string;
   orgName: string;
   userEmail: string;
@@ -26,9 +27,9 @@ export class SignupComponent extends SharedClass implements OnInit {
   userPassword: string;
   confirmPassword: string;
   resp: any;
-  unique: any;
-  constructor(private location: Location, public dialog: MatDialog, public navbar: NavbarService, private http: HttpClient,
-              private rtr: Router, private apiObject: ApicallService, private toast: ToastrService) {
+  constructor(private location: Location, public navbar: NavbarService, private http: HttpClient, private rtr: Router,
+              private apiObject: APICallService, private toast: ToastrService) {
+    // public dialog: MatDialog
     super(apiObject, rtr);
     this.navbar.hide();
     this.navbar.visi();
@@ -37,7 +38,7 @@ export class SignupComponent extends SharedClass implements OnInit {
     if (this.userPassword === this.confirmPassword) {
     this.loading = true;
       console.log('match');
-    this.apiObject.registration(this.name, this.orgName, this.userEmail, this.userPassword, this.userContact).subscribe(
+    this.apiObject.register(this.name, this.orgName, this.userEmail, this.userPassword, this.userContact).subscribe(
       data => {
         this.loading = false;
         this.resp = data;
@@ -82,45 +83,7 @@ export class SignupComponent extends SharedClass implements OnInit {
       'referral' : new FormControl('', )
     });
   }
-  goBack() {
-    this.location.back();
-  }
-/*  isNameUnique() {
-    const passData = new IsUnique('username', this.userName);
-    this.apiObject.isUnique(passData).subscribe(
-      data => {
-        this.resp = data;
-        this.unique = this.resp.data.unique;
-        console.log(this.unique);
-        if (!this.unique) {
-          this.toast.error('Username is already exist', 'Error');
-        }
-      }
-    );
-  }
-  isEmailUnique() {
-    const passData = new IsUnique('email', this.userEmail);
-    this.apiObject.isUnique(passData).subscribe(
-      data => {
-        this.resp = data;
-        this.unique = this.resp.data.unique;
-        if (!this.unique) {
-          this.toast.error('Email is already exist', 'Error');
-        }
-      }
-    );
-  }
-  isContactUnique() {
-    const passData = new IsUnique('mobile', this.userContact);
-    this.apiObject.isUnique(passData).subscribe(
-      data => {
-        this.resp = data;
-        this.unique = this.resp.data.unique;
-        console.log(this.unique);
-        if (!this.unique) {
-          this.toast.error('Mobile is already exist', 'Error');
-        }
-      }
-    );
-  }*/
+  // goBack() {
+  //   this.location.back();
+  // }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
 
@@ -9,7 +9,7 @@ import {DataService} from '../../service/data-service/data.service';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
 import {APICallService} from '../../service/api-service/apicall.service';
 import {SharedClass} from '../../shared-class';
-// import {PostcreditComponent} from '../postcredit/postcredit.component';
+import {PostcreditComponent} from '../postcredit/postcredit.component';
 
 @Component({
   selector: 'app-hisabkitab-job-list',
@@ -28,7 +28,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   response: any;
   respData: any[];
   title = 'Credit History';
-  constructor(private data: DataService, private navbar: NavbarService, private dateFormatter: DatePipe, private rtr: Router,
+  constructor(public dialog: MatDialog, private data: DataService, private navbar: NavbarService, private dateFormatter: DatePipe, private rtr: Router,
               private apiObject: APICallService, private toast: ToastrService) {
     // public dialog: MatDialog,
     super(apiObject, rtr);
@@ -36,10 +36,10 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
   }
   openDialog(): void {
-    // const dialogRef = this.dialog.open(PostcreditComponent, {
-    //   height: '480px',
-    //   width: '400px'
-    // });
+    const dialogRef = this.dialog.open(PostcreditComponent, {
+      height: '480px',
+      width: '400px'
+    });
   }
   // openStatus(i: any): void {}
   ngOnInit() {

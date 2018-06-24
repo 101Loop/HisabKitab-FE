@@ -49,7 +49,7 @@ export class LoginComponent extends SharedClass implements OnInit {
           this.token = this.response.data.token;
           // Save JWT Token
           localStorage.setItem(this.KEY_TOKEN, this.token);
-           this.toast.success('Login successfully', 'Login');
+          this.toast.success('Login successfully', 'Login');
           this.rtr.navigate(['/', 'dashboard']);
           window.location.reload();
         }

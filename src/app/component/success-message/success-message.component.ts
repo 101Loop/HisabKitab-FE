@@ -6,11 +6,9 @@ import {MatDialogRef} from '@angular/material';
   styleUrls: ['./success-message.component.css']
 })
 export class SuccessMessageComponent implements OnInit {
-  isShow = true;
   constructor( public dialogRef: MatDialogRef<SuccessMessageComponent>) {}
   ngOnInit() {}
 hide() {
-  // const passData = new FetchCredit();
   window.location.reload();
   this.dialogRef.close();
 }

@@ -19,7 +19,6 @@ export class LoginComponent extends SharedClass implements OnInit {
   hide = true;
   username: string;
   password: string;
-  token: string;
   response: any;
   status: any;
   mail = new FormControl('', [Validators.required]);
@@ -44,11 +43,9 @@ export class LoginComponent extends SharedClass implements OnInit {
       data => {
         this.loading = false;
         this.response = data;
-        this.status = this.response.status_code;
-        if (this.status === 200) {
-          this.token = this.response.data.token;
+        if (this.response.status_code === 200) {
           // Save JWT Token
-          localStorage.setItem(this.KEY_TOKEN, this.token);
+          localStorage.setItem(this.KEY_TOKEN, this.response.data.token);
           this.toast.success('Login successfully', 'Login');
           this.rtr.navigate(['/', 'dashboard']);
           window.location.reload();
@@ -56,7 +53,6 @@ export class LoginComponent extends SharedClass implements OnInit {
       }, error => {
         this.loading = false;
         this.response = error;
-        console.log('Error:' + this.response.status);
         if (this.response.error.data) {
           this.toast.error(this.response.error.data.non_field_errors, 'Login Denied!');
         } else if (this.response.status >= 500) {

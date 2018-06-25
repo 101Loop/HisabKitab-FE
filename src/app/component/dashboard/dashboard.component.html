@@ -1,45 +1,15 @@
-<!--
-<div class="row">
-&lt;!&ndash;<div class=" column right category_container">
-  <div class="newscategory">
-    <p id="select">Select Category:</p>
-    <mat-card class="cat_card" (click)="getNews(tech)">
-      <div>
-        <p >Technology </p>
-      </div>
-    </mat-card>
-    <mat-card class="cat_card" (click)="getNews(sport)">
-      <div>
-        <p>Sports </p>
-      </div>
-    </mat-card>
-    <mat-card class="cat_card" (click)="getNews(business)">
-      <div>
-        <p>Business </p>
-      </div>
-    </mat-card>
-  </div>
-</div>&ndash;&gt;
-<div class=" column left news_container ">
-  <mat-card class="card" *ngFor="let i of newsArticles">
-    <div class="container">
-      <div>
-        <img src="{{i.urlToImage}}">
-      </div>
-      <div id="news">
-        <p id="title" (click)="openNews(i.url)">{{i.title}}</p>
-        <p id="author">Author: {{i.author}}, Source: {{i.source.name}}, {{date}}</p>
-        <p id="desc">{{i.description}}</p>
-      </div>
-    </div>
+<div class="container" align="center">
+
+<div>
+  <mat-card class="cardl" routerLink="credithistory">
+      <h3 class="title" >Credit History</h3>
+      <h1>Credit</h1>
   </mat-card>
 </div>
-  <div align="center">
-    <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
-  </div>
-  <div align="center" *ngIf="isNet">
-    <p class="noNet">Please check your internet connection</p>
-  </div>
+<div>
+  <mat-card class="cardr" routerLink="debithistory">
+    <h3 class="title" >Debit History</h3>
+    <h1>Debit</h1>
+  </mat-card>
 </div>
-
--->
+</div>

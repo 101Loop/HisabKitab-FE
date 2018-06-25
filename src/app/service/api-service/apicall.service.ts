@@ -48,12 +48,13 @@ export class APICallService {
     return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: this.data});
   }
   /*-------for adding transactions ---------------------------------------------------------------------------------*/
-  addTransactions(contact: string, mode: number, amount: number, category: string) {
+  addTransactions(contact: string, mode: number, amount: number, category: string, date: any) {
     this.data = {
       contact: contact,
       mode: mode,
       amount: amount,
       category: category,
+      transaction_date: date
     };
     return this.http.post(this.baseUrl + 'api/transactions/add/', this.data, {headers: this.headers} );
   }

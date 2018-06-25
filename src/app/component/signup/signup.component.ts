@@ -74,12 +74,10 @@ export class SignupComponent extends SharedClass implements OnInit {
     super.ngOnInit();
     this.signupForm = new FormGroup({
       'name': new FormControl('', Validators.required),
-      'orgName': new FormControl('', Validators.required),
       'email' : new FormControl('', [Validators.required, Validators.email,
         Validators.pattern( '([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$')]),
       'contact': new FormControl('', [Validators.required]),
       'password' : new FormControl('', [Validators.required]),
-      'referral' : new FormControl('', )
     });
   }
 }

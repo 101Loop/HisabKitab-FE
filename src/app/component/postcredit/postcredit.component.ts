@@ -30,7 +30,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostcreditComponent>, private apiObject: APICallService,
               private toast: ToastrService, private rtr: Router, private dateFormatter: DatePipe) {
     super(apiObject, rtr);
-    this.dateFormat(this.create_date);
+    this.dateFormat(this.date);
   }
   ngOnInit() {
     super.ngOnInit();
@@ -44,19 +44,16 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   onSuccess(): void {
     this.loading = true;
     // post data to server
-    this.apiObject.addTransactions(this.contact, this.modeID, this.amount, this.category).subscribe(
+    this.apiObject.addTransactions(this.contact, this.modeID, this.amount, this.category, this.create_date).subscribe(
       data => {
         this.loading = false;
         this.response = data;
-        console.log(data);
-          // this.toast.success('Post successfully posted', 'Posting');
           this.dialogRef.close();
-          const dialogRef = this.dialog.open(SuccessMessageComponent, {
+          this.dialog.open(SuccessMessageComponent, {
           });
       }, error => {
         this.loading = false;
         this.response = error;
-        console.log(this.response);
         if (this.response.error.data) {
           this.toast.error(this.response.error.data.non_field_errors, 'Posting Denied!');
         } else if (this.response.status >= 500) {
@@ -69,6 +66,6 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   }
   /**To tranform date to this "dd-MM-yyyy" standard format**/
   dateFormat(date: any) {
-    this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
+    this.create_date =  this.dateFormatter.transform(date, 'dd/MM/yyyy');
   }
 }

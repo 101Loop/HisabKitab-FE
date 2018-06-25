@@ -19,7 +19,7 @@ import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
 
 export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
-  title = 'Flexy Managers';
+  title: string;
   private readonly _mobileQueryListener: () => void;
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
               private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService) {
@@ -37,7 +37,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
   onLogout() {
-    const dialogRef = this.dialog.open(LogoutDialogComponent, {
+    this.dialog.open(LogoutDialogComponent, {
       height: '150px',
       width: '250px'
     });

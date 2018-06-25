@@ -35,7 +35,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
   }
   openDialog(): void {
-    const dialogRef = this.dialog.open(PostdebitComponent, {
+     this.dialog.open(PostdebitComponent, {
       height: '480px',
       width: '400px'
     });
@@ -73,9 +73,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
       this.rtr.navigate(['/', 'login']);
     }
   }
-
   dateFormat(date: any) {
-    // console.log(date);
      this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
   }
 }

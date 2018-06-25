@@ -1,8 +1,8 @@
 <H2>Debit History</H2>
 <div class="container">
   <div *ngIf="!isData" class="noData" align="center">
-    <p>No Data Found<Br>
-      Please add post</p>
+    <p>You haven't added any post yet!<br>
+      Please add your post</p>
   </div>
   <div *ngIf="isNetwork" class="noData" align="center">
     <p>Please check your internet connection!</p>
@@ -27,6 +27,6 @@
     <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
   </div>
   <div class="buttondiv">
-    <button mat-fab class="button" (click)="openDialog()"><mat-icon>add</mat-icon></button>
+    <button mat-fab class="button" (click)="openDialog()"><i style="font-size:24px" class="fa fa-plus"></i></button>
   </div>
 </div>

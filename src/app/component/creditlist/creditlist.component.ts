@@ -35,7 +35,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
   }
   openDialog(): void {
-    const dialogRef = this.dialog.open(PostcreditComponent, {
+     this.dialog.open(PostcreditComponent, {
       height: '480px',
       width: '400px'
     });

@@ -36,7 +36,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
     super.ngOnInit();
     this.hisabkitabForm = new FormGroup({
       'contactname' : new FormControl('', [Validators.required]),
-      'amount' : new FormControl('', [Validators.required]),
+      'amount' : new FormControl('', [Validators.required, Validators.pattern('(\\d+(\\.\\d+)?)')]),
       'date' : new FormControl('', [Validators.required])
     });
     this.getMode();

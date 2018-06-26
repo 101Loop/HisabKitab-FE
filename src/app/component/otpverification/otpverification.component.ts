@@ -37,7 +37,6 @@ export class OtpverificationComponent extends SharedClass implements OnInit {
       data => {
         this.loading = false;
         this.response = data;
-        console.log(data);
         if (this.response.status_code === 200) {
           localStorage.setItem(this.KEY_TOKEN, this.response.data.token);
           this.toast.success('Login successfully', 'Login');
@@ -47,7 +46,6 @@ export class OtpverificationComponent extends SharedClass implements OnInit {
       }, error => {
         this.loading = false;
         this.response = error;
-        console.log(this.response);
         if (this.response.error.data) {
           this.toast.error(this.response.error.data.OTP, 'OTP Verification Denied!');
         } if (this.response.status >= 500) {

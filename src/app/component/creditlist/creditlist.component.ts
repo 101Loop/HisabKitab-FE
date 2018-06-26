@@ -48,7 +48,6 @@ export class CreditlistComponent extends SharedClass implements OnInit {
       this.apiObject.fetchTransactions('C').subscribe(
         data => {
           this.response = data;
-          console.log(this.response);
           this.respData = this.response.results;
           if (this.respData.length > 0) {
             this.isData = true;

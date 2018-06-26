@@ -36,7 +36,6 @@ export class SignupComponent extends SharedClass implements OnInit {
   onSuccess(): void {
     if (this.userPassword === this.confirmPassword) {
     this.loading = true;
-      console.log('match');
     this.apiObject.register(this.name, this.userEmail, this.userPassword, this.userContact).subscribe(
       data => {
         this.loading = false;
@@ -66,7 +65,6 @@ export class SignupComponent extends SharedClass implements OnInit {
     /* const dialogRef = this.dialog.open(SuccessMessageComponent, {
     });*/
     } else {
-      console.log('not match');
       this.toast.error('Password does not match', 'Registration Denied!');
     }
   }

@@ -57,7 +57,6 @@ export class PostdebitComponent extends SharedClass implements OnInit {
       }, error => {
         this.loading = false;
         this.response = error;
-        console.log(this.response);
         if (this.response.error.data) {
           this.toast.error(this.response.error.data.non_field_errors, 'Posting Denied!');
         } else if (this.response.status >= 500) {
@@ -70,6 +69,6 @@ export class PostdebitComponent extends SharedClass implements OnInit {
   }
   /**To tranform date to this "dd-MM-yyyy" standard format**/
   dateFormat(date: any) {
-    this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
+    this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
   }
 }

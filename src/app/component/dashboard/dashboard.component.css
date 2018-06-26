@@ -24,8 +24,11 @@
   margin-bottom: 0px;
 }
 h1{
-  padding: 20px;
   cursor: pointer;
+}
+img{
+  width: 155px;
+  height: 80px;
 }
 @media screen and (max-width: 500px) {
   .container{
@@ -49,5 +52,9 @@ h1{
     width: 45%;
     float: right;
     margin-bottom: 5px;
+  }
+  img{
+    width: 38px;
+    height: 20px;
   }
 }

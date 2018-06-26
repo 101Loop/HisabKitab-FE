@@ -23,7 +23,7 @@ export class OtpverificationComponent extends SharedClass implements OnInit {
   response: any;
   constructor(private location: Location, public navbar: NavbarService, private toast: ToastrService, private data: DataService,
               private http: HttpClient, private rtr: Router, private apiObject: APICallService) {
-    super(apiObject, rtr);
+    super(rtr);
     this.navbar.hide();
     this.navbar.visi(); }
 
@@ -44,14 +44,10 @@ export class OtpverificationComponent extends SharedClass implements OnInit {
           this.rtr.navigate(['/', 'dashboard']);
         }
       }, error => {
+        console.log(error);
         this.loading = false;
-        this.response = error;
-        if (this.response.error.data) {
-          this.toast.error(this.response.error.data.OTP, 'OTP Verification Denied!');
-        } if (this.response.status >= 500) {
-          this.toast.error('Internal Server Error!', 'OTP Verification Denied');
-        } else if (this.response.status === 0 ) {
-          this.toast.error('Please check your connection!', 'OTP Verification Denied!');
+        for (const mesg of error) {
+          this.toast.error(mesg);
         }
       }
     );

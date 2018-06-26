@@ -8,6 +8,7 @@
     <mat-icon class="backArrow" (click)="this.location.back()" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
     <h1 class="example-app-name" *ngIf="this.navbar.visible" >{{title}}</h1>
     <h1 class="example-app-name" *ngIf="!this.navbar.visible">Hisab Kitab</h1>
+<!--    <div align="right" class="logo"> <img src="assets/images/hissab-kitab.png"></div>-->
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -31,7 +32,7 @@
             <p routerLink="/debithistory" class="menuitem">Debit History</p>
             <p  class="menuitem"><a href="/images/images/loading.gif" download>Download</a></p>
             <div (click)="onLogout()">
-              <p class="menuitem logout" >Logout</p>
+              <p class="menuitem logout">Logout</p>
             </div>
           </div>
         </div>

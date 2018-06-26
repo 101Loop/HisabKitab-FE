@@ -24,7 +24,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
               private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService) {
     // public dialog: MatDialog,
-    super(apiObject, rtr);
+    super(rtr);
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);

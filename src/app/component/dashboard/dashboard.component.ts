@@ -22,7 +22,7 @@ export class DashboardComponent extends SharedClass implements OnInit {
   constructor(private newsObject: APICallService, public navbar: NavbarService, private data: DataService, private rtr: Router) {
     // private toast: ToastrService
     // public dateFormatter: DatePipe
-    super(newsObject, rtr);
+    super(rtr);
     this.navbar.show();
     this.navbar.invisi();
     this.data.changeMessage(this.title);

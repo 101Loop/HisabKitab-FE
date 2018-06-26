@@ -13,7 +13,7 @@ import {APICallService} from '../../service/api-service/apicall.service';
 export class LogoutDialogComponent extends SharedClass implements OnInit {
 
   constructor(private rtr: Router, private apiObject: APICallService, public dialogRef: MatDialogRef<LogoutDialogComponent>) {
-    super(apiObject, rtr);
+    super(rtr);
   }
 
   ngOnInit() {}

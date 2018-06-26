@@ -24,7 +24,7 @@ export class ForgetpasswordComponent extends SharedClass implements OnInit {
   forgetForm: FormGroup;
   constructor(private location: Location, public navbar: NavbarService, private data: DataService, private http: HttpClient,
               private toast: ToastrService, private rtr: Router, private apiObject: APICallService) {
-    super(apiObject, rtr);
+    super(rtr);
     this.navbar.hide();
     this.navbar.visi();
   }
@@ -47,12 +47,10 @@ export class ForgetpasswordComponent extends SharedClass implements OnInit {
         this.rtr.navigate(['/', 'otpverification']);
       }, error => {
         this.loading = false;
-        this.response = error;
-        if (this.response.error.data) {
-          this.toast.error(this.response.error.data.message, 'Forget Password');
-        } else if (this.response.status === 0) { this.toast.error('Please check your internet connection!', 'Login Denied!');
-        } else if (this.response.status >= 500) {this.toast.error('Internal Server Error', 'Login Denied'); }
-      }
+        this.loading = false;
+        for (const mesg of error) {
+          this.toast.error(mesg);
+        }}
     );
   }
   getMailError() {

@@ -29,7 +29,7 @@ export class PostdebitComponent extends SharedClass implements OnInit {
   normalForm: FormGroup;
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostdebitComponent>, private toast: ToastrService,
               private rtr: Router, private apiObject: APICallService, private dateFormatter: DatePipe) {
-    super(apiObject, rtr);
+    super(rtr);
     this.dateFormat(this.date);
     this.list = this.mode_api_results;
   }
@@ -41,7 +41,7 @@ export class PostdebitComponent extends SharedClass implements OnInit {
       'date': new FormControl('', [Validators.required]),
       'desc': new FormControl('', )
     });
-    this.getMode();
+    this.getMode(this.apiObject);
   }
 
   onSuccess(): void {
@@ -56,13 +56,8 @@ export class PostdebitComponent extends SharedClass implements OnInit {
           });
       }, error => {
         this.loading = false;
-        this.response = error;
-        if (this.response.error.data) {
-          this.toast.error(this.response.error.data.non_field_errors, 'Posting Denied!');
-        } else if (this.response.status >= 500) {
-          this.toast.error('Internal Server Error!', 'Posting Denied!');
-        } else if (this.response.status === 0 ) {
-          this.toast.error('Please check your connection!', 'Posting Denied!');
+        for (const mesg of error) {
+          this.toast.error(mesg);
         }
       }
     );

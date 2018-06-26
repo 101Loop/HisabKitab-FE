@@ -120,6 +120,14 @@ ul li a {
 .phone{
   margin-top: 5px;
 }
+.logo{
+  width: 85%;
+  text-align: right;
+}
+img{
+  width: 78px;
+  height: 40px;
+}
 @media screen and (max-width: 1050px) {
   .navbar{
     width: 30%;

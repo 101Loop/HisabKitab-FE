@@ -2,8 +2,8 @@ import {OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
-
 import {APICallService} from './service/api-service/apicall.service';
+
 
 export abstract class SharedClass implements OnInit {
   KEY_TOKEN = 'TOKEN';
@@ -16,7 +16,7 @@ export abstract class SharedClass implements OnInit {
   i: number;
   Mid: any;
   Pmode: any;
-  protected constructor(private APIObj: APICallService, private router: Router) {}
+  protected constructor(private router: Router) {}
   public isLoggedIn() {
     this.token = localStorage.getItem(this.KEY_TOKEN);
     if (this.token) {
@@ -68,8 +68,8 @@ export abstract class SharedClass implements OnInit {
       }
     }
   }
-  getMode() {
-    this.APIObj.getPaymentMode().subscribe(
+  getMode(APIObj: APICallService) {
+    APIObj.getPaymentMode().subscribe(
       data => {
         this.mode_api_results = data['results'];
         for (this.i = 0; this.i < this.mode_api_results.length; this.i++) {

@@ -30,12 +30,12 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   respData: any[];
   constructor(public dialog: MatDialog, public data: DataService, private navbar: NavbarService, private apiObject: APICallService,
               private dateFormatter: DatePipe, private rtr: Router,  private toast: ToastrService) {
-    super(apiObject, rtr);
+    super(rtr);
     this.data.changeMessage(this.title);
     this.navbar.invisi();
   }
   openDialog(): void {
-     this.dialog.open(PostdebitComponent, {
+    this.dialog.open(PostdebitComponent, {
       height: '480px',
       width: '400px'
     });
@@ -44,36 +44,26 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
-    if (this.isLoggedIn()) {
-      this.apiObject.fetchTransactions('D').subscribe(
-        data => {
-          this.response = data;
-          this.respData = this.response.results;
-          if (this.respData.length > 0) {
-            this.isData = true;
-            this.loading = false;
-          } else {
-            this.loading = false;
-            this.isData = false;
-          }
-        }, error => {
-          this.error = error.status;
-          if (this.error >= 500) {
-            this.isServerError = true;
-            this.loading = false;
-            this.toast.error('Server Error!', 'Error');
-            } else {
-            this.isNetwork = true;
-            this.loading = false;
-            this.toast.error('Please check your internet connection!', 'Data Loading');
-          }
+    this.apiObject.fetchTransactions('D').subscribe(
+      data => {
+        this.response = data;
+        this.respData = this.response.results;
+        if (this.respData.length > 0) {
+          this.isData = true;
+          this.loading = false;
+        } else {
+          this.loading = false;
+          this.isData = false;
         }
-      );
-    } else {
-      this.rtr.navigate(['/', 'login']);
-    }
+      }, error => {
+        this.loading = false;
+        for (const mesg of error) {
+          this.toast.error(mesg);
+        }
+      }
+    );
   }
   dateFormat(date: any) {
-     this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
+    this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
   }
 }

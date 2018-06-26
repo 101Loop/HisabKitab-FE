@@ -29,7 +29,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   hisabkitabForm: FormGroup;
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<PostcreditComponent>, private apiObject: APICallService,
               private toast: ToastrService, private rtr: Router, private dateFormatter: DatePipe) {
-    super(apiObject, rtr);
+    super(rtr);
     this.dateFormat(this.date);
   }
   ngOnInit() {
@@ -39,7 +39,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
       'amount' : new FormControl('', [Validators.required, Validators.pattern('(\\d+(\\.\\d+)?)')]),
       'date' : new FormControl('', [Validators.required])
     });
-    this.getMode();
+    this.getMode(this.apiObject);
   }
   onSuccess(): void {
     this.loading = true;
@@ -53,13 +53,8 @@ export class PostcreditComponent extends SharedClass implements OnInit {
           });
       }, error => {
         this.loading = false;
-        this.response = error;
-        if (this.response.error.data) {
-          this.toast.error(this.response.error.data.non_field_errors, 'Posting Denied!');
-        } else if (this.response.status >= 500) {
-          this.toast.error('Internal Server Error!', 'Posting Denied!');
-        } else if (this.response.status === 0 ) {
-          this.toast.error('Please check your connection!', 'Posting Denied!');
+        for (const mesg of error) {
+          this.toast.error(mesg);
         }
       }
     );

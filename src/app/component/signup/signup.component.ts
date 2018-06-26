@@ -29,7 +29,7 @@ export class SignupComponent extends SharedClass implements OnInit {
   constructor(public location: Location, public navbar: NavbarService, private http: HttpClient, private rtr: Router,
               private apiObject: APICallService, private toast: ToastrService) {
     // public dialog: MatDialog
-    super(apiObject, rtr);
+    super(rtr);
     this.navbar.hide();
     this.navbar.visi();
   }
@@ -48,17 +48,8 @@ export class SignupComponent extends SharedClass implements OnInit {
         }
       }, error => {
         this.loading = false;
-        this.resp = error;
-        if (this.resp.error.data) {
-          if (this.resp.error.data.email) {
-            this.toast.error(this.resp.error.data.email, 'Registration Denied!');
-          } if (this.resp.error.data.username) {
-            this.toast.error(this.resp.error.data.username, 'Registration Denied!');
-          }
-        } else if (this.resp.status === 0) {
-          this.toast.error('Please check your internet connection!', 'Registration Denied!');
-        } else if (this.resp.status >= 500) {
-          this.toast.error('Internal Server Error!', 'Registration Denied');
+        for (const mesg of error) {
+          this.toast.error(mesg);
         }
       }
     );

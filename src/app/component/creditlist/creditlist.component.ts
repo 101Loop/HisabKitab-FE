@@ -30,12 +30,12 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   title = 'Credit History';
   constructor(public dialog: MatDialog, private data: DataService, private navbar: NavbarService, private dateFormatter: DatePipe,
               private rtr: Router, private apiObject: APICallService, private toast: ToastrService) {
-    super(apiObject, rtr);
+    super(rtr);
     this.data.changeMessage(this.title);
     this.navbar.invisi();
   }
   openDialog(): void {
-     this.dialog.open(PostcreditComponent, {
+    this.dialog.open(PostcreditComponent, {
       height: '480px',
       width: '400px'
     });
@@ -44,36 +44,24 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
-    if (this.isLoggedIn()) {
-      this.apiObject.fetchTransactions('C').subscribe(
-        data => {
-          this.response = data;
-          this.respData = this.response.results;
-          if (this.respData.length > 0) {
-            this.isData = true;
-            this.loading = false;
-          } else {
-            this.loading = false;
-            this.isData = false;
-          }
-        }, error => {
-          this.error = error.status;
-          if (this.error >= 500) {
-            this.isServerError = true;
-            this.loading = false;
-            this.toast.error('Server Error!', 'Error!');
-          } else if (this.error === 0) {
-            this.isNetwork = true;
-            this.loading = false;
-            this.toast.error('Please check your internet connection!', 'Data Loading');
-          }
+    this.apiObject.fetchTransactions('C').subscribe(
+      data => {
+        this.response = data;
+        this.respData = this.response.results;
+        if (this.respData.length > 0) {
+          this.isData = true;
+          this.loading = false;
+        } else {
+          this.loading = false;
+          this.isData = false;
         }
-      );
-    } else {
-      this.loading = false;
-      // TODO: Implement promise returned by navigate
-      this.rtr.navigate(['/', 'login']);
-    }
+      }, error => {
+        this.loading = false;
+        for (const mesg of error) {
+          this.toast.error(mesg);
+        }
+      }
+    );
   }
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');

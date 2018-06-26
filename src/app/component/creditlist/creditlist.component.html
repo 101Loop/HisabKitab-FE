@@ -1,10 +1,10 @@
 <H2>Credit History</H2>
 <div class="container">
   <div class="noData" *ngIf="!isData" align="center">
-    <p>You haven't added any post yet!<br>
-      Please add your post</p>
+    <p>You haven't added any Credit Transactions yet!<br>
+      Click on '+' to add</p>
   </div>
-  <div *ngIf="isNetwork" class="noData" align="center">
+  <div *ngIf="isNetwork" class="noData" lign="center">
     <p>Please check your internet connection!</p>
   </div>
   <div *ngIf="isServerError" class="noData" align="center">

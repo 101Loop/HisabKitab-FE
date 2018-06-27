@@ -16,6 +16,9 @@ export abstract class SharedClass implements OnInit {
   i: number;
   Mid: any;
   Pmode: any;
+  response: any;
+  category_c = 'C';
+  category: string;
   protected constructor(private router: Router) {}
   public isLoggedIn() {
     this.token = localStorage.getItem(this.KEY_TOKEN);
@@ -71,11 +74,18 @@ export abstract class SharedClass implements OnInit {
   getMode(APIObj: APICallService) {
     APIObj.getPaymentMode().subscribe(
       data => {
+        console.log('mode', data);
         this.mode_api_results = data['results'];
         for (this.i = 0; this.i < this.mode_api_results.length; this.i++) {
           this.Mid = this.mode_api_results[this.i].id;
           this.Pmode = this.mode_api_results[this.i].mode;
         }
+      }
+    );
+  }
+  getSearch(APIObj: APICallService) {
+    APIObj.fetchTransactions(this.category).subscribe(
+      data => {
       }
     );
   }

@@ -1,0 +1,76 @@
+<div align="center" >
+  <p class="title">Job Status</p>
+  <div align="center" class="example-container">
+    <mat-icon class="edit" (click)="onEdit()">edit</mat-icon>
+    <!--<img src="/assets/images/logs.png" class="logsBT">-->
+
+    <P>
+      <mat-form-field appearance="outline" class="inputfield">
+        <mat-label>Position</mat-label>
+        <input matInput [disabled]=isDisable value="{{position}}" [(ngModel)]="position">
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    <P>
+    <P>
+      <mat-form-field appearance="outline" class="inputfield">
+        <mat-label>Organization</mat-label>
+        <input matInput [disabled]=isDisable value="{{organization}}" [(ngModel)]="organization">
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    <P>
+      <mat-form-field appearance="outline" class="inputfield">
+        <mat-label>Salary</mat-label>
+        <input matInput [disabled]=isDisable  value="{{salary}}" [(ngModel)]="salary">
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    </P>
+    <P>
+    <P>
+      <mat-form-field appearance="outline" class="inputfield">
+        <mat-label>Time Period</mat-label>
+        <input matInput [disabled]=isDisable  value="{{time}}" [(ngModel)]="time">
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    </P>
+    <P>
+      <mat-form-field appearance="outline" class="inputfield">
+        <mat-label>Job Description</mat-label>
+        <textarea matInput placeholder="Placeholder" [disabled]=isDisable class="input" value="{{desc}}" [(ngModel)]="desc"></textarea>
+        <mat-icon matSuffix></mat-icon>
+      </mat-form-field>
+    </P>
+    <button mat-button class="submit" *ngIf="isEdit" [disabled]=isDisable (click)="onSuccess()">Submit</button>
+  </div>
+  <div align="center">
+    <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
+  </div>
+  <!--<mat-form-field class="dropdown" *ngIf="isDisable" >
+    <mat-select placeholder="Change Status" [(value)]="selected" >
+      <mat-option *ngFor="let position of positions" [value]="position.viewValue" >
+        {{ position.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>-->
+  <!--     <div><p class="p">Status: </p><p class="p" style="color: green;  font-weight: bold" [ngStyle]="{'color': statusColor}">{{status}}</p>
+         <button mat-button class="closeBT" (click)="onClosed()" *ngIf="isDisable" [ngStyle]="{'background-color': buttonColor}">{{ selected }}</button></div>-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

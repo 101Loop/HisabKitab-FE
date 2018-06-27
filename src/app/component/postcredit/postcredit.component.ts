@@ -24,6 +24,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   contact: string;
   amount: number;
   category = 'C';
+  comments: string;
   response: any;
   modeID: number;
   hisabkitabForm: FormGroup;
@@ -37,7 +38,8 @@ export class PostcreditComponent extends SharedClass implements OnInit {
     this.hisabkitabForm = new FormGroup({
       'contactname' : new FormControl('', [Validators.required]),
       'amount' : new FormControl('', [Validators.required, Validators.pattern('(\\d+(\\.\\d+)?)')]),
-      'date' : new FormControl('', [Validators.required])
+      'date' : new FormControl('', [Validators.required]),
+      'comments' : new FormControl('', )
     });
     this.getMode(this.apiObject);
   }

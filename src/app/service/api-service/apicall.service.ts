@@ -54,6 +54,10 @@ export class APICallService {
         this.message = ['A server side error occurred. Please report this to info@vitartha.com'];
         break;
       }
+      case 504: {
+        this.message = ['Gateway timeout, Please check your internet connection!'];
+        break;
+      }
       case 0: {
         this.message = ['Please check your internet connection!'];
         break;
@@ -110,14 +114,16 @@ export class APICallService {
     return this.http.post(this.baseUrl + 'api/users/loginotp/', this.data).pipe(catchError(this.handleError));
   }
   /*----------for fetching transactions-------------------------------------------------------------------------------*/
-  fetchTransactions(category: string, id: string = null) {
+  fetchTransactions(category: string, /*id: string = null,*/ name: string = null) {
     this.data = {
       category: category
     };
-    if (id != null) {
+ /*   if (id != null) {
       this.data.id = id;
+    }*/
+    if (name != null) {
+      this.data.search = name;
     }
-    console.log(this.headers);
     return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: this.data})
       .pipe(catchError(this.handleError));
   }

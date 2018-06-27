@@ -12,7 +12,7 @@
 }
 .button{
   position: fixed;
-  top: 85%;
+  top: 90%;
   margin-left: -20px;
 }
 .card{
@@ -118,6 +118,22 @@ ul li a {
  font-size: larger;
   margin-top: 15%;
 }
+mat-form-field.mat-form-field {
+  font-size: 12px;
+}
+.inputfield{
+  width: 50%;
+}
+.searchIcon{
+ margin-left: 10px;
+}
+.addIcon{
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  top: 82%;
+  margin-left: -42px;
+ }
 @media screen and (max-width: 500px) {
   .button{
     position: fixed;
@@ -148,9 +164,6 @@ ul li a {
   .p{
     margin-bottom: 5px;
   }
-  .div{
-    width: 100%;
-  }
   .social_menu{
     margin-right: -15px;
   }
@@ -160,6 +173,9 @@ ul li a {
   .noData{
     font-size: larger;
     margin-top: 50%;
+  }
+  .inputfield{
+    width: 70%;
   }
 }
 @media (max-width: 599px) {
@@ -180,5 +196,12 @@ ul li a {
     font-size: larger;
     margin-top: 50%;
   }
+  .buttondiv{
+    width: 18%;
+  }
 }
-
+@media (max-width: 800px) {
+  .buttondiv{
+    width: 15%;
+  }
+}

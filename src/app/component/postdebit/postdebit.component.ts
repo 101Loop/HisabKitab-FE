@@ -23,6 +23,7 @@ export class PostdebitComponent extends SharedClass implements OnInit {
   contact: string;
   amount: number;
   modeID: number;
+  comments: string;
   response: any;
   list: any;
   category = 'D';
@@ -39,7 +40,8 @@ export class PostdebitComponent extends SharedClass implements OnInit {
       'contactname': new FormControl('', [Validators.required]),
       'amount': new FormControl('', [Validators.required, Validators.pattern('(\\d+(\\.\\d+)?)')]),
       'date': new FormControl('', [Validators.required]),
-      'desc': new FormControl('', )
+      'desc': new FormControl('', ),
+      'comments': new FormControl('', )
     });
     this.getMode(this.apiObject);
   }

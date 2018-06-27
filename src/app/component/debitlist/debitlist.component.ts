@@ -26,6 +26,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   position: any;
   error: any;
   title = 'Debit History';
+  serach_query; any;
   response: any;
   respData: any[];
   constructor(public dialog: MatDialog, public data: DataService, private navbar: NavbarService, private apiObject: APICallService,
@@ -33,10 +34,12 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     super(rtr);
     this.data.changeMessage(this.title);
     this.navbar.invisi();
+    this.navbar.showSearch();
+    this.getData(event);
   }
   openDialog(): void {
     this.dialog.open(PostdebitComponent, {
-      height: '480px',
+      height: '560px',
       width: '400px'
     });
   }
@@ -44,7 +47,10 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
-    this.apiObject.fetchTransactions('D').subscribe(
+  }
+  getData(event: any) {
+    console.log(this.serach_query);
+    this.apiObject.fetchTransactions('D', this.serach_query).subscribe(
       data => {
         this.response = data;
         this.respData = this.response.results;

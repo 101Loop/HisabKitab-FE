@@ -41,6 +41,7 @@ export class LoginComponent extends SharedClass implements OnInit {
     this.loading = true;
     this.apiObject.login(this.username, this.password).subscribe(
       data => {
+        window.location.reload();
         this.loading = false;
         this.response = data;
         if (this.response.status_code === 200) {
@@ -48,7 +49,6 @@ export class LoginComponent extends SharedClass implements OnInit {
           localStorage.setItem(this.KEY_TOKEN, this.response.data.token);
           this.toast.success('Login successfully', 'Login');
           this.rtr.navigate(['/', 'dashboard']);
-          window.location.reload();
         }
       }, error => {
         this.loading = false;

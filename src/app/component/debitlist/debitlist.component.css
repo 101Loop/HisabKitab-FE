@@ -118,7 +118,19 @@ ul li a {
   font-size: larger;
   margin-top: 15%;
 }
-
+mat-form-field.mat-form-field {
+  font-size: 12px;
+}
+.inputfield{
+  width: 50%;
+}
+.addIcon{
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  top: 82%;
+  margin-left: -42px;
+}
 @media screen and (max-width: 500px) {
   .container{
     height: 100%;
@@ -164,6 +176,12 @@ ul li a {
     font-size: larger;
     margin-top: 50%;
   }
+  .inputfield{
+    width: 70%;
+  }
+  .buttondiv{
+    width: 18%;
+  }
 }
 @media (max-width: 599px) {
   .mat-tab-label {
@@ -175,6 +193,14 @@ ul li a {
   .noData{
     font-size: larger;
     margin-top: 50%;
+  }
+  .buttondiv{
+    width: 18%;
+  }
+}
+@media (max-width: 800px) {
+  .buttondiv{
+    width: 15%;
   }
 }
 

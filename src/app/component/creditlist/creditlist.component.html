@@ -1,29 +1,34 @@
-<H2>Credit History</H2>
+<div align="center">
+  <mat-form-field appearance="outline" class="inputfield">
+    <input  matInput placeholder="Search" name="email" type="search" [(ngModel)]="serach_query" (keyup)="getData($event)">
+  </mat-form-field>
+</div>
 <div class="container">
   <div class="noData" *ngIf="!isData" align="center">
     <p>You haven't added any Credit Transactions yet!<br>
       Click on '+' to add</p>
   </div>
-  <div *ngIf="isNetwork" class="noData" lign="center">
+  <div *ngIf="isNetwork" class="noData" align="center">
     <p>Please check your internet connection!</p>
   </div>
   <div *ngIf="isServerError" class="noData" align="center">
     <p>Server Error!</p>
   </div>
   <div class="content" *ngFor="let i of respData">
-    <mat-card class="card" >
+    <mat-card class="card" (Click)="showStatus()">
       <div class="div">
         <h4>Name:<span style="display:inline-block; width: 4px;"></span> {{i.contact.name}}</h4>
         <p class="p"> Amount:<span style="display:inline-block; width: 4px;"></span> <i class="fa fa-inr"></i></p>
         <p class="p salary"> {{i.amount}}</p><br>
         <p class="p">Mode: </p><span style="display:inline-block; width: 4px;"></span>
         <p class="p salary">{{i.mode.mode}}</p><br>
-        <p class="p date" >Date:<span style="display:inline-block; width: 4px;"></span>{{dateFormat(i.create_date)}}{{create_date}} </p>
+        <p class="p date" >Date:<span style="display:inline-block; width: 4px;"></span>{{dateFormat(i.transaction_date)}}{{create_date}} </p>
       </div>
     </mat-card>
   </div>
   <div class="buttondiv">
-    <button mat-fab class="button" (click)="openDialog()"><i style="font-size:24px" class="fa fa-plus"></i></button>
+    <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()"><!--
+    <button mat-fab class="button" (click)="openDialog()"><i style="font-size:24px" class="fa fa-plus"></i></button>-->
   </div>
   <div align="center">
     <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">

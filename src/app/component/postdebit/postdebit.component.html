@@ -19,6 +19,13 @@
         </mat-form-field>
       </p>
       <p>
+        <mat-form-field appearance="outline" class="inputfield">
+          <mat-label>Comments</mat-label>
+          <input matInput placeholder="Comments" [(ngModel)]="comments" name="posi" formControlName="comments">
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
         <mat-form-field style="margin-top: 10px" appearance="outline" class="inputfield">
           <mat-label>Date</mat-label>
           <input matInput placeholder="Date" type="date" [(ngModel)]="create_date" value="{{create_date}}" name="sal" formControlName="date">

@@ -25,6 +25,13 @@
           <mat-icon matSuffix></mat-icon>
         </mat-form-field>
       </p>
+      <p>
+        <mat-form-field appearance="outline" class="inputfield">
+          <mat-label>Comments</mat-label>
+          <input matInput placeholder="Comments" [(ngModel)]="comments" name="posi" formControlName="comments">
+          <mat-icon matSuffix></mat-icon>
+        </mat-form-field>
+      </p>
       <div class="radiobox">
         <p>Payment Mode:</p>
         <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">

@@ -29,6 +29,7 @@ import {DebitlistComponent} from './component/debitlist/debitlist.component';
 import {PostdebitComponent} from './component/postdebit/postdebit.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {ShowStatusComponent} from './component/show-status/show-status.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { environment } from '../environments/environment';
     PostcreditComponent,
     DebitlistComponent,
     PostdebitComponent,
-    SuccessMessageComponent
+    SuccessMessageComponent,
+    ShowStatusComponent
   ],
   imports: [
     BrowserModule,

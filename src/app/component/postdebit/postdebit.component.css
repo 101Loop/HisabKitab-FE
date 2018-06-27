@@ -9,7 +9,7 @@ h3{
   margin-right: -24px;
   margin-top: -30px;
   padding-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: white;
   font-size: medium;
   font-weight: bold;
@@ -92,6 +92,9 @@ mat-form-field.mat-form-field {
   .checkpos{
     margin: 5px 5px 5px 5px;
     display: inherit;
+  }
+  .title{
+    margin-bottom: -10px;
   }
 }
 

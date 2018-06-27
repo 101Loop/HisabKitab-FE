@@ -1,4 +1,8 @@
-<H2>Debit History</H2>
+<div align="center">
+  <mat-form-field appearance="outline" class="inputfield">
+    <input  matInput placeholder="Search" name="email" type="search" [(ngModel)]="serach_query" (keyup)="getData($event)">
+  </mat-form-field>
+</div>
 <div class="container">
   <div *ngIf="!isData" class="noData" align="center">
     <p>You haven't added any Debit Transactions yet!<br>
@@ -19,7 +23,7 @@
         <p class="p salary"> {{i.amount}}</p><br>
         <p class="p">Mode: </p><span style="display:inline-block; width: 4px;"></span>
         <p class="p salary">{{i.mode.mode}}</p><br>
-        <p class="p date" >Date:<span style="display:inline-block; width: 4px;"></span>{{dateFormat(i.create_date)}}{{create_date}} </p>
+        <p class="p date" >Date:<span style="display:inline-block; width: 4px;"></span>{{dateFormat(i.transaction_date)}}{{create_date}} </p>
       </div>
     </mat-card>
   </div>
@@ -27,6 +31,7 @@
     <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
   </div>
   <div class="buttondiv">
-    <button mat-fab class="button" (click)="openDialog()"><i style="font-size:24px" class="fa fa-plus"></i></button>
+    <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()">
+    <!--<button mat-fab class="button" (click)="openDialog()"><i style="font-size:24px" class="fa fa-plus"></i></button>-->
   </div>
 </div>

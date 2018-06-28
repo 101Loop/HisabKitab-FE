@@ -14,6 +14,7 @@ import {DebitlistComponent} from './component/debitlist/debitlist.component';
 import {PostdebitComponent} from './component/postdebit/postdebit.component';
 import {SuccessMessageComponent} from './component/success-message/success-message.component';
 import {ShowStatusComponent} from './component/show-status/show-status.component';
+import {FilterComponent} from './component/filter/filter.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
    { path: 'logout', component: LogoutDialogComponent },
   { path: 'success', component: SuccessMessageComponent },
   { path: 'showstatus', component: ShowStatusComponent },
+  { path: 'filter', component: FilterComponent },
 ];
 
 @NgModule({

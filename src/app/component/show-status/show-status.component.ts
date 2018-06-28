@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
 import {ToastrService} from 'ngx-toastr';
 import {SharedClass} from '../../shared-class';
+import {PostcreditComponent} from '../postcredit/postcredit.component';
 
 @Component({
   selector: 'app-show-status',
@@ -24,16 +25,9 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   organization: string;
   resp: any;
   isEdit = false;
-  selectedGender: string;
-  genderList = [
-    {value: 'N', viewValue: 'Any'},
-    {value: 'M', viewValue: 'Male'},
-    {value: 'F', viewValue: 'Female'},
-    {value: 'O', viewValue: 'Other'},
-  ];
   isDisable = true ;
   isOpen = true;
-  constructor(private rtr: Router, private navbar: NavbarService) {
+  constructor(private rtr: Router, private navbar: NavbarService,  public dialogRef: MatDialogRef<ShowStatusComponent>) {
     super(rtr);
     this.navbar.show();
   }

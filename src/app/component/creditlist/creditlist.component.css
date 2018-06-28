@@ -1,3 +1,14 @@
+.inline{
+  display: inline;
+}
+.fa{
+  display: inline-block;
+  font-size: larger;
+}
+.filter{
+  float: right;
+  margin-right: 20px;
+}
 .container{
   width: 100%;
   position: relative;
@@ -12,7 +23,7 @@
 }
 .button{
   position: fixed;
-  top: 90%;
+  top: 85%;
   margin-left: -20px;
 }
 .card{
@@ -118,11 +129,21 @@ ul li a {
  font-size: larger;
   margin-top: 15%;
 }
+.radiobox{
+  margin-top: -10px;
+  line-height: normal;
+}
+.checkpos{
+  margin: 0 5px;
+}
 mat-form-field.mat-form-field {
   font-size: 12px;
 }
 .inputfield{
-  width: 50%;
+  width: 60%;
+}
+.slider{
+  width: 60%;
 }
 .searchIcon{
  margin-left: 10px;
@@ -174,9 +195,6 @@ mat-form-field.mat-form-field {
     font-size: larger;
     margin-top: 50%;
   }
-  .inputfield{
-    width: 70%;
-  }
 }
 @media (max-width: 599px) {
   .card{
@@ -198,6 +216,22 @@ mat-form-field.mat-form-field {
   }
   .buttondiv{
     width: 18%;
+  }
+  .radiobox{
+    margin-top: 2px;
+    float: left;
+    text-align: left;
+    display: inline-grid;
+    margin-left: 25px;
+  }
+  .checkpos{
+    margin: 0px 10px 10px 10px;
+  }
+  .inputfield{
+    width: 70%;
+  }
+  .slider{
+    width: 70%;
   }
 }
 @media (max-width: 800px) {

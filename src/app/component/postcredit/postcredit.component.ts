@@ -46,7 +46,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
   onSuccess(): void {
     this.loading = true;
     // post data to server
-    this.apiObject.addTransactions(this.contact, this.modeID, this.amount, this.category, this.create_date).subscribe(
+    this.apiObject.addTransactions(this.contact, this.modeID, this.amount, this.category, this.comments, this.create_date).subscribe(
       data => {
         this.loading = false;
         this.response = data;

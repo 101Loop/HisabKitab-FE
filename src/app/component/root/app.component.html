@@ -8,6 +8,14 @@
     <mat-icon class="backArrow" (click)="this.location.back()" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
     <h1 class="example-app-name" *ngIf="this.navbar.visible" >{{title}}</h1>
     <h1 class="example-app-name" *ngIf="!this.navbar.visible">Hisab Kitab</h1>
+  <!--  <mat-form-field appearance="outline" class="inputfield">
+      <input  matInput placeholder="Search" name="email" type="search" [(ngModel)]="serach_query" (keyup)="getData($event)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <div class="inline filter logo" align="right" >
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <i class="fa fa-filter" aria-hidden="true"></i>
+    </div>-->
 <!--    <div align="right" class="logo"> <img src="assets/images/hissab-kitab.png"></div>-->
   </mat-toolbar>
 

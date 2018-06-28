@@ -19,12 +19,14 @@ import {ShowStatusComponent} from '../show-status/show-status.component';
   providers: [DatePipe]
 })
 export class CreditlistComponent extends SharedClass implements OnInit {
-  isData = true;
+  isData = false;
   isNetwork = false;
   isServerError = false;
   loading: boolean;
   create_date: any;
+  filter_amount: any;
   position: string;
+  modeID: any;
   error: any;
   response: any;
   respData: any[];
@@ -37,14 +39,14 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
     this.navbar.showSearch();
     this.getData(event);
+    this.getMode(this.apiObject);
   }
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
   }
   getData(event: any) {
-    console.log(this.serach_query);
-    this.apiObject.fetchTransactions('C', this.serach_query).subscribe(
+    this.apiObject.fetchTransactions('C', this.serach_query, this.filter_amount, this.create_date, this.modeID).subscribe(
       data => {
         this.response = data;
         this.respData = this.response.results;
@@ -64,7 +66,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     );
   }
   dateFormat(date: any) {
-    this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
+    this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
   }
   openDialog(): void {
     this.dialog.open(PostcreditComponent, {
@@ -73,9 +75,18 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     });
   }
   showStatus()  {
-    console.log('hi click');
-   this.dialog.open(ShowStatusComponent, {
+     this.dialog.open(ShowStatusComponent, {
       height: '560px'
     });
+  }
+  formatLabel(value: number) {
+    this.filter_amount = value;
+    if (!value) {
+      return 0;
+    }
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+    return value;
   }
 }

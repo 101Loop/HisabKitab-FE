@@ -25,6 +25,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   create_date: any;
   position: any;
   error: any;
+  modeID: any;
   title = 'Debit History';
   serach_query; any;
   response: any;
@@ -36,6 +37,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
     this.navbar.showSearch();
     this.getData(event);
+    this.getMode(this.apiObject);
   }
   openDialog(): void {
     this.dialog.open(PostdebitComponent, {
@@ -70,6 +72,16 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     );
   }
   dateFormat(date: any) {
-    this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
+    this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
+  }
+  formatLabel(value: number) {
+    this.create_date = value;
+    if (!value) {
+      return 0;
+    }
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+    return value;
   }
 }

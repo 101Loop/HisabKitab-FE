@@ -10,13 +10,13 @@ import {DataService} from '../../service/data-service/data.service';
 import {APICallService} from '../../service/api-service/apicall.service';
 import {SharedClass} from '../../shared-class';
 import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
+import {FilterComponent} from '../filter/filter.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
   title: string;
@@ -40,6 +40,16 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     this.dialog.open(LogoutDialogComponent, {
       height: '150px',
       width: '250px'
+    });
+  }
+  isFilter() {
+    console.log('open');
+    const dialogRef = this.dialog.open(FilterComponent, {
+      height: '150px',
+      width: '250px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 }

@@ -1,7 +1,39 @@
 <div align="center">
   <mat-form-field appearance="outline" class="inputfield">
     <input  matInput placeholder="Search" name="email" type="search" [(ngModel)]="serach_query" (keyup)="getData($event)">
+    <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
+  <mat-accordion >
+    <mat-expansion-panel  class="inputfield" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Filter
+        </mat-panel-title>
+        <mat-panel-description>
+          <!-- <i class="fa fa-filter" aria-hidden="true"></i>-->
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-slider
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="1000"
+        min="1"
+        max="100000" class="slider">
+      </mat-slider>
+      <p style="margin-top: -15px; margin-bottom: -10px">
+        <mat-form-field  style="margin-top: 10px" appearance="outline" class="inputfield">
+          <mat-label>Date</mat-label>
+          <input matInput placeholder="Date" [(ngModel)]="create_date" type="date" >
+        </mat-form-field>
+      </p>
+      <div class="radiobox">
+        <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
+          <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <button (click)="getData()" style="margin-top: 10px">Filter</button>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
 <div class="container">
   <div *ngIf="!isData" class="noData" align="center">
@@ -31,7 +63,7 @@
     <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
   </div>
   <div class="buttondiv">
-    <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()">
-    <!--<button mat-fab class="button" (click)="openDialog()"><i style="font-size:24px" class="fa fa-plus"></i></button>-->
+    <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()" *ngIf="!isData">
+    <button mat-fab class="button" (click)="openDialog()"><i style="font-size:24px" class="fa fa-plus" *ngIf="isData"></i></button>
   </div>
 </div>

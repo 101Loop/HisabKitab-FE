@@ -122,7 +122,17 @@ mat-form-field.mat-form-field {
   font-size: 12px;
 }
 .inputfield{
-  width: 50%;
+  width: 60%;
+}
+.slider{
+  width: 60%;
+}
+.checkpos{
+     margin: 0 5px;
+   }
+.radiobox{
+  margin-top: -10px;
+  line-height: normal;
 }
 .addIcon{
   position: fixed;
@@ -196,6 +206,19 @@ mat-form-field.mat-form-field {
   }
   .buttondiv{
     width: 18%;
+  }
+  .slider{
+    width: 70%;
+  }
+  .checkpos{
+    margin: 0px 10px 10px 10px;
+  }
+  .radiobox{
+    margin-top: 2px;
+    float: left;
+    text-align: left;
+    display: inline-grid;
+    margin-left: 25px;
   }
 }
 @media (max-width: 800px) {

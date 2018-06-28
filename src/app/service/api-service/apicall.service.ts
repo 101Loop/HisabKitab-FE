@@ -114,26 +114,38 @@ export class APICallService {
     return this.http.post(this.baseUrl + 'api/users/loginotp/', this.data).pipe(catchError(this.handleError));
   }
   /*----------for fetching transactions-------------------------------------------------------------------------------*/
-  fetchTransactions(category: string, /*id: string = null,*/ name: string = null) {
+  fetchTransactions(category: string, /*id: string = null,*/ search: string = null, filter_amount: string = null,
+                    filter_date: string = null, filter_mode: string = null) {
     this.data = {
       category: category
     };
  /*   if (id != null) {
       this.data.id = id;
     }*/
-    if (name != null) {
-      this.data.search = name;
+    if (search != null) {
+      this.data.search = search;
+    }
+    if (filter_amount != null) {
+      this.data.amount = filter_amount;
+      console.log(filter_amount);
+    }
+    if (filter_date != null) {
+      this.data.transaction_date = filter_date;
+    }
+    if (filter_mode != null) {
+      this.data.mode = filter_mode;
     }
     return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: this.data})
       .pipe(catchError(this.handleError));
   }
   /*-------for adding transactions ---------------------------------------------------------------------------------*/
-  addTransactions(contact: string, mode: number, amount: number, category: string, date: any) {
+  addTransactions(contact: string, mode: number, amount: number, category: string, comments: any,  date: any) {
     this.data = {
       contact: contact,
       mode: mode,
       amount: amount,
       category: category,
+      comments: comments,
       transaction_date: date
     };
     return this.http.post(this.baseUrl + 'api/transactions/add/', this.data, {headers: this.headers})

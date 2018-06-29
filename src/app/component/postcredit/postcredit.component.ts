@@ -61,7 +61,7 @@ export class PostcreditComponent extends SharedClass implements OnInit {
       }
     );
   }
-  /**To tranform date to this "dd-MM-yyyy" standard format**/
+  /**To tranform date to this "yyyy-MM-dd" standard format**/
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
   }

@@ -19,18 +19,16 @@ import {ShowStatusComponent} from '../show-status/show-status.component';
   providers: [DatePipe]
 })
 export class CreditlistComponent extends SharedClass implements OnInit {
-  isData = false;
+  isData = true;
   isNetwork = false;
   isServerError = false;
   loading: boolean;
   create_date: any;
-  filter_amount: any;
   position: string;
-  modeID: any;
   error: any;
   response: any;
   respData: any[];
-  serach_query: any;
+  search_query: any;
   title = 'Credit History';
   constructor(public dialog: MatDialog, private data: DataService, private navbar: NavbarService, private dateFormatter: DatePipe,
               private rtr: Router, private apiObject: APICallService, private toast: ToastrService) {
@@ -39,14 +37,14 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
     this.navbar.showSearch();
     this.getData(event);
-    this.getMode(this.apiObject);
   }
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
   }
   getData(event: any) {
-    this.apiObject.fetchTransactions('C', this.serach_query, this.filter_amount, this.create_date, this.modeID).subscribe(
+    console.log(this.search_query);
+    this.apiObject.fetchTransactions('C', this.search_query).subscribe(
       data => {
         this.response = data;
         this.respData = this.response.results;
@@ -66,7 +64,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     );
   }
   dateFormat(date: any) {
-    this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
+    this.create_date =  this.dateFormatter.transform(date, 'dd-MM-yyyy');
   }
   openDialog(): void {
     this.dialog.open(PostcreditComponent, {
@@ -75,18 +73,9 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     });
   }
   showStatus()  {
-     this.dialog.open(ShowStatusComponent, {
+    console.log('hi click');
+   this.dialog.open(ShowStatusComponent, {
       height: '560px'
     });
-  }
-  formatLabel(value: number) {
-    this.filter_amount = value;
-    if (!value) {
-      return 0;
-    }
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
-    return value;
   }
 }

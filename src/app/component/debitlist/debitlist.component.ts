@@ -10,6 +10,7 @@ import {DataService} from '../../service/data-service/data.service';
 import {APICallService} from '../../service/api-service/apicall.service';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
 import {PostdebitComponent} from '../postdebit/postdebit.component';
+import {ShowStatusComponent} from '../show-status/show-status.component';
 
 @Component({
   selector: 'app-normal-job-list',
@@ -22,8 +23,18 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   isNetwork = false;
   isServerError = false;
   loading: boolean;
+  name: string;
+  amount: string;
+  post_id: string
+  comment: string;
   create_date: any;
   position: any;
+  filter_amount: any;
+  filter_date: any;
+  price_sort: any;
+  name_sort: any;
+  total_amount: any;
+  total_count: any;
   error: any;
   modeID: any;
   title = 'Debit History';
@@ -36,7 +47,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     this.data.changeMessage(this.title);
     this.navbar.invisi();
     this.navbar.showSearch();
-    this.getData(event);
+    this.getData();
     this.getMode(this.apiObject);
   }
   openDialog(): void {
@@ -50,11 +61,13 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     this.loading = true;
     super.ngOnInit();
   }
-  getData(event: any) {
-    console.log(this.serach_query);
-    this.apiObject.fetchTransactions('D', this.serach_query).subscribe(
+  getData() {
+    this.apiObject.fetchTransactions('D', this.serach_query, this.filter_amount, this.filter_date, this.modeID, this.price_sort,
+      this.name_sort).subscribe(
       data => {
         this.response = data;
+        this.total_amount = this.response.total_amount;
+        this.total_count = this.response.count;
         this.respData = this.response.results;
         if (this.respData.length > 0) {
           this.isData = true;
@@ -74,6 +87,19 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
   }
+  showStatus(i: any)  {
+    this.name = i.contact.name;
+    this.amount = i.amount;
+    this.comment = i.comments;
+    this.post_id = i.id;
+    this.data.passName(this.name);
+    this.data.passAmount(this.amount);
+    this.data.passComment(this.comment);
+    this.data.passId(this.post_id);
+    this.dialog.open(ShowStatusComponent, {
+      height: '400px'
+    });
+  }
   formatLabel(value: number) {
     this.create_date = value;
     if (!value) {
@@ -83,5 +109,8 @@ export class DebitlistComponent extends SharedClass implements OnInit {
       return Math.round(value / 1000) + 'k';
     }
     return value;
+  }
+  pitch(event) {
+    this.filter_amount = event.value;
   }
 }

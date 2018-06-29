@@ -1,5 +1,11 @@
 .inline{
   display: inline;
+  margin-left: 10px;
+}
+.sorting{
+  color: #003253;
+  cursor: pointer;
+  font-weight: bold;
 }
 .fa{
   display: inline-block;
@@ -15,7 +21,7 @@
 }
 .content{
   float: left;
-  width: 95%;
+  width: 100%;
 }
 .buttondiv{
   float: right;
@@ -31,6 +37,14 @@
   margin: 10px auto;
   margin-bottom: 15px;
   border-radius: 10px;
+}
+.card1{
+  width: 60%;
+  margin: 10px auto;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 4px;
+  margin-top: -5px;
 }
 .label{
   float: right;
@@ -130,8 +144,9 @@ ul li a {
   margin-top: 15%;
 }
 .radiobox{
-  margin-top: -10px;
   line-height: normal;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .checkpos{
   margin: 0 5px;
@@ -141,6 +156,7 @@ mat-form-field.mat-form-field {
 }
 .inputfield{
   width: 60%;
+  margin-bottom: -5px;
 }
 .slider{
   width: 60%;
@@ -155,6 +171,10 @@ mat-form-field.mat-form-field {
   top: 82%;
   margin-left: -42px;
  }
+.amount{
+  margin-top: -10px;
+}
+
 @media screen and (max-width: 500px) {
   .button{
     position: fixed;
@@ -200,6 +220,10 @@ mat-form-field.mat-form-field {
   .card{
     width: 85%;
     margin-left: 20px;
+    margin-right: 20px;
+  }
+  .card1{
+    width: 80%;
   }
   .mat-tab-label {
     min-width: 72px;
@@ -228,10 +252,13 @@ mat-form-field.mat-form-field {
     margin: 0px 10px 10px 10px;
   }
   .inputfield{
-    width: 70%;
+    width: 80%;
   }
   .slider{
     width: 70%;
+  }
+  .content{
+    width: 95%;
   }
 }
 @media (max-width: 800px) {

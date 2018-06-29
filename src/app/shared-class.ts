@@ -74,7 +74,6 @@ export abstract class SharedClass implements OnInit {
   getMode(APIObj: APICallService) {
     APIObj.getPaymentMode().subscribe(
       data => {
-        console.log('mode', data);
         this.mode_api_results = data['results'];
         for (this.i = 0; this.i < this.mode_api_results.length; this.i++) {
           this.Mid = this.mode_api_results[this.i].id;

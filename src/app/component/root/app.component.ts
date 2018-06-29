@@ -11,6 +11,7 @@ import {APICallService} from '../../service/api-service/apicall.service';
 import {SharedClass} from '../../shared-class';
 import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
 import {FilterComponent} from '../filter/filter.component';
+import {FeedbackComponent} from '../feedback/feedback.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,8 @@ import {FilterComponent} from '../filter/filter.component';
 export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
   title: string;
+  isSearch = false;
+  serach_query: string;
   private readonly _mobileQueryListener: () => void;
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
               private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService) {
@@ -42,14 +45,19 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       width: '250px'
     });
   }
-  isFilter() {
-    console.log('open');
+  openFilter() {
     const dialogRef = this.dialog.open(FilterComponent, {
-      height: '150px',
-      width: '250px'
+      height: '400px',
+      width: '400px'
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+    });
+  }
+  openFeedback() {
+    const dialogRef = this.dialog.open(FeedbackComponent, {
+      height: '440px',
+      width: '400px'
     });
   }
 }

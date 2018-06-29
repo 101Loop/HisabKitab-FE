@@ -128,6 +128,16 @@ img{
   width: 78px;
   height: 40px;
 }
+.fa{
+  margin-left: 15px;
+  margin-right: 10px;
+}
+mat-form-field.mat-form-field {
+  font-size: 14px;
+}
+.inputfield{
+  margin-top: 15px;
+}
 @media screen and (max-width: 1050px) {
   .navbar{
     width: 30%;

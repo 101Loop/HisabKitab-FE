@@ -31,6 +31,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {ShowStatusComponent} from './component/show-status/show-status.component';
 import { FilterComponent } from './component/filter/filter.component';
+import { FeedbackComponent } from './component/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FilterComponent } from './component/filter/filter.component';
     PostdebitComponent,
     SuccessMessageComponent,
     ShowStatusComponent,
-    FilterComponent
+    FilterComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,27 @@
+.inline{
+  display: inline;
+  margin-left: 10px;
+}
+.sorting{
+  color: #003253;
+  cursor: pointer;
+  font-weight: bold;
+}
+.fa{
+  display: inline-block;
+  font-size: larger;
+}
+.filter{
+  float: right;
+  margin-right: 20px;
+}
 .container{
   width: 100%;
   position: relative;
 }
 .content{
   float: left;
-  width: 95%;
+  width: 100%;
 }
 .buttondiv{
   float: right;
@@ -20,6 +37,14 @@
   margin: 10px auto;
   margin-bottom: 15px;
   border-radius: 10px;
+}
+.card1{
+  width: 60%;
+  margin: 10px auto;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 4px;
+  margin-top: -5px;
 }
 .label{
   float: right;
@@ -61,8 +86,8 @@ p{
 .more{
   margin-top: -7px;
   color: #1295c9;
-  cursor: pointer;}
-
+  cursor: pointer;
+}
 .date{
   font-size: x-small;
   font-style: italic;
@@ -118,21 +143,26 @@ ul li a {
   font-size: larger;
   margin-top: 15%;
 }
+.radiobox{
+  line-height: normal;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.checkpos{
+  margin: 0 5px;
+}
 mat-form-field.mat-form-field {
   font-size: 12px;
 }
 .inputfield{
   width: 60%;
+  margin-bottom: -5px;
 }
 .slider{
   width: 60%;
 }
-.checkpos{
-     margin: 0 5px;
-   }
-.radiobox{
-  margin-top: -10px;
-  line-height: normal;
+.searchIcon{
+  margin-left: 10px;
 }
 .addIcon{
   position: fixed;
@@ -141,12 +171,11 @@ mat-form-field.mat-form-field {
   top: 82%;
   margin-left: -42px;
 }
+.amount{
+  margin-top: -10px;
+}
+
 @media screen and (max-width: 500px) {
-  .container{
-    height: 100%;
-    width: 100%;
-    position: relative;
-  }
   .button{
     position: fixed;
     top: 85%;
@@ -176,42 +205,43 @@ mat-form-field.mat-form-field {
   .p{
     margin-bottom: 5px;
   }
-  .div{
-    width: 100%;
-  }
   .social_menu{
     margin-right: -15px;
+  }
+  .loader{
+    margin-top: 250px;
   }
   .noData{
     font-size: larger;
     margin-top: 50%;
   }
-  .inputfield{
-    width: 70%;
-  }
-  .buttondiv{
-    width: 18%;
-  }
 }
 @media (max-width: 599px) {
+  .card{
+    width: 85%;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .card1{
+    width: 85%;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
   .mat-tab-label {
     min-width: 72px;
   }
   .social_menu{
     margin-right: -15px;
   }
+  .loader{
+    margin-top: 200px;
+  }
   .noData{
     font-size: larger;
     margin-top: 50%;
   }
   .buttondiv{
     width: 18%;
-  }
-  .slider{
-    width: 70%;
-  }
-  .checkpos{
-    margin: 0px 10px 10px 10px;
   }
   .radiobox{
     margin-top: 2px;
@@ -220,10 +250,21 @@ mat-form-field.mat-form-field {
     display: inline-grid;
     margin-left: 25px;
   }
+  .checkpos{
+    margin: 0px 10px 10px 10px;
+  }
+  .inputfield{
+    width: 80%;
+  }
+  .slider{
+    width: 70%;
+  }
+  .content{
+    width: 95%;
+  }
 }
 @media (max-width: 800px) {
   .buttondiv{
     width: 15%;
   }
 }
-

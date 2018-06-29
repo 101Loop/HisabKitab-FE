@@ -59,7 +59,6 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     this.apiObject.fetchTransactions('C', this.serach_query, this.filter_amount, this.filter_date, this.modeID, this.price_sort,
       this.name_sort).subscribe(
       data => {
-        console.log(data);
         this.response = data;
         this.total_amount = this.response.total_amount;
         this.total_count = this.response.count;

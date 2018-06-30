@@ -1,4 +1,4 @@
-<div align="center" >
+<!--<div align="center" >
   <div class="inline">
 
     <mat-accordion >
@@ -11,13 +11,13 @@
             Filter According Any Choice
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <!--   <mat-slider
+        &lt;!&ndash;   <mat-slider
              thumbLabel
              [displayWith]="formatLabel"
              tickInterval="1000"
              min="1"
              max="100000" class="slider" (input)="pitch($event)">
-           </mat-slider>-->
+           </mat-slider>&ndash;&gt;
         <mat-form-field appearance="outline" class="inputfield">
           <mat-label>Search name</mat-label>
           <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="serach_query">
@@ -46,14 +46,15 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-  <!--<div class="inline filter" align="right" (click)="isFilter=true">
+  &lt;!&ndash;<div class="inline filter" align="right" (click)="isFilter=true">
     <p class="fa">Filter</p><i class="fa fa-filter" aria-hidden="true"></i>
-  </div>-->
-</div>
+  </div>&ndash;&gt;
+</div>-->
 <div class="container">
   <div align="center">
-    <mat-card class="card1"><h4>Total Transaction: {{total_count}}</h4>
-      <h4>Total Amount:  <i class="fa fa-inr" style="font-size: 14px"></i>{{total_amount}}</h4></mat-card>
+    <mat-card class="card1">
+      <h4 class="total">Total Transaction: {{total_count}}</h4> |
+      <h4 class="total">Total Amount:  <i class="fa fa-inr" style="font-size: 14px">  </i>{{total_amount}}</h4></mat-card>
   </div>
   <div *ngIf="!isData" class="noData" align="center">
     <p>You haven't added any Debit Transactions yet!<br>
@@ -68,6 +69,7 @@
 
   <div class="content" *ngFor="let i of respData">
     <mat-card class="card" >
+   <!--   <button class="edit" (click)="showStatus(i)" >Edit</button>-->
       <div class="div" (click)="showStatus(i)">
         <h4>Name:<span style="display:inline-block; width: 4px;"></span> {{i.contact.name}}</h4>
         <p class="p"> Amount:<span style="display:inline-block; width: 4px;"></span> <i class="fa fa-inr"></i></p>
@@ -78,6 +80,7 @@
         <p class="p salary">{{i.comments}}</p><br>
         <p class="p date" >Date:<span style="display:inline-block; width: 4px;"></span>{{dateFormat(i.transaction_date)}}{{create_date}} </p>
       </div>
+      <button class="delete" (click)="deletePost(i)" >Delete</button>
     </mat-card>
   </div>
   <div align="center">

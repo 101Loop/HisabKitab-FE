@@ -1,8 +1,11 @@
-<p class="title">
+<p class="title" *ngIf="!isDelete">
   Logout!
+</p>
+<p class="title"  *ngIf="isDelete">
+  Delete!
 </p>
 <p class="message">
   Are you sure?
 </p>
-<button class="noBT" (click)="this.dialogRef.close()">No</button>
+<button class="noBT" (click)="onNO()">No</button>
 <button class="yesBT" (click)="onYes()">Yes</button>

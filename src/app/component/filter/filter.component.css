@@ -35,6 +35,12 @@
   cursor: pointer;
   font-weight: bold;
 }
+.sorting:hover{
+  color: #1295c9;
+}
+select .sorting {
+  color: #DA9403;
+}
 p{
   font-family: Arial, Helvetica, sans-serif;
   font-size: smaller;

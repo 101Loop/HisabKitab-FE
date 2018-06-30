@@ -114,35 +114,8 @@ export class APICallService {
     return this.http.post(this.baseUrl + 'api/users/loginotp/', this.data).pipe(catchError(this.handleError));
   }
   /*----------for fetching transactions-------------------------------------------------------------------------------*/
-  fetchTransactions(category: string, /*id: string = null,*/ search: string = null, filter_amount: string = null,
-                    filter_date: string = null, filter_mode: string = null, price_sort: string = null, name_sort: string = null) {
-    this.data = {
-      category: category
-    };
- /*   if (id != null) {
-      this.data.id = id;
-    }*/
-    if (search != null) {
-      this.data.search = search;
-    }
-    if (filter_amount != null) {
-      this.data.amount = filter_amount;
-    }
-    if (filter_date != null) {
-      console.log(filter_date);
-      this.data.transaction_date = filter_date;
-    }
-    if (filter_mode != null) {
-      this.data.mode = filter_mode;
-    }
-    if (price_sort != null) {
-      this.data.ordering = price_sort + 'amount';
-    }
-    if (name_sort != null) {
-      this.data.ordering = name_sort + 'name';
-    }
-    console.log(this.data);
-    return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: this.data})
+  fetchTransactions(data: any) {
+    return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: data})
       .pipe(catchError(this.handleError));
   }
   /*-------for adding transactions ---------------------------------------------------------------------------------*/
@@ -161,25 +134,17 @@ export class APICallService {
   /*-------for update transactions ---------------------------------------------------------------------------------*/
   updatePost(id: string, name: string, amount: string, comment: string, modeId: any) {
     this.data = {
-      name: name,
-      amount: amount,
-     // comments: comment,
-      mode: modeId,
-    };
-    console.log(this.data);
-    return this.http.put(this.baseUrl + 'api/transactions/' + id + '/update/', this.data, {headers: this.headers})
-      .pipe(catchError(this.handleError));
-  }
-  /*-------for update transactions ---------------------------------------------------------------------------------*/
-  deletePost(id: string, name: string, amount: string, comment: string, modeId: any) {
-    this.data = {
-      name: name,
+      contact: name,
       amount: amount,
       comments: comment,
       mode: modeId,
     };
-    console.log(this.data);
-    return this.http.put(this.baseUrl + 'api/transactions/' + id + '/delete/', this.data, {headers: this.headers})
+    return this.http.put(this.baseUrl + 'api/transactions/' + id + '/update/', this.data, {headers: this.headers})
+      .pipe(catchError(this.handleError));
+  }
+  /*-------for update transactions ---------------------------------------------------------------------------------*/
+  deletePost(id: string) {
+    return this.http.delete(this.baseUrl + 'api/transactions/' + id + '/delete/', {headers: this.headers})
       .pipe(catchError(this.handleError));
   }
   /*------get payment mode-----------------------------------------------------------------------------------------*/

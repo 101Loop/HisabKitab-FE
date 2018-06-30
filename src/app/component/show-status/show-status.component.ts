@@ -15,7 +15,7 @@ import {DataService} from '../../service/data-service/data.service';
 })
 export class ShowStatusComponent extends SharedClass implements OnInit {
   loading: boolean;
-  id = localStorage.getItem('ID');
+  id: string;
   date: any = new Date();
   position: string;
   name: string;

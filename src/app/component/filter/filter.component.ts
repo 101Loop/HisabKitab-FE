@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {SharedClass} from '../../shared-class';
 import {Router} from '@angular/router';
 import {APICallService} from '../../service/api-service/apicall.service';
 import {DatePipe} from '@angular/common';
+import {DataService} from '../../service/data-service/data.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-filter',
@@ -13,31 +15,28 @@ import {DatePipe} from '@angular/common';
 export class FilterComponent  extends SharedClass implements OnInit {
   modeID: number;
   create_date: any;
-  serach_query: string;
+  search_query: string;
   filter_amount: string;
   price_sort: any;
+  params: any;
   name_sort: any;
-  constructor( private rtr: Router,  private apiObject: APICallService, private dateFormatter: DatePipe) {
+  constructor( private rtr: Router,  private apiObject: APICallService, private dateFormatter: DatePipe,
+               private data: DataService, private dialogRef: MatDialogRef<FilterComponent>) {
     super(rtr);
   }
   ngOnInit() {
     super.ngOnInit();
     this.getMode(this.apiObject);
   }
-  formatLabel(value: number) {
-    if (!value) {
-      return 0;
-    }
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
-    return value;
-  }
-  /**To tranform date to this "dd-MM-yyyy" standard format**/
-  dateFormat(date: any) {
-  //  this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
-  }
   getFilter() {
-    console.log(this.create_date, this.filter_amount, this.modeID, this.name_sort, this.price_sort, this.serach_query);
+    this.params = {category: 'C'};
+    if (this.create_date) {this.params.transaction_date = this.create_date; }
+    if (this.filter_amount) {this.params.amount = this.filter_amount; }
+    if (this.search_query) {this.params.search = this.search_query; }
+    if (this.modeID) {this.params.mode = this.modeID; }
+    if (this.price_sort) {this.params.ordering = this.price_sort + 'amount'; }
+    if (this.name_sort) {this.params.ordering = this.name_sort + 'name'; }
+    this.data.passfilter(this.params);
+    this.dialogRef.close();
   }
 }

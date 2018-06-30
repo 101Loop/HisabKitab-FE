@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
+import {isBoolean} from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,12 @@ export class DataService {
   /*----------for pass post id-----------*/
   private idSource = new BehaviorSubject<string>('');
   idData = this.idSource.asObservable();
+  /*---------pass filter data-----------*/
+  private filterSource = new BehaviorSubject<any>('');
+  filterData = this.filterSource.asObservable();
+  /*---------pass boolean for delete-----------*/
+  private deleteSource = new BehaviorSubject<boolean>(isBoolean());
+  ddeleteData  = this.deleteSource.asObservable();
   constructor() { }
   /*for change title*/
   changeMessage(message: any) {
@@ -37,11 +44,19 @@ export class DataService {
     this.amountSource.next(message);
   }
   /*----------for pass comment-----------*/
-  passComment(message :any) {
+  passComment(message: any) {
     this.commentSource.next(message);
   }
   /*----------for pass id-----------*/
   passId(message: any) {
     this.idSource.next(message);
+  }
+  /*----------for pass filter-----------*/
+  passfilter(message: any) {
+    this.filterSource.next(message);
+  }
+  /*---------pass boolean for delete-----------*/
+  passDelete(message: any) {
+    this.deleteSource.next(message);
   }
 }

@@ -1,60 +1,9 @@
-<div align="center" >
-<div class="inline">
-
-  <mat-accordion >
-    <mat-expansion-panel  class="inputfield" >
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Filter
-        </mat-panel-title>
-        <mat-panel-description>
-          Filter According Any Choice
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-   <!--   <mat-slider
-        thumbLabel
-        [displayWith]="formatLabel"
-        tickInterval="1000"
-        min="1"
-        max="100000" class="slider" (input)="pitch($event)">
-      </mat-slider>-->
-      <mat-form-field appearance="outline" class="inputfield">
-        <mat-label>Search name</mat-label>
-        <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="serach_query">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field><br>
-      <mat-form-field appearance="outline" class="inputfield amount">
-        <mat-label>Amount</mat-label>
-        <input  matInput placeholder="Amount" name="email" type="search" [(ngModel)]="filter_amount">
-      </mat-form-field>
-      <p style="margin-top: -15px; margin-bottom: -10px">
-        <mat-form-field  style="margin-top: 10px" appearance="outline" class="inputfield">
-          <mat-label>Date</mat-label>
-          <input matInput placeholder="Date" [(ngModel)]="filter_date" type="date" >
-        </mat-form-field>
-      </p>
-      <div class="radiobox">
-        <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
-          <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
-        </mat-radio-group>
-      </div>
-      <div align="center">
-      <div align="left" style="width: 250px">
-        <p class="inline">Sort By Price:</p><p class="inline sorting" (click)="price_sort= '+'">Low-High</p><p class="inline sorting" (click)="price_sort = '-'">High-Low</p><br>
-        <p class="inline">Sort By Name:</p><p class="inline sorting" (click)="name_sort = '+'">A-Z</p><p class="inline sorting" (click)="name_sort = '-'">Z-A</p></div></div>
-      <button (click)="getData()" style="margin-top: 10px">Filter</button>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
-<!--<div class="inline filter" align="right" (click)="isFilter=true">
-  <p class="fa">Filter</p><i class="fa fa-filter" aria-hidden="true"></i>
-</div>-->
-</div>
 <div class="container">
   <div align="center">
-    <mat-card class="card1"><h4>Total Transaction: {{total_count}}</h4>
-      <h4>Total Amount:  <i class="fa fa-inr" style="font-size: 14px"></i>{{total_amount}}</h4></mat-card>
-    </div>
+    <mat-card class="card1">
+      <h4 class="total" >Total Transaction: {{total_count}}</h4> |
+      <h4 class="total">Total Amount:  <i class="fa fa-inr" style="font-size: 14px"></i>{{total_amount}}</h4></mat-card>
+  </div>
   <div class="noData" *ngIf="!isData" align="center">
     <p>You haven't added any Credit Transactions yet!<br>
       Click on '+' to add</p>
@@ -67,7 +16,8 @@
   </div>
   <div class="content" *ngFor="let i of respData">
     <mat-card class="card" >
-      <div class="div" (click)="showStatus(i)">
+      <!-- <button class="edit" (click)="showStatus(i)" >Edit</button>-->
+      <div class="div" (click)="showStatus(i)" >
         <h4>Name:<span style="display:inline-block; width: 4px;"></span> {{i.contact.name}}</h4>
         <p class="p"> Amount:<span style="display:inline-block; width: 4px;"></span> <i class="fa fa-inr"></i></p>
         <p class="p salary"> {{i.amount}}</p><br>
@@ -77,6 +27,7 @@
         <p class="p salary">{{i.comments}}</p><br>
         <p class="p date" >Date:<span style="display:inline-block; width: 4px;"></span>{{dateFormat(i.transaction_date)}}{{create_date}} </p>
       </div>
+      <button class="delete" (click)="deletePost(i)" >Delete</button>
     </mat-card>
   </div>
   <div class="buttondiv">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
@@ -11,7 +11,7 @@ import {APICallService} from '../../service/api-service/apicall.service';
 import {SharedClass} from '../../shared-class';
 import {PostcreditComponent} from '../postcredit/postcredit.component';
 import {ShowStatusComponent} from '../show-status/show-status.component';
-import {st} from '@angular/core/src/render3';
+import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
 
 @Component({
   selector: 'app-hisabkitab-job-list',
@@ -24,9 +24,10 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   isNetwork = false;
   isServerError = false;
   loading: boolean;
+  isDelete = false;
   name: string;
   amount: string;
-  post_id: string
+  post_id: string;
   comment: string;
   create_date: any;
   filter_amount: any;
@@ -36,6 +37,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   total_count: any;
   modeID: any;
   error: any;
+  params = {category: 'C'};
   price_sort: any;
   name_sort: any;
   response: any;
@@ -48,38 +50,42 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     this.data.changeMessage(this.title);
     this.navbar.invisi();
     this.navbar.showSearch();
-    this.getData();
     this.getMode(this.apiObject);
   }
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
-  }
-  getData() {
-    this.apiObject.fetchTransactions('C', this.serach_query, this.filter_amount, this.filter_date, this.modeID, this.price_sort,
-      this.name_sort).subscribe(
-      data => {
-        this.response = data;
-        this.total_amount = this.response.total_amount;
-        this.total_count = this.response.count;
-        this.respData = this.response.results;
-        if (this.respData.length > 0) {
-          this.isData = true;
-          this.loading = false;
-        } else {
-          this.loading = false;
-          this.isData = false;
-        }
-      }, error => {
-        this.loading = false;
-        for (const mesg of error) {
-          this.toast.error(mesg);
-        }
+    this.data.filterData.subscribe((messsage) => {
+      if (typeof messsage === 'object') {
+        this.params = messsage;
+        this.params.category = 'C';
       }
-    );
+      console.log(this.params);
+      this.apiObject.fetchTransactions(this.params).subscribe(
+        data => {
+          this.response = data;
+          this.total_amount = this.response.total_amount;
+          this.total_count = this.response.count;
+          this.respData = this.response.results;
+          if (this.respData.length > 0) {
+            this.isData = true;
+            this.loading = false;
+          } else {
+            this.loading = false;
+            this.isData = false;
+          }
+        }, error => {
+          this.loading = false;
+          for (const mesg of error) {
+            this.toast.error(mesg);
+          }
+        }
+      );
+
+    });
   }
   dateFormat(date: any) {
-   this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
+    this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
   }
   openDialog(): void {
     this.dialog.open(PostcreditComponent, {
@@ -96,8 +102,18 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     this.data.passAmount(this.amount);
     this.data.passComment(this.comment);
     this.data.passId(this.post_id);
-     this.dialog.open(ShowStatusComponent, {
+    this.dialog.open(ShowStatusComponent, {
       height: '400px'
+    });
+  }
+  deletePost(i: any) {
+    this.post_id = i.id;
+    this.isDelete = true;
+    this.data.passId(this.post_id);
+    this.data.passDelete(this.isDelete);
+    this.dialog.open(LogoutDialogComponent, {
+      height: '150px',
+      width: '250px'
     });
   }
   formatLabel(value: number) {
@@ -111,6 +127,6 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   }
   pitch(event) {
     console.log(event);
-   this.filter_amount = event.value;
+    this.filter_amount = event.value;
   }
 }

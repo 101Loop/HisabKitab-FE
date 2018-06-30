@@ -11,6 +11,7 @@ import {APICallService} from '../../service/api-service/apicall.service';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
 import {PostdebitComponent} from '../postdebit/postdebit.component';
 import {ShowStatusComponent} from '../show-status/show-status.component';
+import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
 
 @Component({
   selector: 'app-normal-job-list',
@@ -23,9 +24,10 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   isNetwork = false;
   isServerError = false;
   loading: boolean;
+  isDelete = false;
   name: string;
   amount: string;
-  post_id: string
+  post_id: string;
   comment: string;
   create_date: any;
   position: any;
@@ -35,6 +37,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   name_sort: any;
   total_amount: any;
   total_count: any;
+  params = {category: 'D'};
   error: any;
   modeID: any;
   title = 'Debit History';
@@ -47,7 +50,6 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     this.data.changeMessage(this.title);
     this.navbar.invisi();
     this.navbar.showSearch();
-    this.getData();
     this.getMode(this.apiObject);
   }
   openDialog(): void {
@@ -60,29 +62,34 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
-  }
-  getData() {
-    this.apiObject.fetchTransactions('D', this.serach_query, this.filter_amount, this.filter_date, this.modeID, this.price_sort,
-      this.name_sort).subscribe(
-      data => {
-        this.response = data;
-        this.total_amount = this.response.total_amount;
-        this.total_count = this.response.count;
-        this.respData = this.response.results;
-        if (this.respData.length > 0) {
-          this.isData = true;
-          this.loading = false;
-        } else {
-          this.loading = false;
-          this.isData = false;
-        }
-      }, error => {
-        this.loading = false;
-        for (const mesg of error) {
-          this.toast.error(mesg);
-        }
+    this.data.filterData.subscribe((messsage) => {
+      if (typeof messsage === 'object') {
+        this.params = messsage;
+        this.params.category = 'D';
       }
-    );
+      console.log(this.params);
+      this.apiObject.fetchTransactions(this.params).subscribe(
+        data => {
+          this.response = data;
+          this.total_amount = this.response.total_amount;
+          this.total_count = this.response.count;
+          this.respData = this.response.results;
+          if (this.respData.length > 0) {
+            this.isData = true;
+            this.loading = false;
+          } else {
+            this.loading = false;
+            this.isData = false;
+          }
+        }, error => {
+          this.loading = false;
+          for (const mesg of error) {
+            this.toast.error(mesg);
+          }
+        }
+      );
+
+    });
   }
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
@@ -98,6 +105,16 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     this.data.passId(this.post_id);
     this.dialog.open(ShowStatusComponent, {
       height: '400px'
+    });
+  }
+  deletePost(i: any) {
+    this.post_id = i.id;
+    this.isDelete = true;
+    this.data.passId(this.post_id);
+    this.data.passDelete(this.isDelete);
+    this.dialog.open(LogoutDialogComponent, {
+      height: '150px',
+      width: '250px'
     });
   }
   formatLabel(value: number) {

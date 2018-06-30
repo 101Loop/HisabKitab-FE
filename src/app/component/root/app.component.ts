@@ -22,6 +22,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
   title: string;
   isSearch = false;
+  isDelete = false;
   serach_query: string;
   private readonly _mobileQueryListener: () => void;
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
@@ -40,6 +41,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
   onLogout() {
+    this.data.passDelete(this.isDelete);
     this.dialog.open(LogoutDialogComponent, {
       height: '150px',
       width: '250px'
@@ -49,9 +51,6 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     const dialogRef = this.dialog.open(FilterComponent, {
       height: '400px',
       width: '400px'
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
   openFeedback() {

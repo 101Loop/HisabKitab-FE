@@ -44,17 +44,26 @@
   margin-bottom: 15px;
   border-radius: 10px;
   padding: 4px;
-  margin-top: -5px;
 }
-.label{
+.edit{
   float: right;
-  background-color: #DA9403;
+  background-color: #1295c9;
   color: white;
   border-radius: 3px;
   border: none;
   height: 25px;
   margin-top: -10px;
-  margin-right: -25px;
+  margin-right: -24px;
+}
+.delete{
+  float: right;
+  background-color: indianred;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  height: 25px;
+  margin-top: -20px;
+  margin-right: -24px;
 }
 h2{
   text-align: center;
@@ -101,6 +110,11 @@ h4{
   margin-bottom: 10px;
   color: #1295c9;
   cursor: pointer;
+}
+.total{
+  display: inline-block;
+  margin-right: 1px;
+  margin-left: 1px;
 }
 .desc{
   margin-top: -1px;
@@ -185,7 +199,10 @@ mat-form-field.mat-form-field {
     width: 85%;
     margin-left: 20px;
   }
-  .label{
+  .edit{
+    margin-right: -15px;
+  }
+  .delete{
     margin-right: -15px;
   }
   .desc{

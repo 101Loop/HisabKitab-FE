@@ -82,6 +82,14 @@ button{
   height: 150px;
   margin-left: -70px;
 }
+.radiobox{
+  line-height: normal;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.checkpos{
+  margin: 0 5px;
+}
 @media screen and (max-width: 700px) {
   .inputfield{
     width: 100%;
@@ -91,6 +99,17 @@ button{
   }
   .button{
     width: 40%;
+  }
+  .radiobox{
+    margin-top: -15px;
+    margin-bottom: -10px;
+    float: left;
+    text-align: left;
+    display: inline-grid;
+    margin-left: 25px;
+  }
+  .checkpos{
+    margin: 0px 10px 10px 10px;
   }
 }
 

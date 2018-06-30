@@ -50,6 +50,26 @@ position: absolute;
   top: 40%;
   margin-left: -30px;
 }
+
+.facebookbtn{
+  background-color: #3f51b5;
+  width: 30%;
+  margin-top: 2%;
+  margin-left: 35%;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.googlebtn {
+  background-color: #D13F2F;
+  width: 30%;
+  margin-top: 2%;
+  margin-left: 35%;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
 @media only screen
 and (min-device-height : 600px)
 and (max-device-height : 800px)
@@ -122,6 +142,24 @@ and (max-device-height : 732px)
 and (orientation : portrait) {
   .container{
     margin-top: 80px;
+  }
+
+  .facebookbtn{
+    background-color: #3f51b5;
+    width: 50%;
+    border-radius: 5px;
+    margin-left: 100px;
+    color: white;
+    padding: 10px;
+  }
+  .googlebtn {
+    background-color: #D13F2F;
+    width: 50%;
+    border-radius: 5px;
+    margin-left: 100px;
+    color: white;
+    padding: 10px;
+
   }
 }
 @media (max-width: 1050px) {

@@ -30,8 +30,10 @@ import {PostdebitComponent} from './component/postdebit/postdebit.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {ShowStatusComponent} from './component/show-status/show-status.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FilterComponent } from './component/filter/filter.component';
-import { FeedbackComponent } from './component/feedback/feedback.component';
+import {FeedbackComponent} from './component/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,7 @@ import { FeedbackComponent } from './component/feedback/feedback.component';
     MatExpansionModule,
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment), AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

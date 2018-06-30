@@ -36,7 +36,7 @@ export class FeedbackComponent extends SharedClass implements OnInit {
       data => {
         console.log(data);
         this.dialogRef.close();
-        this.toast.success('Feedback Successfully submitted!', 'Feedback');
+        this.toast.success(' Thank you for your feedback :)', 'Feedback');
       }
     );
   }

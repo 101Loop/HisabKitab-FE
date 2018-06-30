@@ -4,8 +4,14 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://192.168.1.107/'
+  baseUrl: 'http://192.168.1.107/',
 // baseUrl: 'https://y5sa0ot8y4.execute-api.ap-south-1.amazonaws.com/production/'
+  apiKey: 'AIzaSyCwepaQw8OSU8fLUyHrPnLjQCIOS-1OBWI',
+  authDomain: 'jyessonline.firebaseapp.com',
+  databaseURL: 'https://jyessonline.firebaseio.com',
+  projectId: 'jyessonline',
+  storageBucket: 'jyessonline.appspot.com',
+  messagingSenderId: '963057387762'
 };
 
 /*

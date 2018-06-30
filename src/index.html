@@ -10,6 +10,47 @@
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <meta name="theme-color" content="#1976d2">
+
+  <!-- Firebase App is always required and must be first -->
+  <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCwepaQw8OSU8fLUyHrPnLjQCIOS-1OBWI",
+      authDomain: "jyessonline.firebaseapp.com",
+      databaseURL: "https://jyessonline.firebaseio.com",
+      projectId: "jyessonline",
+      storageBucket: "jyessonline.appspot.com",
+      messagingSenderId: "963057387762"
+    };
+
+    firebase.initializeApp(config);
+
+    // Retrieve Firebase Messaging object.
+    const messaging = firebase.messaging();
+
+    messaging.requestPermission().then(function() {
+      console.log('Notification permission granted.');
+      return messaging.getToken();
+    })
+      .then(function (token) {
+        console.log(token);
+      })
+      .catch(function(err) {
+        console.log('Unable to get permission to notify.', err);
+      });
+
+    messaging.onMessage(function (payload) {
+      console.log('onMessage', payload);
+
+    });
+
+  </script>
+
 </head>
 <body>
   <app-root></app-root>

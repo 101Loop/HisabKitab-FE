@@ -9,13 +9,13 @@
     <h1 class="example-app-name" *ngIf="this.navbar.visible || isSearch " >{{title}}</h1>
     <h1 class="example-app-name" *ngIf="!this.navbar.visible">Hisab Kitab</h1>
 
-    <div class="inline filter logo" align="right" >
+    <div class="inline filter logo" align="right" *ngIf="this.navbar.isSearch" >
     <!--  <mat-form-field appearance="outline" class="inputfield" *ngIf="isSearch">
         <mat-label>Search name</mat-label>
         <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="serach_query">
       </mat-form-field>
       <i class="fa fa-search" aria-hidden="true" (click)=" this.isSearch = !this.isSearch"></i>-->
-      <i class="fa fa-filter" aria-hidden="true" (click)="openFilter()"></i>
+      <i class="fa fa-filter" aria-hidden="true" (click)="openFilter()" ></i>
     </div>
 <!--    <div align="right" class="logo"> <img src="assets/images/hissab-kitab.png"></div>-->
   </mat-toolbar>

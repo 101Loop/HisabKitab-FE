@@ -29,6 +29,7 @@ export class LoginComponent extends SharedClass implements OnInit {
     super(rtr);
     this.navbar.hide();
     this.navbar.invisi();
+    this.navbar.hideSearch();
   }
   ngOnInit() {
     super.ngOnInit();

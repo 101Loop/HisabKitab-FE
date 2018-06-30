@@ -25,6 +25,7 @@ export class DashboardComponent extends SharedClass implements OnInit {
     super(rtr);
     this.navbar.show();
     this.navbar.invisi();
+    this.navbar.showSearch()
     this.data.changeMessage(this.title);
   }
   ngOnInit() {

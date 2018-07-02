@@ -22,6 +22,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
   title: string;
   isSearch = false;
+  isShare = false;
   isDelete = false;
   serach_query: string;
   private readonly _mobileQueryListener: () => void;

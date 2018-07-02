@@ -9,17 +9,17 @@
     <h1 class="example-app-name" *ngIf="this.navbar.visible || isSearch " >{{title}}</h1>
     <h1 class="example-app-name" *ngIf="!this.navbar.visible">Hisab Kitab</h1>
 
-    <div class="inline filter logo" align="right" *ngIf="this.navbar.isSearch" >
-    <!--  <mat-form-field appearance="outline" class="inputfield" *ngIf="isSearch">
-        <mat-label>Search name</mat-label>
-        <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="serach_query">
-      </mat-form-field>
-      <i class="fa fa-search" aria-hidden="true" (click)=" this.isSearch = !this.isSearch"></i>-->
-      <i class="fa fa-filter" aria-hidden="true" (click)="openFilter()" ></i>
+    <div class="inline filter logo" align="right">
+      <!--  <mat-form-field appearance="outline" class="inputfield" *ngIf="isSearch">
+          <mat-label>Search name</mat-label>
+          <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="serach_query">
+        </mat-form-field>
+        <i class="fa fa-search" aria-hidden="true" (click)=" this.isSearch = !this.isSearch"></i>-->
+      <i class="fa fa-filter" aria-hidden="true" (click)="openFilter()" *ngIf="this.navbar.isSearch"></i>
+      <i class="fa fa-share-alt" aria-hidden="true" (click)="isShare = !isShare" ></i>
     </div>
-<!--    <div align="right" class="logo"> <img src="assets/images/hissab-kitab.png"></div>-->
+    <!--    <div align="right" class="logo"> <img src="assets/images/hissab-kitab.png"></div>-->
   </mat-toolbar>
-
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
 
     <!--nav bar-->
@@ -54,13 +54,20 @@
               <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://hisabkitab.in&amp;
                &amp;source=Hisab Kitab" title="linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true" style="color: white"></i></a></li>
             </ul>
-            </div>
+          </div>
         </div>
       </mat-nav-list>
     </mat-sidenav>
-
     <!--rest part-->
     <mat-sidenav-content>
+      <div  class="socialdiv" *ngIf="isShare">
+        <a href="http://www.facebook.com/sharer.php?u=https://hisabkitab.in/" title="Facebook" target="_blank"> <i class="fa fa-facebook ss fb" aria-hidden="true"></i></a><br>
+        <a href="http://plus.google.com/share?url=https://hisabkitab.in" title="Google+" target="_blank"><i class="fa fa-google ss gg" aria-hidden="true"></i></a><br>
+        <a href="http://twitter.com/share?text=Hisab-Kitab&url=https://hisabkitab.in" title="Twitter" target="_blank"><i class="fa fa-twitter ss tw" aria-hidden="true"></i></a><br>
+        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://hisabkitab.in&amp;&amp;source=Hisab Kitab" title="linkedin" target="_blank"><i class="fa fa-linkedin ss ln" aria-hidden="true"></i></a><br>
+        <i class="fa fa-instagram ss in" aria-hidden="true"></i><br>
+        <i class="fa fa-pinterest ss pn" aria-hidden="true"></i>
+      </div>
       <router-outlet ></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

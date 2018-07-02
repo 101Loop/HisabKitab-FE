@@ -17,7 +17,7 @@ import {NavbarService} from '../../service/navigation-bar/navbar.service';
 })
 export class DashboardComponent extends SharedClass implements OnInit {
   loading: boolean;
-  title = 'Hisab Kitab (हिसाब किताब)';
+  title = 'हिसाब किताब';
   // isNet = false;
   constructor(private newsObject: APICallService, public navbar: NavbarService, private data: DataService, private rtr: Router) {
     // private toast: ToastrService
@@ -25,7 +25,7 @@ export class DashboardComponent extends SharedClass implements OnInit {
     super(rtr);
     this.navbar.show();
     this.navbar.invisi();
-    this.navbar.showSearch()
+    this.navbar.hideSearch();
     this.data.changeMessage(this.title);
   }
   ngOnInit() {

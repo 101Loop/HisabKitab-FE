@@ -32,6 +32,15 @@
   top: 85%;
   margin-left: -20px;
 }
+.feedbackdiv{
+  float: left;
+}
+.feedback{
+  position: fixed;
+  top: 93%;
+  background-color: #1295c9;
+  color: white;
+}
 .card{
   width: 60%;
   margin: 10px auto;

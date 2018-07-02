@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './component/root/app.component';
+import { AppComponent } from '../component/root/app.component';
 import {
   MatButtonModule,
   MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatFormFieldModule,
@@ -13,27 +13,27 @@ import {
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {LoginComponent} from './component/login/login.component';
+import {LoginComponent} from '../component/login/login.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
-import {SignupComponent} from './component/signup/signup.component';
-import {ForgetpasswordComponent} from './component/forgetpassword/forgetpassword.component';
+import {SignupComponent} from '../component/signup/signup.component';
+import {ForgetpasswordComponent} from '../component/forgetpassword/forgetpassword.component';
 import {ToastrModule} from 'ngx-toastr';
-import {OtpverificationComponent} from './component/otpverification/otpverification.component';
-import {DashboardComponent} from './component/dashboard/dashboard.component';
-import {CreditlistComponent} from './component/creditlist/creditlist.component';
-import {LogoutDialogComponent} from './component/logout-dialog/logout-dialog.component';
-import {PostcreditComponent} from './component/postcredit/postcredit.component';
-import {SuccessMessageComponent} from './component/success-message/success-message.component';
-import {DebitlistComponent} from './component/debitlist/debitlist.component';
-import {PostdebitComponent} from './component/postdebit/postdebit.component';
+import {OtpverificationComponent} from '../component/otpverification/otpverification.component';
+import {DashboardComponent} from '../component/dashboard/dashboard.component';
+import {CreditlistComponent} from '../component/creditlist/creditlist.component';
+import {LogoutDialogComponent} from '../component/logout-dialog/logout-dialog.component';
+import {PostcreditComponent} from '../component/postcredit/postcredit.component';
+import {SuccessMessageComponent} from '../component/success-message/success-message.component';
+import {DebitlistComponent} from '../component/debitlist/debitlist.component';
+import {PostdebitComponent} from '../component/postdebit/postdebit.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import {ShowStatusComponent} from './component/show-status/show-status.component';
+import { environment } from '../../environments/environment';
+import {ShowStatusComponent} from '../component/show-status/show-status.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { FilterComponent } from './component/filter/filter.component';
-import {FeedbackComponent} from './component/feedback/feedback.component';
+import { FilterComponent } from '../component/filter/filter.component';
+import {FeedbackComponent} from '../component/feedback/feedback.component';
 
 @NgModule({
   declarations: [

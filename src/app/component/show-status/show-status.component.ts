@@ -47,7 +47,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
         this.loading = true;
         this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.modeID).subscribe(
           data => {
-            console.log(data);
+            window.location.reload();
             this.dialogRef.close();
           /*  this.loading = false;
             this.resp = data;
@@ -58,7 +58,6 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
             }*/
           }, error => {
             this.dialogRef.close();
-            console.log(error);
             this.toast.error('Something Wrong Here!', 'Posting Denied!');
           /*  this.loading = false;
             this.resp = error;

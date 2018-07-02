@@ -12,6 +12,7 @@ import {SharedClass} from '../../shared-class';
 import {PostcreditComponent} from '../postcredit/postcredit.component';
 import {ShowStatusComponent} from '../show-status/show-status.component';
 import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
+import {FeedbackComponent} from '../feedback/feedback.component';
 
 @Component({
   selector: 'app-hisabkitab-job-list',
@@ -30,19 +31,14 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   post_id: string;
   comment: string;
   create_date: any;
-  filter_amount: any;
-  filter_date: any;
   position: string;
   total_amount: any;
   total_count: any;
   modeID: any;
   error: any;
   params = {category: 'C'};
-  price_sort: any;
-  name_sort: any;
   response: any;
   respData: any[];
-  serach_query: any;
   title = 'Credit History';
   constructor(public dialog: MatDialog, private data: DataService, private navbar: NavbarService, private dateFormatter: DatePipe,
               private rtr: Router, private apiObject: APICallService, private toast: ToastrService) {
@@ -60,7 +56,6 @@ export class CreditlistComponent extends SharedClass implements OnInit {
         this.params = messsage;
         this.params.category = 'C';
       }
-      console.log(this.params);
       this.apiObject.fetchTransactions(this.params).subscribe(
         data => {
           this.response = data;
@@ -116,17 +111,10 @@ export class CreditlistComponent extends SharedClass implements OnInit {
       width: '250px'
     });
   }
-  formatLabel(value: number) {
-    if (!value) {
-      return 0;
-    }
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
-    return value;
-  }
-  pitch(event) {
-    console.log(event);
-    this.filter_amount = event.value;
+  openFeedback() {
+    const dialogRef = this.dialog.open(FeedbackComponent, {
+      height: '440px',
+      width: '400px'
+    });
   }
 }

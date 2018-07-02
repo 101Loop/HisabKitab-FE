@@ -34,6 +34,9 @@
     <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()" *ngIf="!isData">
     <button mat-fab class="button" (click)="openDialog()" *ngIf="isData"><i style="font-size:24px" class="fa fa-plus"></i></button>
   </div>
+  <div class="feedbackdiv">
+    <button mat-button class="feedback" (click)="openFeedback()">Feedback</button>
+  </div>
   <div align="center">
     <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
   </div>

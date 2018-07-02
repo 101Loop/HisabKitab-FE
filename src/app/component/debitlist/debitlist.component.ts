@@ -12,6 +12,7 @@ import {NavbarService} from '../../service/navigation-bar/navbar.service';
 import {PostdebitComponent} from '../postdebit/postdebit.component';
 import {ShowStatusComponent} from '../show-status/show-status.component';
 import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
+import {FeedbackComponent} from '../feedback/feedback.component';
 
 @Component({
   selector: 'app-normal-job-list',
@@ -117,17 +118,10 @@ export class DebitlistComponent extends SharedClass implements OnInit {
       width: '250px'
     });
   }
-  formatLabel(value: number) {
-    this.create_date = value;
-    if (!value) {
-      return 0;
-    }
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
-    return value;
-  }
-  pitch(event) {
-    this.filter_amount = event.value;
+  openFeedback() {
+    const dialogRef = this.dialog.open(FeedbackComponent, {
+      height: '440px',
+      width: '400px'
+    });
   }
 }

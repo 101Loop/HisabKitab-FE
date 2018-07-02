@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 
-import {LoginComponent} from './component/login/login.component';
-import {SignupComponent} from './component/signup/signup.component';
-import {ForgetpasswordComponent} from './component/forgetpassword/forgetpassword.component';
-import {OtpverificationComponent} from './component/otpverification/otpverification.component';
-import {DashboardComponent} from './component/dashboard/dashboard.component';
-import {CreditlistComponent} from './component/creditlist/creditlist.component';
-import {LogoutDialogComponent} from './component/logout-dialog/logout-dialog.component';
-import {PostcreditComponent} from './component/postcredit/postcredit.component';
-import {DebitlistComponent} from './component/debitlist/debitlist.component';
-import {PostdebitComponent} from './component/postdebit/postdebit.component';
-import {SuccessMessageComponent} from './component/success-message/success-message.component';
-import {ShowStatusComponent} from './component/show-status/show-status.component';
-import {FilterComponent} from './component/filter/filter.component';
-import {FeedbackComponent} from './component/feedback/feedback.component';
+import {LoginComponent} from '../component/login/login.component';
+import {SignupComponent} from '../component/signup/signup.component';
+import {ForgetpasswordComponent} from '../component/forgetpassword/forgetpassword.component';
+import {OtpverificationComponent} from '../component/otpverification/otpverification.component';
+import {DashboardComponent} from '../component/dashboard/dashboard.component';
+import {CreditlistComponent} from '../component/creditlist/creditlist.component';
+import {LogoutDialogComponent} from '../component/logout-dialog/logout-dialog.component';
+import {PostcreditComponent} from '../component/postcredit/postcredit.component';
+import {DebitlistComponent} from '../component/debitlist/debitlist.component';
+import {PostdebitComponent} from '../component/postdebit/postdebit.component';
+import {SuccessMessageComponent} from '../component/success-message/success-message.component';
+import {ShowStatusComponent} from '../component/show-status/show-status.component';
+import {FilterComponent} from '../component/filter/filter.component';
+import {FeedbackComponent} from '../component/feedback/feedback.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},

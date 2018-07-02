@@ -27,10 +27,19 @@
   float: right;
   width: 5%;
 }
+.feedbackdiv{
+  float: left;
+}
 .button{
   position: fixed;
   top: 85%;
   margin-left: -20px;
+}
+.feedback{
+  position: fixed;
+  top: 93%;
+  background-color: #1295c9;
+  color: white;
 }
 .card{
   width: 60%;

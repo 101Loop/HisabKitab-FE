@@ -35,7 +35,7 @@ export class FilterComponent  extends SharedClass implements OnInit {
     if (this.search_query) {this.params.search = this.search_query; }
     if (this.modeID) {this.params.mode = this.modeID; }
     if (this.price_sort) {this.params.ordering = this.price_sort + 'amount'; }
-    if (this.name_sort) {this.params.ordering = this.name_sort + 'name'; }
+    if (this.name_sort) {this.params.ordering = this.name_sort + 'contact__name'; }
     this.data.passfilter(this.params);
     this.dialogRef.close();
   }

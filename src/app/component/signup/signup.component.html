@@ -31,7 +31,7 @@
         <P>
           <mat-form-field appearance="outline" class="inputfield">
             <mat-label>Mobile</mat-label>
-            <input  matInput placeholder="Mobile" formControlName="contact" [(ngModel)]="userContact" (keyup.enter)="onSuccess()" >
+            <input  matInput placeholder="Mobile" formControlName="contact" [(ngModel)]="userContact" (keyup.enter)="onSuccess()" type="number" >
             <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field>
         </P>

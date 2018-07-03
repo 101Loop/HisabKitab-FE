@@ -31,5 +31,8 @@ export class DashboardComponent extends SharedClass implements OnInit {
   ngOnInit() {
     this.loading = true;
     super.ngOnInit();
+   /* window.onbeforeunload = function() {
+      return 'Your work will be lost.';
+    };*/
   }
 }

@@ -70,6 +70,12 @@ position: absolute;
   padding: 10px;
   border-radius: 5px;
 }
+
+.g-signin2 {
+  margin-left: 40%;
+  width: 30%;
+  margin-top: 2%;
+}
 @media only screen
 and (min-device-height : 600px)
 and (max-device-height : 800px)

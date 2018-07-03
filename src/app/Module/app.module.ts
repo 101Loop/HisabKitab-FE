@@ -77,7 +77,6 @@ import {FeedbackComponent} from '../component/feedback/feedback.component';
     MatTabsModule,
     AppRoutingModule,
     MatDatepickerModule,
-    MatCheckboxModule,
     MatRadioModule,
     MatSliderModule,
     MatExpansionModule,

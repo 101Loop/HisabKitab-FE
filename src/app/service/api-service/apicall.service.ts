@@ -16,7 +16,7 @@ export class APICallService {
   baseUrl = environment.baseUrl;
   data: any;
   message: any;
-  constructor(private http: HttpClient, private toast: ToastrService) {}
+  constructor(private http: HttpClient) {}
   private handleError(error: HttpErrorResponse) {
     console.log('Error log: ', error);
     switch (error.status) {

@@ -13,7 +13,6 @@
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
 }
-
 h1.example-app-name {
   margin-left: 8px;
 }
@@ -37,7 +36,7 @@ h1.example-app-name {
 }
 .profile{
   padding: 20px;
-  background: #003253;
+  background: #2d576b;
   margin-top: -8px;
   color: white;
   padding-bottom: 30px;
@@ -123,6 +122,7 @@ ul li a {
 .logo{
   width: 90%;
   text-align: right;
+  cursor: pointer;
 }
 img{
   width: 78px;
@@ -132,6 +132,9 @@ img{
   margin-left: 8px;
   margin-right: 7px;
   z-index: 1;
+}
+.fa:hover {
+  opacity: 0.5;
 }
 .socialdiv{
   z-index: 20;
@@ -184,6 +187,86 @@ mat-form-field.mat-form-field {
 .inputfield{
   margin-top: 15px;
 }
+
+.title{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #003253;
+  height: 30px;
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-top: -30px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+}
+.filterdiv{
+  text-align: center;
+}
+.card{
+  width: 60%;
+}
+.search{
+  width: 60%;
+  margin-bottom: -10px;
+}
+.amount{
+  margin-top: -10px;
+  width: 30%;
+  margin-bottom: -10px;
+  margin-left: 4%;
+}
+.date{
+  width: 40%;
+  margin-bottom: -10px;
+}
+.min{
+  width: 20%;
+  margin-left: 4%;
+}
+.max{
+  width: 20%;
+}
+.radiobox{
+  line-height: normal;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.checkpos{
+  margin: 0 5px;
+}
+.inline{
+  display: inline;
+  margin-left: 10px;
+}
+.in-line{
+  display: inline;
+}
+.sorting{
+  color: #003253;
+  cursor: pointer;
+  font-weight: bold;
+}
+.sort{
+  font-size: 12px;
+}
+.sorting:hover{
+  color: #1295c9;
+}
+select .sorting {
+  color: #DA9403;
+}
+/*p{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: smaller;
+  color: dimgray;
+  margin-bottom: 5px;
+}*/
+mat-form-field.mat-form-field {
+  font-size: 12px;
+}
+
 @media screen and (max-width: 1050px) {
   .navbar{
     width: 30%;
@@ -310,5 +393,18 @@ mat-form-field.mat-form-field {
     font-size: 12px;
     padding-top: 5px;
     margin-right: -5px;
+  }
+  .card{
+    width: 90%;
+  }
+  .radiobox{
+    line-height: normal;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  .checkpos{
+    margin: 5px 5px 5px 5px;
+    display: inherit;
   }
 }

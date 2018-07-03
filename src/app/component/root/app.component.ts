@@ -23,8 +23,17 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   title: string;
   isSearch = false;
   isShare = false;
+  isFilter = false;
   isDelete = false;
-  serach_query: string;
+  modeID: number;
+  create_date: any;
+  search_query: string;
+  filter_amount: string;
+  min_amount: string;
+  max_amount: string;
+  price_sort: any;
+  params: any;
+  name_sort: any;
   private readonly _mobileQueryListener: () => void;
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
               private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService) {
@@ -37,6 +46,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.data.currentMessage.subscribe(message => this.title = message);
+    this.getMode(this.apiObject);
   }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -49,15 +59,32 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     });
   }
   openFilter() {
-    const dialogRef = this.dialog.open(FilterComponent, {
+/*    const dialogRef = this.dialog.open(FilterComponent, {
       height: '400px',
       width: '400px'
-    });
+    });*/
+  }
+  getFilter() {
+    this.params = {category: 'C'};
+    if (this.create_date) {this.params.transaction_date = this.create_date; }
+    if (this.filter_amount) {this.params.amount = this.filter_amount; }
+    if (this.search_query) {this.params.search = this.search_query; }
+    if (this.modeID) {this.params.mode = this.modeID; }
+    if (this.price_sort) {this.params.ordering = this.price_sort + 'amount'; }
+    if (this.name_sort) {this.params.ordering = this.name_sort + 'contact__name'; }
+    if (this.min_amount) {this.params.start_amount = this.min_amount; }
+    if (this.max_amount) {this.params.end_amount = this.max_amount; }
+    this.data.passfilter(this.params);
+    this.isFilter = !this.isFilter;
   }
   openFeedback() {
     const dialogRef = this.dialog.open(FeedbackComponent, {
       height: '440px',
       width: '400px'
     });
+  }
+  myFunction() {
+    this.isFilter = false;
+    this.isShare  = false;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
@@ -56,28 +56,37 @@ export class CreditlistComponent extends SharedClass implements OnInit {
         this.params = messsage;
         this.params.category = 'C';
       }
-      this.apiObject.fetchTransactions(this.params).subscribe(
-        data => {
-          this.response = data;
-          this.total_amount = this.response.total_amount;
-          this.total_count = this.response.count;
-          this.respData = this.response.results;
-          if (this.respData.length > 0) {
-            this.isData = true;
-            this.loading = false;
-          } else {
-            this.loading = false;
-            this.isData = false;
-          }
-        }, error => {
-          this.loading = false;
-          for (const mesg of error) {
-            this.toast.error(mesg);
-          }
-        }
-      );
-
+      this.getData();
     });
+  }
+  getData() {
+    this.apiObject.fetchTransactions(this.params).subscribe(
+      data => {
+        this.response = data;
+        this.total_amount = this.response.total_amount;
+        this.total_count = this.response.count;
+        this.respData = this.response.results;
+        if (this.respData.length > 0) {
+          this.isData = true;
+          this.loading = false;
+        } else {
+          this.loading = false;
+          this.isData = false;
+        }
+      }, error => {
+        this.loading = false;
+        for (const mesg of error) {
+          this.toast.error(mesg);
+        }
+      }
+    );
+  }
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
+      console.log('bottom');
+      //  this.getData();
+    }
   }
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');

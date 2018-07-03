@@ -42,12 +42,17 @@
   </div>
 </div>
 
-
-<div class="fb-login-button" style="margin-left: 40%; margin-top: 2%"  data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
-data-scope="public_profile, email">
-
+<h4 style="text-align: center">Or</h4>
+<!--FB button-->
+<div
+  class="fb-login-button" style="margin-left: 40%; margin-top: 1%"  data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
+data-scope="public_profile, email" onlogin="window.location='/Facebook/success.jsp'">
 </div>
-<div>
-  <!--<button class="facebookbtn" scope='public_profile, email' onclick="statusChangeCallback()"><i class="fa fa-facebook" style="padding-right: 15px"></i>Sign In with Facebook</button>-->
+
+<!--G+ button-->
+<div style="width: 250px; height: 36px" class="g-signin2" data-onsuccess="onSignIn"></div>
+
+<!--<div>
+  <button class="facebookbtn" scope='public_profile, email' onclick="statusChangeCallback()" data-scope="public_profile, email"><i class="fa fa-facebook" style="padding-right: 15px"></i>Sign In with Facebook</button>
   <button class="googlebtn" scope='public_profile, email'><i class="fa fa-google" style="padding-right: 15px"></i>Sign In with Google</button>
-</div>
+</div>-->

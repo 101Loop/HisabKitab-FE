@@ -18,6 +18,21 @@
 
   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 
+  <!--Script for Google Platform Library (for sign in with G+-->
+  <meta name="google-signin-client_id" content="1011998306961-jses4go0dm3garppk70m0u7vajlkbdom.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!--Script for fb button-->
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=624942187864135&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
   <!--Script for Push Notification-->
   <script>
     // Initialize Firebase
@@ -84,7 +99,6 @@
       });
     });
 
-
     // Send the Instance ID token your application server, so that it can:
     // - send messages back to this app
     // - subscribe/unsubscribe the token from topics
@@ -113,12 +127,15 @@
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
       console.log(response);
+      console.log('Token:'+ response.authResponse.accessToken);
       // The response object is returned with a status field that lets the
       // app know the current login status of the person.
       // Full docs on the response object can be found in the documentation
       // for FB.getLoginStatus().
       if (response.status === 'connected') {
         // Logged into your app and Facebook.
+        var FBToken = response.authResponse.accessToken;
+        console.log('token after connection:'+ FBToken);
         testAPI();
       } else {
         // The person is not logged into your app or we are unable to tell.
@@ -165,11 +182,12 @@
 
     // Here we run a very simple test of the Graph API after login is
     // successful.  See statusChangeCallback() for when this call is made.
+    // Retreiving email, name and id of user
     function testAPI() {
       console.log('Welcome!  Fetching your information.... ');
-      FB.api('/me', function (response) {
+      FB.api('/me?fields=email,name', function (response) {
+        console.log(response);
         console.log('Successful login for: ' + response.name);
-
         document.getElementById('status').innerHTML =
           'Thanks for logging in, ' + response.name + '!';
       });
@@ -178,18 +196,14 @@
   </script>
 
 </head>
+
 <body>
+
 <!--For FB button-->
 <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=624942187864135&autoLogAppEvents=1';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
+
 <app-root></app-root>
+
 </body>
+
 </html>

@@ -30,6 +30,15 @@ img{
   width: 155px;
   height: 80px;
 }
+.feedbackdiv{
+  float: left;
+}
+.feedback{
+  position: fixed;
+  top: 93%;
+  background-color: #1295c9;
+  color: white;
+}
 @media screen and (max-width: 500px) {
   .container{
     margin-top: 50px;

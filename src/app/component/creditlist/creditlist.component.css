@@ -161,6 +161,8 @@ ul li a {
 }
 .loader{
   margin-top: 150px;
+  width: 100px;
+  height: 80px;
 }
 .noData{
  font-size: larger;
@@ -249,7 +251,7 @@ mat-form-field.mat-form-field {
     margin-right: 20px;
   }
   .card1{
-    width: 80%;
+    width: 85%;
   }
   .mat-tab-label {
     min-width: 72px;

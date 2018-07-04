@@ -161,6 +161,8 @@ ul li a {
 }
 .loader{
   margin-top: 150px;
+  width: 120px;
+  height: 80px;
 }
 .noData{
   font-size: larger;

@@ -21,7 +21,7 @@ import {FeedbackComponent} from '../feedback/feedback.component';
   providers: [DatePipe]
 })
 export class DebitlistComponent extends SharedClass implements OnInit {
-  isData = true;
+  isData = false;
   isNetwork = false;
   isServerError = false;
   loading: boolean;
@@ -32,17 +32,12 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   comment: string;
   create_date: any;
   position: any;
-  filter_amount: any;
-  filter_date: any;
-  price_sort: any;
-  name_sort: any;
   total_amount: any;
   total_count: any;
   params = {category: 'D'};
   error: any;
   modeID: any;
   title = 'Debit History';
-  serach_query; any;
   response: any;
   respData: any[];
   constructor(public dialog: MatDialog, public data: DataService, private navbar: NavbarService, private apiObject: APICallService,

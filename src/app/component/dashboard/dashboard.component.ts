@@ -8,6 +8,8 @@ import {SharedClass} from '../../shared-class';
 import {APICallService} from '../../service/api-service/apicall.service';
 import {DataService} from '../../service/data-service/data.service';
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
+import {FeedbackComponent} from '../feedback/feedback.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-newspage',
@@ -19,7 +21,8 @@ export class DashboardComponent extends SharedClass implements OnInit {
   loading: boolean;
   title = 'हिसाब किताब';
   // isNet = false;
-  constructor(private newsObject: APICallService, public navbar: NavbarService, private data: DataService, private rtr: Router) {
+  constructor(private newsObject: APICallService, public navbar: NavbarService, private data: DataService, private rtr: Router,
+              private dialog: MatDialog) {
     // private toast: ToastrService
     // public dateFormatter: DatePipe
     super(rtr);
@@ -34,5 +37,11 @@ export class DashboardComponent extends SharedClass implements OnInit {
    /* window.onbeforeunload = function() {
       return 'Your work will be lost.';
     };*/
+  }
+  openFeedback() {
+    const dialogRef = this.dialog.open(FeedbackComponent, {
+      height: '440px',
+      width: '400px'
+    });
   }
 }

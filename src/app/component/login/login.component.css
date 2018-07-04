@@ -20,11 +20,17 @@ h3{
 mat-form-field.mat-form-field {
   font-size: 12px;
 }
-.img{
+/*.img{
   width: 80px;
   height: 80px;
   margin-bottom: -40px;
+}*/
+
+img{
+  width: 155px;
+  height: 80px;
 }
+
 /*.border{
   background-color: white;
   z-index: 999;
@@ -45,10 +51,11 @@ mat-form-field.mat-form-field {
   text-align: center;
 }
 a{text-decoration: none}
+
 .loader{
 position: absolute;
-  top: 40%;
-  margin-left: -30px;
+  top: 25%;
+  margin-left: -95px;
 }
 
 .facebookbtn{
@@ -186,8 +193,8 @@ and (orientation : portrait) {
   }
   .loader{
     position: absolute;
-    top: 50%;
-    margin-left: -30px;
+    top: 31%;
+    margin-left: -84px;
   }
   /*.border{
     margin-bottom: -45px;
@@ -211,8 +218,8 @@ and (orientation : portrait) {
   }
   .loader{
     position: absolute;
-    top: 50%;
-    margin-left: -30px;
+    top: 56%;
+    margin-left: -78px;
   }
   /*.border{
     margin-bottom: -45px;

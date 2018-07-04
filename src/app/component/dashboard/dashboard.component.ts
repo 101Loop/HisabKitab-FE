@@ -18,7 +18,7 @@ import {MatDialog} from '@angular/material';
   providers: [DatePipe]
 })
 export class DashboardComponent extends SharedClass implements OnInit {
-  loading: boolean;
+  loading = true;
   title = 'हिसाब किताब';
   // isNet = false;
   constructor(private newsObject: APICallService, public navbar: NavbarService, private data: DataService, private rtr: Router,
@@ -32,11 +32,15 @@ export class DashboardComponent extends SharedClass implements OnInit {
     this.data.changeMessage(this.title);
   }
   ngOnInit() {
-    this.loading = true;
     super.ngOnInit();
-   /* window.onbeforeunload = function() {
-      return 'Your work will be lost.';
-    };*/
+    /*For Loader*/
+    document.onreadystatechange = function () {
+      if (document.readyState === 'loading') {
+        document.getElementById('loaderId').style.display = 'block';
+      } else if (document.readyState === 'complete') {
+        document.getElementById('loaderId').style.display = 'none';
+      }
+    };
   }
   openFeedback() {
     const dialogRef = this.dialog.open(FeedbackComponent, {

@@ -31,13 +31,26 @@ export class LoginComponent extends SharedClass implements OnInit {
     this.navbar.invisi();
     this.navbar.hideSearch();
   }
+
   ngOnInit() {
     super.ngOnInit();
+    this.loading = true;
     this.loginForm = new FormGroup({
-      'mail' : new FormControl('', [Validators.required]),
-      'password' : new FormControl('', [Validators.required])
+      'mail': new FormControl('', [Validators.required]),
+      'password': new FormControl('', [Validators.required])
     });
+    /*Script for Initial Loader Screen*/
+    document.onreadystatechange = function () {
+      if (document.readyState === 'loading') {
+        document.getElementById('loginscreenID').style.display = 'none';
+        document.getElementById('loaderId').style.display = 'block';
+      } else if (document.readyState === 'complete') {
+        document.getElementById('loaderId').style.display = 'none';
+        document.getElementById('loginscreenID').style.display = 'block';
+      }
+    };
   }
+
   onClick() {
     this.loading = true;
     this.apiObject.login(this.username, this.password).subscribe(

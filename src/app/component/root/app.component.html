@@ -36,7 +36,7 @@
             <p>{{s_email}}</p>
           </div>
           <div class="navmenu">
-            <p routerLink="/dashboard" class="menuitem">Dashboard</p>
+            <p routerLink="/dashboard" class="menuitem" (click)="Reload()">Dashboard</p>
             <p routerLink="/credithistory" class="menuitem">Credit History</p>
             <p routerLink="/debithistory" class="menuitem">Debit History</p>
             <p (click)="openFeedback()" class="menuitem">Feedback</p>

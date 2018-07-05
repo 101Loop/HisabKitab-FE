@@ -23,8 +23,8 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   modeID: any;
   comment: string;
   post_id: string;
-  isEdit = false;
-  isDisable = true ;
+  isEditView = false;
+  isViewOnly = true;
   isOpen = true;
   constructor(private rtr: Router, private navbar: NavbarService,  public dialogRef: MatDialogRef<ShowStatusComponent>,
               private apiObject: APICallService, private data: DataService, private toast: ToastrService) {
@@ -34,10 +34,15 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   }
   ngOnInit() {
     super.ngOnInit();
+    this.data.nameData.subscribe(message => this.name = message);
+    this.data.amountData.subscribe(message => this.amount = message);
+    this.data.commentData.subscribe(message => this.comment = message);
+    this.data.idData.subscribe(message  => this.id = message);
+    console.log((this.id));
   }
   onEdit() {
-    this.isDisable = false;
-    this.isEdit = true;
+    this.isEditView = true;
+    this.isViewOnly = false;
     this.data.nameData.subscribe(message => this.name = message);
     this.data.amountData.subscribe(message => this.amount = message);
     this.data.commentData.subscribe(message => this.comment = message);

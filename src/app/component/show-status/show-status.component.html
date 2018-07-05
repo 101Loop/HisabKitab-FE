@@ -1,26 +1,49 @@
-<div align="center" >
+<!--To view Transaction--->
+<div align="center" *ngIf="isViewOnly">
+  <p class="title">Transaction Details</p>
+  <div align="center" class="example-containerview">
+    <!--<img src="/assets/images/logs.png" class="logsBT">-->
+    <mat-label style="font-style: italic">Name: {{name}}</mat-label> <br><br><br>
+    <mat-label style="margin-top: 2px; font-style: italic">Amount: {{amount}}</mat-label><br><br><br>
+    <mat-label style="margin-top: 2px; font-style: italic">Comment: {{comment}}</mat-label><br><br><br>
+    <p style="margin-top: 2px; font-style: italic">Payment Mode: {{id}}</p>
+
+    <button mat-button class="submit" (click)="onEdit()">Edit
+      <mat-icon class="edit" aria-valuetext="Edit" (click)="onEdit()">edit</mat-icon>
+    </button>
+
+  </div>
+  <div align="center">
+    <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
+  </div>
+</div>
+
+
+
+<!--For Edit Transaction-->
+
+<div align="center" *ngIf="isEditView" >
   <p class="title">Edit Transaction</p>
   <div align="center" class="example-container">
-    <mat-icon class="edit" (click)="onEdit()">edit</mat-icon>
-    <!--<img src="/assets/images/logs.png" class="logsBT">-->
 
     <P>
       <mat-form-field appearance="outline" class="inputfield">
         <mat-label>Name</mat-label>
-        <input matInput [disabled]=isDisable value="{{name}}" [(ngModel)]="name">
+        <input matInput  value="{{name}}" [(ngModel)]="name">
         <mat-icon matSuffix></mat-icon>
       </mat-form-field>
-    <P>
+    </P>
     <P>
       <mat-form-field appearance="outline" class="inputfield">
         <mat-label>Amount</mat-label>
-        <input matInput [disabled]=isDisable value="{{amount}}" [(ngModel)]="amount">
+        <input matInput value="{{amount}}" [(ngModel)]="amount">
         <mat-icon matSuffix></mat-icon>
       </mat-form-field>
+    </P>
     <P>
       <mat-form-field appearance="outline" class="inputfield">
         <mat-label>Comment</mat-label>
-        <input matInput [disabled]=isDisable  value="{{comment}}" [(ngModel)]="comment">
+        <input matInput  value="{{comment}}" [(ngModel)]="comment">
         <mat-icon matSuffix></mat-icon>
       </mat-form-field>
     </P>
@@ -30,12 +53,12 @@
         <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
       </mat-radio-group>
     </div>
-    <button mat-button class="submit" *ngIf="isEdit" [disabled]=isDisable (click)="onSuccess()">Submit</button>
+    <button mat-button class="submit" (click)="onSuccess()">Submit</button>
   </div>
   <div align="center">
     <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
   </div>
-  </div>
+</div>
 
 
 

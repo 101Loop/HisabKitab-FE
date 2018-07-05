@@ -108,7 +108,8 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     this.data.passComment(this.comment);
     this.data.passId(this.post_id);
     this.dialog.open(ShowStatusComponent, {
-      height: '400px'
+      height: '400px',
+      width: '450px'
     });
   }
   deletePost(i: any) {

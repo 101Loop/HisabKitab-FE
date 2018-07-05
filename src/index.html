@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Hisab Kitab</title>
@@ -78,15 +79,15 @@
         setTokenSentToServer(false);
       }
     }).catch(function(err) {
-      console.log('An error occurred while retrieving token. ', err);
-      showToken('Error retrieving Instance ID token. ', err);
+     // console.log('An error occurred while retrieving token. ', err);
+      //showToken('Error retrieving Instance ID token. ', err);
       setTokenSentToServer(false);
     });
 
     // Callback fired if Instance ID token is updated.
     messaging.onTokenRefresh(function() {
       messaging.getToken().then(function(refreshedToken) {
-        console.log('Token refreshed.');
+       // console.log('Token refreshed.');
         // Indicate that the new Instance ID token has not yet been sent to the
         // app server.
         setTokenSentToServer(false);
@@ -94,7 +95,7 @@
         sendTokenToServer(refreshedToken);
         // ...
       }).catch(function(err) {
-        console.log('Unable to retrieve refreshed token ', err);
+        //console.log('Unable to retrieve refreshed token ', err);
         // showToken('Unable to retrieve refreshed token ', err);
       });
     });
@@ -187,8 +188,8 @@
       FB.api('/me?fields=email,name', function (response) {
       //  console.log(response);
        // console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
+      /*  document.getElementById('status').innerHTML =
+          'Thanks for logging in, ' + response.name + '!';*/
       });
     }
 

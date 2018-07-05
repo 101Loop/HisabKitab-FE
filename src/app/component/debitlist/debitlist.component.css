@@ -22,6 +22,7 @@
 .content{
   float: left;
   width: 100%;
+  cursor: pointer;
 }
 .buttondiv{
   float: right;
@@ -118,7 +119,6 @@ h4{
   margin-top: -1px;
   margin-bottom: 10px;
   color: #1295c9;
-  cursor: pointer;
 }
 .total{
   display: inline-block;
@@ -262,7 +262,10 @@ mat-form-field.mat-form-field {
     margin-right: -15px;
   }
   .loader{
-    margin-top: 200px;
+    text-align: center;
+    margin-top: 0px;
+    position: relative;
+    margin-right: 11px;
   }
   .noData{
     font-size: larger;
@@ -289,6 +292,7 @@ mat-form-field.mat-form-field {
   }
   .content{
     width: 95%;
+    cursor: pointer;
   }
 }
 @media (max-width: 800px) {

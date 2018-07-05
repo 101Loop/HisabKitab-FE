@@ -33,6 +33,10 @@ export class SignupComponent extends SharedClass implements OnInit {
     this.navbar.hide();
     this.navbar.visi();
   }
+  goBack() {
+    this.rtr.navigate(['/', 'login']);
+    window.location.reload();
+  }
   onSuccess(): void {
     if (this.userPassword === this.confirmPassword) {
     this.loading = true;

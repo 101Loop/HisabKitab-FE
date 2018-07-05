@@ -1,7 +1,7 @@
 <div class="container" (scroll)="onScroll($event)">
   <div align="center">
     <mat-card class="card1">
-      <h4 class="total" >Total Transaction: {{total_count}}</h4> |
+      <h4 class="total" >Total Transaction(s): {{total_count}}</h4> |
       <h4 class="total">Total Amount:  <i class="fa fa-inr" style="font-size: 14px"></i>{{total_amount}}</h4></mat-card>
   </div>
   <div class="noData" *ngIf="!isData" align="center">

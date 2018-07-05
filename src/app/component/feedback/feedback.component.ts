@@ -27,7 +27,7 @@ export class FeedbackComponent extends SharedClass implements OnInit {
       'name': new FormControl('', ),
       'email' : new FormControl('', ),
       'contact': new FormControl('', ),
-      'feeds' : new FormControl('', ),
+      'feeds' : new FormControl('', [Validators.required])
     });
   }
   onSubmit() {

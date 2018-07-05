@@ -66,7 +66,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     window.location.reload();
   }
   openFilter() {
-    /*    const dialogRef = this.dialog.open(FilterComponent, {
+       /* const dialogRef = this.dialog.open(FilterComponent, {
           height: '400px',
           width: '400px'
         });*/
@@ -89,9 +89,5 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       height: '440px',
       width: '400px'
     });
-  }
-  myFunction() {
-    this.isFilter = false;
-    this.isShare  = false;
   }
 }

@@ -28,7 +28,7 @@ export class DataService {
   private filterSource = new BehaviorSubject<any>('');
   filterData = this.filterSource.asObservable();
   /*---------pass boolean for delete-----------*/
-  private deleteSource = new BehaviorSubject<boolean>(isBoolean());
+  private deleteSource = new BehaviorSubject<boolean>(isBoolean(''));
   ddeleteData  = this.deleteSource.asObservable();
   constructor() { }
   /*for change title*/

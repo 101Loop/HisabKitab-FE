@@ -58,8 +58,9 @@
         </div>
       </mat-nav-list>
     </mat-sidenav>
-    <!--rest part-->
+    <!--Filter &  share card part-->
     <mat-sidenav-content>
+      <!--Share Option-->
       <div  class="socialdiv" *ngIf="isShare">
         <a href="http://www.facebook.com/sharer.php?u=https://hisabkitab.in/" title="Facebook" target="_blank"> <i class="fa fa-facebook ss fb" aria-hidden="true"></i></a><br>
         <a href="http://plus.google.com/share?url=https://hisabkitab.in" title="Google+" target="_blank"><i class="fa fa-google ss gg" aria-hidden="true"></i></a><br>
@@ -68,7 +69,8 @@
         <i class="fa fa-instagram ss in" aria-hidden="true"></i><br>
         <i class="fa fa-pinterest ss pn" aria-hidden="true"></i>
       </div>
-      <div align="center" *ngIf="isFilter" (focusout)="myFunction()">
+      <!--Filter Card-->
+      <div align="center" *ngIf="isFilter">
       <mat-card class="card">
       <div align="center"><h3 class="title" >Filter</h3></div>
       <div align="center" >

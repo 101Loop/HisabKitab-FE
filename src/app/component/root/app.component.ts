@@ -12,6 +12,8 @@ import {SharedClass} from '../../shared-class';
 import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
 import {FilterComponent} from '../filter/filter.component';
 import {FeedbackComponent} from '../feedback/feedback.component';
+import {FormControl, FormGroup} from '@angular/forms';
+import DateTimeFormat = Intl.DateTimeFormat;
 
 @Component({
   selector: 'app-root',
@@ -34,6 +36,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   price_sort: any;
   params: any;
   name_sort: any;
+  Filterform: FormGroup;
   private readonly _mobileQueryListener: () => void;
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
               private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService) {
@@ -47,7 +50,14 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     super.ngOnInit();
     this.data.currentMessage.subscribe(message => this.title = message);
     this.getMode(this.apiObject);
-  }
+    this.Filterform = new FormGroup({
+      'Fname': new FormControl('', []),
+      'FAmount': new FormControl('', []),
+      'Fdate': new FormControl('', []),
+      'FMinAmt': new FormControl('', []),
+      'FMaxAmt': new FormControl('', []),
+    });
+    }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
@@ -83,6 +93,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.max_amount) {this.params.end_amount = this.max_amount; }
     this.data.passfilter(this.params);
     this.isFilter = !this.isFilter;
+    this.Filterform.reset();
   }
   openFeedback() {
     const dialogRef = this.dialog.open(FeedbackComponent, {

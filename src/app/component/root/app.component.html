@@ -101,11 +101,13 @@
                     <input  matInput placeholder="Max" name="email" type="search" [(ngModel)]="max_amount" formControlName="FMaxAmt">
                   </mat-form-field>
                 </div>
-                <div class="radiobox">
+                <!--<div class="radiobox">
                   <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
                     <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
-                  </mat-radio-group>
-                  <!--<mat-checkbox *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-checkbox>-->
+                  </mat-radio-group
+                </div>-->
+                <div class="radiobox">
+                  <mat-checkbox class="checkpos" [ngModel]="" *ngFor="let m of mode_api_results">{{m.mode}}</mat-checkbox>
                 </div>
                 <div align="center">
                   <p class="inline sort">Sort By Price:</p><p class="inline sorting sort" (click)="price_sort= '+'">Low-High</p><p class="inline sorting sort" (click)="price_sort = '-'">High-Low</p><br>

@@ -24,6 +24,9 @@ export class DataService {
   /*----------for pass post id-----------*/
   private idSource = new BehaviorSubject<string>('');
   idData = this.idSource.asObservable();
+  /*--------for Payment Mode ID---------*/
+  private paymentidSource = new BehaviorSubject<string>('');
+  PaymentModeData = this.paymentidSource.asObservable();
   /*---------pass filter data-----------*/
   private filterSource = new BehaviorSubject<any>('');
   filterData = this.filterSource.asObservable();
@@ -42,6 +45,10 @@ export class DataService {
   /*----------for pass amount-----------*/
   passAmount(message: any) {
     this.amountSource.next(message);
+  }
+  /*----------for PaymentMode id----------*/
+  passModeId(message: any) {
+    this.paymentidSource.next(message);
   }
   /*----------for pass comment-----------*/
   passComment(message: any) {

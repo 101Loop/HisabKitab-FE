@@ -39,6 +39,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   params = {category: 'C'};
   response: any;
   respData: any[];
+  PaymentmodeID: number;
   title = 'Credit History';
   constructor(public dialog: MatDialog, private data: DataService, private navbar: NavbarService, private dateFormatter: DatePipe,
               private rtr: Router, private apiObject: APICallService, private toast: ToastrService) {
@@ -102,10 +103,12 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     this.amount = i.amount;
     this.comment = i.comments;
     this.post_id = i.id;
+    this.PaymentmodeID = i.mode.mode;
     this.data.passName(this.name);
     this.data.passAmount(this.amount);
     this.data.passComment(this.comment);
     this.data.passId(this.post_id);
+    this.data.passModeId(this.PaymentmodeID);
     this.dialog.open(ShowStatusComponent, {
       height: '400px',
       width: '450px'

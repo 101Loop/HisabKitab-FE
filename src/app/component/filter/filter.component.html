@@ -21,6 +21,9 @@
     <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
   </mat-radio-group>
 </div>
+    <!--<div>
+      <mat-checkbox class="checkpos" *ngFor="let m of mode_api_results">{{m.mode}}</mat-checkbox>
+    </div>-->
 <div align="center">
   <div align="left" style="width: 300px">
     <p class="inline">Sort By Price:</p><p class="inline sorting" (click)="price_sort= '+'">Low-High</p><p class="inline sorting" (click)="price_sort = '-'">High-Low</p><br>

@@ -22,6 +22,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   amount: string;
   modeID: any;
   comment: string;
+  PaymentModeId: string;
   post_id: string;
   isEditView = false;
   isViewOnly = true;
@@ -34,10 +35,12 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   }
   ngOnInit() {
     super.ngOnInit();
+    /*Fetching selected transaction details from dataservice.ts file*/
     this.data.nameData.subscribe(message => this.name = message);
     this.data.amountData.subscribe(message => this.amount = message);
     this.data.commentData.subscribe(message => this.comment = message);
     this.data.idData.subscribe(message  => this.id = message);
+    this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
     console.log((this.id));
   }
   onEdit() {
@@ -47,6 +50,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
     this.data.amountData.subscribe(message => this.amount = message);
     this.data.commentData.subscribe(message => this.comment = message);
     this.data.idData.subscribe(message  => this.id = message);
+    this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
   }
   onSuccess(): void {
         this.loading = true;

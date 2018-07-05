@@ -6,7 +6,7 @@
     <mat-label style="font-style: italic">Name: {{name}}</mat-label> <br><br><br>
     <mat-label style="margin-top: 2px; font-style: italic">Amount: {{amount}}</mat-label><br><br><br>
     <mat-label style="margin-top: 2px; font-style: italic">Comment: {{comment}}</mat-label><br><br><br>
-    <p style="margin-top: 2px; font-style: italic">Payment Mode: {{id}}</p>
+    <p style="margin-top: 2px; font-style: italic">Payment Mode: {{PaymentModeId}}</p>
 
     <button mat-button class="submit" (click)="onEdit()">Edit
       <mat-icon class="edit" aria-valuetext="Edit" (click)="onEdit()">edit</mat-icon>
@@ -49,7 +49,7 @@
     </P>
     <div class="radiobox">
       <p>Payment Mode:</p>
-      <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
+      <mat-radio-group [(ngModel)]="modeID" >
         <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
       </mat-radio-group>
     </div>

@@ -36,7 +36,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   total_count: any;
   params = {category: 'D'};
   error: any;
-  modeID: any;
+  PaymentmodeID: number;
   title = 'Debit History';
   response: any;
   respData: any[];
@@ -103,10 +103,12 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     this.amount = i.amount;
     this.comment = i.comments;
     this.post_id = i.id;
+    this.PaymentmodeID = i.mode.mode;
     this.data.passName(this.name);
     this.data.passAmount(this.amount);
     this.data.passComment(this.comment);
     this.data.passId(this.post_id);
+    this.data.passModeId(this.PaymentmodeID);
     this.dialog.open(ShowStatusComponent, {
       height: '400px',
       width: '450px'

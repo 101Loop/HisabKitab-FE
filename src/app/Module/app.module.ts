@@ -34,6 +34,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FilterComponent } from '../component/filter/filter.component';
 import {FeedbackComponent} from '../component/feedback/feedback.component';
+import {ContactComponent} from '../component/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {FeedbackComponent} from '../component/feedback/feedback.component';
     SuccessMessageComponent,
     ShowStatusComponent,
     FilterComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,31 @@
+<div >
+  <div align="center">
+  <p class="title">Need any help? Contact us</p>
+  </div>
+  <div class="view_pc">
+    <div class="pc_view" *ngIf="!isAssign">
+      <p><mat-icon>room</mat-icon>	B-816, Advant Navis Business Park,<br>
+        Sector 142(Noida exp. way)<br></p>
+      <p class="add"> Noida -201305</p>
+      <p><mat-icon>email</mat-icon><a href="mailto: info@vitartha.com">info@vitartha.com</a></p>
+      <p class="contact" ><mat-icon>phone</mat-icon><a href="tel:+91 120 4545647">+91 120 4545647</a></p>
+    </div>
+    <div class="assign_view" *ngIf="isAssign">
+      <p class="name"><mat-icon>person</mat-icon>{{assigned_to_name}}</p>
+      <p><mat-icon>email</mat-icon><a href="mailto: {{assigned_to_email}}">{{assigned_to_email}}</a></p>
+      <p class="contact" ><mat-icon>phone</mat-icon><a href="tel: {{assigned_to_mobile}}">{{assigned_to_mobile}}</a></p>
+    </div>
+  </div>
+  <div class="mobile_view" align="center">
+    <ul style="margin-left: -10px">
+      <li class="phone">
+        <a href="tel:91 120 4545647"><button mat-fab><mat-icon>phone</mat-icon></button></a>
+        <h6>Call us</h6>
+      </li>
+      <li>
+        <a href="mailto:info@vitartha.com"><button mat-fab><mat-icon>email</mat-icon></button></a>
+        <h6>Email us</h6>
+      </li>
+    </ul>
+  </div>
+</div>

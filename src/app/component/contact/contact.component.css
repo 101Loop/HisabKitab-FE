@@ -1,0 +1,64 @@
+.mobile_view{
+  display: none;
+}
+.view_pc{
+  display: block;
+}
+.pc_view{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  margin: 30px;
+}
+.assign_view{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  margin: 30px;
+}
+.pc_view .material-icons{
+font-size: small;
+}
+.assign_view .material-icons{
+  font-size: small;
+}
+.title{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #003253;
+  height: 30px;
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-top: -30px;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  color: white;
+}
+.add{
+  margin-top: -5px;
+}
+a{
+  margin-top: 20px;
+  text-decoration: none;
+  color: #191919;
+}
+.contact{
+  margin-top: -15px;
+}
+li{
+  display: inline-block;
+}
+.name{
+  margin-bottom: -10px;
+}
+@media screen and (max-width: 500px){
+  .view_pc{
+    display: none;
+  }
+  .mobile_view{
+    display: block;
+    width: 200px;
+  }
+  .phone{
+    margin-left: -30px;
+    margin-right: 30px;
+  }
+  h6{margin-left: -5px}
+}

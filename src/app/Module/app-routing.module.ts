@@ -16,22 +16,24 @@ import {SuccessMessageComponent} from '../component/success-message/success-mess
 import {ShowStatusComponent} from '../component/show-status/show-status.component';
 import {FilterComponent} from '../component/filter/filter.component';
 import {FeedbackComponent} from '../component/feedback/feedback.component';
+import {ContactComponent} from '../component/contact/contact.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
-   { path: 'signup', component: SignupComponent },
-   { path: 'forgetpassword', component: ForgetpasswordComponent },
-   { path: 'otpverification', component: OtpverificationComponent },
-   { path: 'normalrequest', component: PostdebitComponent },
-   { path: 'hisabkitabrequest', component: PostcreditComponent },
-   { path: 'dashboard', component: DashboardComponent },
-   { path: 'debithistory', component: DebitlistComponent },
-   { path: 'credithistory', component: CreditlistComponent },
-   { path: 'logout', component: LogoutDialogComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'forgetpassword', component: ForgetpasswordComponent },
+  { path: 'otpverification', component: OtpverificationComponent },
+  { path: 'normalrequest', component: PostdebitComponent },
+  { path: 'hisabkitabrequest', component: PostcreditComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'debithistory', component: DebitlistComponent },
+  { path: 'credithistory', component: CreditlistComponent },
+  { path: 'logout', component: LogoutDialogComponent },
   { path: 'success', component: SuccessMessageComponent },
   { path: 'showstatus', component: ShowStatusComponent },
   { path: 'filter', component: FilterComponent },
   { path: 'feedback', component: FeedbackComponent},
+  { path: 'contact', component: ContactComponent}
 ];
 
 @NgModule({

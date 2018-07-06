@@ -14,6 +14,7 @@ import {FilterComponent} from '../filter/filter.component';
 import {FeedbackComponent} from '../feedback/feedback.component';
 import {FormControl, FormGroup} from '@angular/forms';
 import DateTimeFormat = Intl.DateTimeFormat;
+import {ContactComponent} from '../contact/contact.component';
 
 @Component({
   selector: 'app-root',
@@ -99,6 +100,11 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     const dialogRef = this.dialog.open(FeedbackComponent, {
       height: '440px',
       width: '400px'
+    });
+  }
+  onContact() {
+    this.dialog.open(ContactComponent, {
+      height: 'auto'
     });
   }
 }

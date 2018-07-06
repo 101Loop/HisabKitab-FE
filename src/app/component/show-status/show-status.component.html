@@ -49,7 +49,7 @@
     </P>
     <div class="radiobox">
       <p>Payment Mode:</p>
-      <mat-radio-group [(ngModel)]="modeID" >
+      <mat-radio-group [(ngModel)]="PaymentModeId" >
         <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
       </mat-radio-group>
     </div>

@@ -41,7 +41,8 @@ export class PostdebitComponent extends SharedClass implements OnInit {
       'amount': new FormControl('', [Validators.required, Validators.pattern('(\\d+(\\.\\d+)?)')]),
       'date': new FormControl('', [Validators.required]),
       'desc': new FormControl('', ),
-      'comments': new FormControl('', )
+      'comments': new FormControl('', ),
+      'radio': new FormControl('', [Validators.required])
     });
     this.getMode(this.apiObject);
   }

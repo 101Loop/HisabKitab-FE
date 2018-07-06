@@ -39,7 +39,8 @@ export class PostcreditComponent extends SharedClass implements OnInit {
       'contactname' : new FormControl('', [Validators.required]),
       'amount' : new FormControl('', [Validators.required, Validators.pattern('(\\d+(\\.\\d+)?)')]),
       'date' : new FormControl('', [Validators.required]),
-      'comments' : new FormControl('', )
+      'comments' : new FormControl('', ),
+      'radio': new FormControl('', [Validators.required])
     });
     this.getMode(this.apiObject);
   }

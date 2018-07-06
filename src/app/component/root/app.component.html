@@ -107,16 +107,19 @@
                     <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
                   </mat-radio-group
                 </div>-->
+
                 <div class="radiobox">
                   <mat-checkbox class="checkpos" [ngModel]="" *ngFor="let m of mode_api_results">{{m.mode}}</mat-checkbox>
                 </div>
                 <div align="center">
                   <p class="inline sort">Sort By Price:</p><p class="inline sorting sort" (click)="price_sort= '+'">Low-High</p><p class="inline sorting sort" (click)="price_sort = '-'">High-Low</p><br>
-                  <p class="inline sort">Sort By Name:</p><p class="inline sorting sort" (click)="name_sort = '+'">A-Z</p><p class="inline sorting sort" (click)="name_sort = '-'">Z-A</p></div>
+                  <p class="inline sort">Sort By Name:</p><p class="inline sorting sort" (click)="name_sort = '+'">A-Z</p><p class="inline sorting sort" (click)="name_sort = '-'">Z-A</p>
+                </div>
                 <button mat-button (click)="getFilter()" style="margin-top: 10px; background-color: #DA9403; color: white">Filter</button>
               </div>
             </div>
           </form>
+
         </mat-card>
       </div>
       <router-outlet></router-outlet>

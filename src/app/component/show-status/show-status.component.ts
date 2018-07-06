@@ -22,7 +22,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   amount: string;
   modeID: any;
   comment: string;
-  PaymentModeId: string;
+  PaymentModeId = '2';
   post_id: string;
   isEditView = false;
   isViewOnly = true;
@@ -41,7 +41,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
     this.data.commentData.subscribe(message => this.comment = message);
     this.data.idData.subscribe(message  => this.id = message);
     this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
-    console.log((this.id));
+    console.log((this.PaymentModeId));
   }
   onEdit() {
     this.isEditView = true;
@@ -51,10 +51,11 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
     this.data.commentData.subscribe(message => this.comment = message);
     this.data.idData.subscribe(message  => this.id = message);
     this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
+    console.log('Mode id: ' + this.modeID);
   }
   onSuccess(): void {
         this.loading = true;
-        this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.modeID).subscribe(
+        this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.PaymentModeId).subscribe(
           data => {
             window.location.reload();
             this.dialogRef.close();

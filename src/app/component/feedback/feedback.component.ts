@@ -25,8 +25,8 @@ export class FeedbackComponent extends SharedClass implements OnInit {
     super.ngOnInit();
     this.feedForm = new FormGroup({
       'name': new FormControl('', ),
-      'email' : new FormControl('', ),
-      'contact': new FormControl('', ),
+      'email' : new FormControl('',  ),
+      'mobile': new FormControl('', ),
       'feeds' : new FormControl('', [Validators.required])
     });
   }
@@ -34,7 +34,7 @@ export class FeedbackComponent extends SharedClass implements OnInit {
     console.log(this.feeded_name);
     this.apiObject.sendFeed(this.s_name, this.s_mobile, this.s_email, this.feeder_feeds).subscribe(
       data => {
-        console.log(data);
+       // console.log(data);
         this.dialogRef.close();
         this.toast.success(' Thank you for your feedback :)', 'Feedback');
       }

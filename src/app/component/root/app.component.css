@@ -201,11 +201,15 @@ mat-form-field.mat-form-field {
   font-size: medium;
   font-weight: bold;
 }
-.filterdiv{
+.filterDiv{
   text-align: center;
+  position: fixed;
+  z-index: 1;
+  width: 99%;
 }
 .card{
   width: 60%;
+  margin: auto;
 }
 .search{
   width: 60%;

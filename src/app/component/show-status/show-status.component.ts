@@ -52,7 +52,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
     this.data.commentData.subscribe(message => this.comment = message);
     this.data.idData.subscribe(message  => this.id = message);
     this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
-    console.log(('hi:' + this.PaymentModeId));
+  //  console.log(('hi:' + this.PaymentModeId));
   }
   onSuccess(): void {
         this.loading = true;

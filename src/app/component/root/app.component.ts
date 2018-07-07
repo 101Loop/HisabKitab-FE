@@ -37,6 +37,10 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   price_sort: any;
   params: any;
   loading: boolean;
+  is_H2Lclicked = false;
+  isL2Hclicked = true;
+  is_AtZclicked = false;
+  is_ZtAclicked = true;
   name_sort: any;
   Filterform: FormGroup;
   private readonly _mobileQueryListener: () => void;

@@ -86,7 +86,16 @@ export class DebitlistComponent extends SharedClass implements OnInit {
             this.isNetwork = true;
           }
           this.toast.error(mesg);
-        }
+          if (error[0] === 'Please check your internet connection!') {
+              this.isNetwork = true;
+            this.isData = true;
+          } else
+          if (error[0] === 'A server side error occurred. Please report this to info@vitartha.com') {
+            this.isServerError = true;
+            this.isData = true;
+          }
+          }
+          console.log(error[0]);
       }
     );
   }

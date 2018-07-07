@@ -4,21 +4,21 @@
 <P>
   <mat-form-field appearance="outline" class="inputfield">
     <mat-label>Name</mat-label>
-    <input  matInput placeholder="Name" formControlName="name" [(ngModel)]="feeded_name" [value]="s_name">
+    <input  matInput placeholder="Name"  [(ngModel)]="feeded_name" [value]="s_name" formControlName="name">
     <mat-icon matSuffix>person</mat-icon>
   </mat-form-field>
 </P>
 <P>
   <mat-form-field appearance="outline" class="inputfield">
     <mat-label>Mobile</mat-label>
-    <input  matInput placeholder="Mobile" formControlName="contact" [(ngModel)]="feeder_contact" [value]="s_mobile">
+    <input  type="number" matInput placeholder="Mobile"  [(ngModel)]="feeder_contact" [value]="s_mobile" formControlName="mobile">
     <mat-icon matSuffix>phone</mat-icon>
   </mat-form-field>
 </P>
 <P>
   <mat-form-field appearance="outline" class="inputfield">
     <mat-label>Email</mat-label>
-    <input  matInput placeholder="Email" formControlName="email" [(ngModel)]="feeder_mail" [value]="s_email">
+    <input  matInput placeholder="Email"  [(ngModel)]="feeder_mail" [value]="s_email" formControlName="email">
     <mat-icon matSuffix>email</mat-icon>
   </mat-form-field>
 </P>

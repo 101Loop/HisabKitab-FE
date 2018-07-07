@@ -27,6 +27,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   isEditView = false;
   isViewOnly = true;
   isOpen = true;
+  PMode: string;
   constructor(private rtr: Router, private navbar: NavbarService,  public dialogRef: MatDialogRef<ShowStatusComponent>,
               private apiObject: APICallService, private data: DataService, private toast: ToastrService) {
     super(rtr);
@@ -41,7 +42,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
     this.data.commentData.subscribe(message => this.comment = message);
     this.data.idData.subscribe(message  => this.id = message);
     this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
-    console.log((this.id));
+    console.log((this.PaymentModeId));
   }
   onEdit() {
     this.isEditView = true;
@@ -51,10 +52,22 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
     this.data.commentData.subscribe(message => this.comment = message);
     this.data.idData.subscribe(message  => this.id = message);
     this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
+  //  console.log(('hi:' + this.PaymentModeId));
   }
   onSuccess(): void {
         this.loading = true;
-        this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.modeID).subscribe(
+        if (this.PaymentModeId === 'Cash') {
+          this.PMode = '1';
+        } else if (this.PaymentModeId === 'Card') {
+          this.PMode = '2';
+        } else if (this.PaymentModeId === 'Account') {
+          this.PMode = '3';
+        } else if (this.PaymentModeId === 'Cheque') {
+          this.PMode = '4';
+        }
+    console.log(this.PMode);
+
+    this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.PMode).subscribe(
           data => {
             window.location.reload();
             this.dialogRef.close();
@@ -67,7 +80,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
             }*/
           }, error => {
             this.dialogRef.close();
-            this.toast.error('Something Wrong Here!', 'Posting Denied!');
+            this.toast.error('Something went wrong here!', 'Posting Denied!');
           /*  this.loading = false;
             this.resp = error;
             if (this.resp.error) {

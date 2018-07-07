@@ -255,11 +255,16 @@ mat-form-field.mat-form-field {
 .sort{
   font-size: 12px;
 }
-.sorting:hover{
+
+.sort:focus{
   color: #1295c9;
 }
+
 select .sorting {
   color: #DA9403;
+}
+.selectedoption {
+  color: #1295c9;
 }
 /*p{
   font-family: Arial, Helvetica, sans-serif;

@@ -120,10 +120,11 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       height: 'auto'
     });
   }
+  /**For Sending Timely Notification**/
   timeFormator(time: any) {
     this.time =  this.timeFormat.transform(time, 'hh-mm');
-    if (this.time === '09-00') {
-      alert('Do you add your Transaction');
+    if (this.time === '06:44') {
+      (window as any).notifyMe();
     }
     if (this.time === '01-30') {
       alert('Do you add your Transaction');

@@ -3,23 +3,23 @@ import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
-import {Location} from '@angular/common';
+import {DatePipe, Location} from '@angular/common';
 
 import {NavbarService} from '../../service/navigation-bar/navbar.service';
 import {DataService} from '../../service/data-service/data.service';
 import {APICallService} from '../../service/api-service/apicall.service';
 import {SharedClass} from '../../shared-class';
 import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
-import {FilterComponent} from '../filter/filter.component';
 import {FeedbackComponent} from '../feedback/feedback.component';
 import {FormControl, FormGroup} from '@angular/forms';
-import DateTimeFormat = Intl.DateTimeFormat;
 import {ContactComponent} from '../contact/contact.component';
+import {timer} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [DatePipe]
 })
 export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
@@ -37,10 +37,13 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   price_sort: any;
   params: any;
   name_sort: any;
+  timeer: any;
+  time: string;
   Filterform: FormGroup;
   private readonly _mobileQueryListener: () => void;
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
-              private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService) {
+              private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService,
+              private timeFormat: DatePipe) {
     // public dialog: MatDialog,
     super(rtr);
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -58,6 +61,11 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'FMinAmt': new FormControl('', []),
       'FMaxAmt': new FormControl('', []),
     });
+    timer(1000, 1000 * 60 * 60).subscribe( t => {
+      this.timeer = new Date();
+      this.timeFormator(this.timeer);
+    });
+    // setInterval(function() { alert('Do you add your Transaction'); }, 1000 * 60 * 60 * 6);
     }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -106,5 +114,17 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     this.dialog.open(ContactComponent, {
       height: 'auto'
     });
+  }
+  timeFormator(time: any) {
+    this.time =  this.timeFormat.transform(time, 'hh-mm');
+    if (this.time === '09-00') {
+      alert('Do you add your Transaction');
+    }
+    if (this.time === '01-30') {
+      alert('Do you add your Transaction');
+    }
+    if (this.time === '08-00') {
+      alert('Do you add your Transaction');
+    }
   }
 }

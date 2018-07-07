@@ -4,7 +4,7 @@
       <h4 class="total" >Total Transaction(s): {{total_count}}</h4> |
       <h4 class="total">Total Amount:  <i class="fa fa-inr" style="font-size: 14px"></i>{{total_amount}}</h4></mat-card>
   </div>
-  <div class="noData" *ngIf="!isData" align="center">
+  <div class="noData" *ngIf="isData" align="center">
     <p>You haven't added any Credit Transactions yet!<br>
       Click on '+' to add</p>
   </div>
@@ -31,8 +31,8 @@
     </mat-card>
   </div>
   <div class="buttondiv">
-    <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()" *ngIf="!isData">
-    <button mat-fab class="button" (click)="openDialog()" *ngIf="isData"><i style="font-size:24px" class="fa fa-plus"></i></button>
+    <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()" *ngIf="isData">
+    <button mat-fab class="button" (click)="openDialog()" *ngIf="!isData"><i style="font-size:24px" class="fa fa-plus"></i></button>
   </div>
   <div class="feedbackdiv">
     <button mat-button class="feedback" (click)="openFeedback()">Feedback</button>

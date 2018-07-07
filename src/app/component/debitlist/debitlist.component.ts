@@ -74,15 +74,17 @@ export class DebitlistComponent extends SharedClass implements OnInit {
         this.total_count = this.response.count;
         this.respData = this.response.results;
         if (this.respData.length > 0) {
-          this.isData = true;
           this.loading = false;
         } else {
           this.loading = false;
-          this.isData = false;
+          this.isData = true;
         }
       }, error => {
         this.loading = false;
         for (const mesg of error) {
+          if (error[0] === 'Please check your internet connection!') {
+            this.isNetwork = true;
+          }
           this.toast.error(mesg);
         }
       }

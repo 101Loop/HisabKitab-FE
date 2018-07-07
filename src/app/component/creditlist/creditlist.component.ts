@@ -34,9 +34,11 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   position: string;
   total_amount: any;
   total_count: any;
+  page: string;
+  count = 1;
   modeID: any;
   error: any;
-  params = {category: 'C'};
+  params = {category: 'C'/*, page: this.count*/};
   response: any;
   respData: any[];
   PaymentmodeID: number;
@@ -68,15 +70,17 @@ export class CreditlistComponent extends SharedClass implements OnInit {
         this.total_count = this.response.count;
         this.respData = this.response.results;
         if (this.respData.length > 0) {
-          this.isData = true;
           this.loading = false;
         } else {
           this.loading = false;
-          this.isData = false;
+          this.isData = true;
         }
       }, error => {
         this.loading = false;
         for (const mesg of error) {
+          if (error[0] === 'Please check your internet connection!') {
+            this.isNetwork = true;
+          }
           this.toast.error(mesg);
         }
       }
@@ -86,6 +90,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
       console.log('bottom');
+    // this.params.page = this.count + 1;
       //  this.getData();
     }
   }

@@ -4,7 +4,7 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
 
   <mat-toolbar color="primary" class="example-toolbar" style="background:#2d576b">
-    <button mat-icon-button (click)="snav.toggle()"  *ngIf="this.navbar.visible"><mat-icon>menu</mat-icon></button>
+    <button mat-icon-button (click)="snav.toggle()"  *ngIf="this.navbar.visible"><i class="fa fa-bars"></i></button>
     <mat-icon class="backArrow" (click)="goback()" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
     <h1 class="example-app-name" *ngIf="this.navbar.visible || isSearch " >{{title}}</h1>
     <h1 class="example-app-name" *ngIf="!this.navbar.visible">Hisab Kitab</h1>
@@ -15,12 +15,12 @@
           <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="serach_query">
         </mat-form-field>
         <i class="fa fa-search" aria-hidden="true" (click)=" this.isSearch = !this.isSearch"></i>-->
-      <i class="fa fa-filter" aria-hidden="true" (click)="isFilter = !isFilter"*ngIf="this.navbar.isSearch"></i>
+      <i class="fa fa-filter" aria-hidden="true" (click)="isFilter = !isFilter" *ngIf="this.navbar.isSearch"></i>
       <i class="fa fa-share-alt" aria-hidden="true" (click)="isShare = !isShare" ng-blur="isShare = false"></i>
     </div>
     <!--    <div align="right" class="logo"> <img src="assets/images/hissab-kitab.png"></div>-->
   </mat-toolbar>
-  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" >
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
 
     <!--nav bar-->
     <!-- TODO: resolve the fixedToGap warning by IDE, if relevant -->
@@ -60,7 +60,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <!--Filter &  share card part-->
-    <mat-sidenav-content>
+    <mat-sidenav-content >
       <!--Share Option-->
       <div  class="socialdiv" *ngIf="isShare">
         <a href="http://www.facebook.com/sharer.php?u=https://hisabkitab.in/" title="Facebook" target="_blank"> <i class="fa fa-facebook ss fb" aria-hidden="true"></i></a><br>
@@ -119,6 +119,65 @@
           </form>
         </mat-card>
       </div>
+<!--      <div style="width: 17%; float: left; z-index: 1; position: absolute">
+      &lt;!&ndash;for filter&ndash;&gt;
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+            Filter
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+            <form [formGroup]="Filterform" novalidate>
+              <div align="left" style="margin: 0; padding: 0">
+                <div>
+                  <mat-form-field appearance="outline" class="search">
+                    <mat-label>Search by name</mat-label>
+                    <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="search_query" formControlName="Fname">
+                    <mat-icon matSuffix>search</mat-icon>
+                  </mat-form-field><br>
+                  <mat-form-field appearance="outline" class="amount">
+                    <mat-label>By amount</mat-label>
+                    <input  matInput placeholder="Amount" name="email" type="search" [(ngModel)]="filter_amount" formControlName="FAmount">
+                  </mat-form-field><br>
+                  <p style="margin-top: -15px; margin-bottom: -10px" class="in-line">
+                    <mat-form-field  style="margin-top: 10px" appearance="outline" class="date">
+                      <mat-label>Search by date</mat-label>
+                      <input matInput placeholder="Date" [(ngModel)]="create_date" type="date" formControlName="Fdate">
+                    </mat-form-field>
+                  </p><br>
+                  <p style="margin-top: -7px; margin-bottom: -1px">Range</p>
+                  <div class="in-line">
+                    <mat-form-field appearance="outline" class="min">
+                      <mat-label>Min</mat-label>
+                      <input  matInput placeholder="Min" name="email" type="search" [(ngModel)]="min_amount" formControlName="FMinAmt">
+                    </mat-form-field> -
+                    <mat-form-field appearance="outline" class="max">
+                      <mat-label>Max</mat-label>
+                      <input  matInput placeholder="Max" name="email" type="search" [(ngModel)]="max_amount" formControlName="FMaxAmt">
+                    </mat-form-field>
+                  </div>
+                  &lt;!&ndash;<div class="radiobox">
+                    <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
+                    </mat-radio-group
+                  </div>&ndash;&gt;
+                  <p style="margin-top: -10px">Payment mode</p>
+                  <div class="radiobox" align="left">
+                    <mat-checkbox class="checkpos" [ngModel]="" *ngFor="let m of mode_api_results">{{m.mode}}</mat-checkbox>
+                  </div>
+                  <div>
+                    <p class="inline ">Sort By Price:</p><br><p class="inline sorting sort" (click)="price_sort= '+'">Low-High</p><p class="inline sorting sort" (click)="price_sort = '-'">High-Low</p><br>
+                    <p class="inline ">Sort By Name:</p><br><p class="inline sorting sort" (click)="name_sort = '+'">A-Z</p><p class="inline sorting sort" (click)="name_sort = '-'">Z-A</p></div>
+                  <button mat-button (click)="getFilter()" style="margin-top: 10px; background-color: #DA9403; color: white">Filter</button>
+                </div>
+              </div>
+            </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+      </div>-->
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

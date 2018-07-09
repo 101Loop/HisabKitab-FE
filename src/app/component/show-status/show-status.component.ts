@@ -42,36 +42,34 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
     this.data.commentData.subscribe(message => this.comment = message);
     this.data.idData.subscribe(message  => this.id = message);
     this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
-    console.log((this.PaymentModeId));
   }
   onEdit() {
     this.isEditView = true;
     this.isViewOnly = false;
-    this.data.nameData.subscribe(message => this.name = message);
-    this.data.amountData.subscribe(message => this.amount = message);
-    this.data.commentData.subscribe(message => this.comment = message);
-    this.data.idData.subscribe(message  => this.id = message);
-    this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
+    // this.data.nameData.subscribe(message => this.name = message);
+    // this.data.amountData.subscribe(message => this.amount = message);
+    // this.data.commentData.subscribe(message => this.comment = message);
+    // this.data.idData.subscribe(message  => this.id = message);
+    // this.data.PaymentModeData.subscribe(message => this.PaymentModeId = message);
   //  console.log(('hi:' + this.PaymentModeId));
   }
   onSuccess(): void {
         this.loading = true;
         if (this.PaymentModeId === 'Cash') {
           this.PMode = '1';
-        } else if (this.PaymentModeId === 'Card') {
-          this.PMode = '2';
         } else if (this.PaymentModeId === 'Account') {
           this.PMode = '3';
         } else if (this.PaymentModeId === 'Cheque') {
-          this.PMode = '4';
+          this.PMode = '2';
         }
-    console.log(this.PMode);
 
     this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.PMode).subscribe(
           data => {
+            this.toast.success('Transaction has beed updated', 'Update');
             window.location.reload();
             this.dialogRef.close();
-          /*  this.loading = false;
+            this.loading = false;
+          /*
             this.resp = data;
             if (this.resp.status_code === 201) {
               this.dialogRef.close();

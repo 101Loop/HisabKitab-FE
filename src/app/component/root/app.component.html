@@ -60,7 +60,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <!--Filter &  share card part-->
-    <mat-sidenav-content >
+    <mat-sidenav-content>
       <!--Share Option-->
       <div  class="socialdiv" *ngIf="isShare">
         <a href="http://www.facebook.com/sharer.php?u=https://hisabkitab.in/" title="Facebook" target="_blank"> <i class="fa fa-facebook ss fb" aria-hidden="true"></i></a><br>
@@ -109,7 +109,7 @@
                 </div>-->
 
                 <div class="radiobox">
-                  <mat-checkbox class="checkpos" [ngModel]="" *ngFor="let m of mode_api_results">{{m.mode}}</mat-checkbox>
+                  <mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" [(ngModel)]="m.modeID" [ngModelOptions]="{standalone: true}">{{m.mode}}<p>{{m.modeID}}{{m.id}}</p></mat-checkbox>
                 </div>
                 <div align="center">
                   <p class="inline sort" >Sort By Price:</p>
@@ -188,7 +188,6 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-
-  <button onclick="notifyMe()">Notification</button>
+<!--  <button onclick="notifyMe()">Notification</button>-->
 </div>
 

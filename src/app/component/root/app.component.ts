@@ -70,7 +70,8 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'FMinAmt': new FormControl('', []),
       'FMaxAmt': new FormControl('', []),
     });
-    timer(1000, 1000 * 60 * 60).subscribe(t => {
+    /*Will call timeFormat function after every 60sec */
+    timer(1000, 1000 * 60).subscribe(t => {
       this.timeFormator(new Date());
     });
     // setInterval(function() { alert('Do you add your Transaction'); }, 1000 * 60 * 60 * 6);
@@ -129,7 +130,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.max_amount) {
       this.params.end_amount = this.max_amount;
     }
-    console.log(this.params);
+    // console.log(this.params);
     this.data.passfilter(this.params);
     this.isFilter = !this.isFilter;
     this.Filterform.reset();
@@ -150,14 +151,14 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
 
   /**For Sending Timely Notification**/
   timeFormator(time: any) {
-    this.time = this.timeFormat.transform(time, 'hh-mm');
+    this.time = this.timeFormat.transform(time, 'H-mm');
     if (this.time === '09-00') {
       this.notifyMe();
     }
-    if (this.time === '01-35') {
+    if (this.time === '18-22') {
       this.notifyMe();
     }
-    if (this.time === '07-00') {
+    if (this.time === '19-00') {
       this.notifyMe();
     }
   }
@@ -167,13 +168,21 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       alert('This browser does not support desktop notification');
     } else if (Notification.prototype.permission === 'granted') {
       // If it's okay let's create a notification
-      this.notification = new Notification('Hi there!');
+      this.notification = new Notification('Hi there!', <NotificationOptions>{
+        body: 'Have you added your daily transaction details?',
+        vibrate: [200, 100, 200, 100, 200, 100, 200],
+        tag: 'Hisab-kitab'
+      });
     } else if (Notification.prototype.permission !== 'denied') {
       // Otherwise, we need to ask the user for permission
       Notification.requestPermission(function (permission) {
         // If the user accepts, let's create a notification
         if (permission === 'granted') {
-          const notification = new Notification('Hi there!');
+          const notification = new Notification('Hi there!', <NotificationOptions>{
+            body: 'Are you maintaining your #HisabKitab?',
+            vibrate: [200, 100, 200, 100, 200, 100, 200],
+            tag: 'Hisab-kitab'
+          });
         }
       });
     }

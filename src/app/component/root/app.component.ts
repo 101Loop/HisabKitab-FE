@@ -160,7 +160,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.time === '07-00') {
       this.notifyMe();
     }
-    }
+  }
 
   notifyMe() {
     if (!('Notification' in window)) {
@@ -178,4 +178,5 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       });
     }
   }
+
 }

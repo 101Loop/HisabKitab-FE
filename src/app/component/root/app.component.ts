@@ -45,6 +45,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   timeer: any;
   time: string;
   Filterform: FormGroup;
+  notification: any;
   private readonly _mobileQueryListener: () => void;
 
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
@@ -149,14 +150,14 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
 
   /**For Sending Timely Notification**/
   timeFormator(time: any) {
-    this.time = this.timeFormat.transform(time, 'HH-MM');
-    if (this.time === '09:00') {
+    this.time = this.timeFormat.transform(time, 'hh-mm');
+    if (this.time === '09-00') {
       this.notifyMe();
     }
-    if (this.time === '13-00') {
+    if (this.time === '11-52') {
       this.notifyMe();
     }
-    if (this.time === '19-00') {
+    if (this.time === '07-00') {
       this.notifyMe();
     }
     }
@@ -166,7 +167,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       alert('This browser does not support desktop notification');
     } else if (Notification.prototype.permission === 'granted') {
       // If it's okay let's create a notification
-      const notification = new Notification('Hi there!',);
+      this.notification = new Notification('Hi there!');
     } else if (Notification.prototype.permission !== 'denied') {
       // Otherwise, we need to ask the user for permission
       Notification.requestPermission(function (permission) {

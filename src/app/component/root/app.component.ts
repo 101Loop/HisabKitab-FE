@@ -36,17 +36,10 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   max_amount: string;
   price_sort: any;
   params: any;
-  loading: boolean;
-  is_H2Lclicked = false;
-  isL2Hclicked = true;
-  is_AtZclicked = false;
-  is_ZtAclicked = true;
   name_sort: any;
-  timeer: any;
   time: string;
   Filterform: FormGroup;
   private readonly _mobileQueryListener: () => void;
-
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
               private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService,
               private timeFormat: DatePipe) {
@@ -56,7 +49,6 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-
   ngOnInit() {
     super.ngOnInit();
     this.data.currentMessage.subscribe(message => this.title = message);
@@ -68,17 +60,16 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'FMinAmt': new FormControl('', []),
       'FMaxAmt': new FormControl('', []),
     });
-    timer(1000, 1000 * 60 * 60).subscribe(t => {
-      this.timeer = new Date();
-      this.timeFormator(this.timeer);
+    timer(2000, 10000  ).subscribe( t => {
+     // const tm = new Date();
+     // console.log(tm);
+      this.timeFormator( new Date());
     });
     // setInterval(function() { alert('Do you add your Transaction'); }, 1000 * 60 * 60 * 6);
-  }
-
+    }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-
   onLogout() {
     this.data.passDelete(this.isDelete);
     this.dialog.open(LogoutDialogComponent, {
@@ -86,95 +77,56 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       width: '250px'
     });
   }
-
   goback() {
     this.rtr.navigate(['/', 'login']);
     window.location.reload();
   }
-
   Reload() {
     window.location.reload();
   }
-
   openFilter() {
-    /* const dialogRef = this.dialog.open(FilterComponent, {
-       height: '400px',
-       width: '400px'
-     });*/
+       /* const dialogRef = this.dialog.open(FilterComponent, {
+          height: '400px',
+          width: '400px'
+        });*/
   }
-
   getFilter() {
     this.params = {category: 'C'};
-    if (this.create_date) {
-      this.params.transaction_date = this.create_date;
-    }
-    if (this.filter_amount) {
-      this.params.amount = this.filter_amount;
-    }
-    if (this.search_query) {
-      this.params.search = this.search_query;
-    }
-    if (this.modeID) {
-      this.params.mode = this.modeID;
-    }
-    if (this.price_sort) {
-      this.params.ordering = this.price_sort + 'amount';
-    }
-    if (this.name_sort) {
-      this.params.ordering = this.name_sort + 'contact__name';
-    }
-    if (this.min_amount) {
-      this.params.start_amount = this.min_amount;
-    }
-    if (this.max_amount) {
-      this.params.end_amount = this.max_amount;
-    }
+    if (this.create_date) {this.params.transaction_date = this.create_date; }
+    if (this.filter_amount) {this.params.amount = this.filter_amount; }
+    if (this.search_query) {this.params.search = this.search_query; }
+    if (this.modeID) {this.params.mode = this.modeID; }
+    if (this.price_sort) {this.params.ordering = this.price_sort + 'amount'; }
+    if (this.name_sort) {this.params.ordering = this.name_sort + 'contact__name'; }
+    if (this.min_amount) {this.params.start_amount = this.min_amount; }
+    if (this.max_amount) {this.params.end_amount = this.max_amount; }
     this.data.passfilter(this.params);
     this.isFilter = !this.isFilter;
     this.Filterform.reset();
   }
-
   openFeedback() {
     const dialogRef = this.dialog.open(FeedbackComponent, {
       height: '440px',
       width: '400px'
     });
   }
-
   onContact() {
     this.dialog.open(ContactComponent, {
       height: 'auto'
     });
   }
-
-  /**For Sending Timely Notification**/
   timeFormator(time: any) {
-    this.time = this.timeFormat.transform(time, 'HH-MM');
-    if (this.time === '09:00') {
-      this.notifyMe();
+    console.log(time);
+    this.time =  this.timeFormat.transform(time, 'hh-mm');
+    if (this.time === '9-00') {
+     // alert('Do you add your Transaction');
+     const noti = new Notification('Do you add your Transaction');
     }
-    if (this.time === '13-00') {
-      this.notifyMe();
+    if (this.time === '01-30') {
+      alert('Do you add your Transaction');
     }
-    if (this.time === '19-00') {
-      this.notifyMe();
-    }
-    }
-
-  notifyMe() {
-    if (!('Notification' in window)) {
-      alert('This browser does not support desktop notification');
-    } else if (Notification.prototype.permission === 'granted') {
-      // If it's okay let's create a notification
-      const notification = new Notification('Hi there!',);
-    } else if (Notification.prototype.permission !== 'denied') {
-      // Otherwise, we need to ask the user for permission
-      Notification.requestPermission(function (permission) {
-        // If the user accepts, let's create a notification
-        if (permission === 'granted') {
-          const notification = new Notification('Hi there!');
-        }
-      });
+    if (this.time === '08-00') {
+      alert('Do you add your Transaction');
     }
   }
 }

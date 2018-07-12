@@ -18,7 +18,7 @@ export class APICallService {
   message: any;
   constructor(private http: HttpClient) {}
   private handleError(error: HttpErrorResponse) {
-    console.log('Error log: ', error);
+    // console.log('Error log: ', error);
     switch (error.status) {
       case 400: {
         if (error.error.data) {

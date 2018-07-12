@@ -28,7 +28,7 @@ export class LogoutDialogComponent extends SharedClass implements OnInit {
     if (this.isDelete) {
       this.apiObject.deletePost(this.post_id).subscribe(
         data => {
-          console.log(data);
+          // console.log(data);
           this.dialogRef.close();
           this.toast.error('Your Transaction has been deleted', 'Delete Post');
           window.location.reload();

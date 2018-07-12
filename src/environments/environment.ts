@@ -6,12 +6,12 @@ export const environment = {
   production: false,
   baseUrl: 'http://192.168.1.107/',
 // baseUrl: 'https://y5sa0ot8y4.execute-api.ap-south-1.amazonaws.com/production/'
-  apiKey: 'AIzaSyCwepaQw8OSU8fLUyHrPnLjQCIOS-1OBWI',
-  authDomain: 'jyessonline.firebaseapp.com',
-  databaseURL: 'https://jyessonline.firebaseio.com',
-  projectId: 'jyessonline',
-  storageBucket: 'jyessonline.appspot.com',
-  messagingSenderId: '963057387762'
+  apiKey: 'AIzaSyBSPoo7dYUK5QyGCNk_vfdyIEevwq4A8Co',
+  authDomain: 'hisabkitabin.firebaseapp.com',
+  databaseURL: 'https://hisabkitabin.firebaseio.com',
+  projectId: 'hisabkitabin',
+  storageBucket: 'hisabkitabin.appspot.com',
+  messagingSenderId: '1011998306961'
 };
 
 /*

@@ -109,7 +109,11 @@
                 </div>-->
 
                 <div class="radiobox">
-                  <mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" [(ngModel)]="m.modeID" [ngModelOptions]="{standalone: true}">{{m.mode}}<p>{{m.modeID}}{{m.id}}</p></mat-checkbox>
+                  <!--<mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" [(ngModel)]="m.modeID" [ngModelOptions]="{standalone: true}">{{m.mode}}<p>{{m.id}}</p></mat-checkbox>-->
+                  <mat-checkbox class="checkpos" [value]="Cash">Cash</mat-checkbox>
+                  <mat-checkbox class="checkpos" [value]="Cheque">Cheque</mat-checkbox>
+                  <mat-checkbox class="checkpos" [value]="Account">Account</mat-checkbox>
+
                 </div>
                 <div align="center">
                   <p class="inline sort" >Sort By Price:</p>

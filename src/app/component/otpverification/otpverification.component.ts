@@ -44,7 +44,7 @@ export class OtpverificationComponent extends SharedClass implements OnInit {
           this.rtr.navigate(['/', 'dashboard']);
         }
       }, error => {
-        console.log(error);
+        // console.log(error);
         this.loading = false;
         for (const mesg of error) {
           this.toast.error(mesg);

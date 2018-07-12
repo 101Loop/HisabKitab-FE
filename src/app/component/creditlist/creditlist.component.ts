@@ -93,7 +93,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
-      console.log('bottom');
+      // console.log('bottom');
     // this.params.page = this.count + 1;
       //  this.getData();
     }

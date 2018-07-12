@@ -47,6 +47,9 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   inputElements: any;
   Filterform: FormGroup;
   notification: any;
+  Cash = 1;
+  Cheque = 2;
+  Account = 3;
   private readonly _mobileQueryListener: () => void;
 
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
@@ -115,8 +118,14 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.search_query) {
       this.params.search = this.search_query;
     }
-    if (this.modeID) {
-      this.params.mode = this.modeID;
+    if (this.Cash) {
+      this.params.mode = this.Cash;
+    }
+    if (this.Cheque) {
+      this.params.mode = this.Cheque;
+    }
+    if (this.Account) {
+      this.params.mode = this.Account;
     }
     if (this.price_sort) {
       this.params.ordering = this.price_sort + 'amount';
@@ -130,7 +139,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.max_amount) {
       this.params.end_amount = this.max_amount;
     }
-    // console.log(this.params);
+   // console.log(this.params);
     this.data.passfilter(this.params);
     this.isFilter = !this.isFilter;
     this.Filterform.reset();
@@ -158,7 +167,10 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.time === '18-22') {
       this.notifyMe();
     }
-    if (this.time === '19-00') {
+    if (this.time === '12-21') {
+      this.notifyMe();
+    }
+    if (this.time === '22-07') {
       this.notifyMe();
     }
   }

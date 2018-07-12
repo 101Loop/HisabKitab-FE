@@ -95,14 +95,14 @@ export class DebitlistComponent extends SharedClass implements OnInit {
             this.isData = true;
           }
           }
-          console.log(error[0]);
+          // console.log(error[0]);
       }
     );
   }
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
-      console.log('bottom');
+      // console.log('bottom');
       //  this.getData();
     }
   }

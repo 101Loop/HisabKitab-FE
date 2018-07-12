@@ -14,6 +14,9 @@ import {FeedbackComponent} from '../feedback/feedback.component';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ContactComponent} from '../contact/contact.component';
 import {timer} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
+import {error} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-root',
@@ -50,11 +53,13 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   Cash = 1;
   Cheque = 2;
   Account = 3;
+  notifdata: any;
+  headers: any;
   private readonly _mobileQueryListener: () => void;
 
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
               private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService,
-              private timeFormat: DatePipe) {
+              private timeFormat: DatePipe, private http: HttpClient) {
     // public dialog: MatDialog,
     super(rtr);
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -73,6 +78,8 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'FMinAmt': new FormControl('', []),
       'FMaxAmt': new FormControl('', []),
     });
+    // this.FCMnotification(this.FCM_TOken);
+
     /*Will call timeFormat function after every 60sec */
     timer(1000, 1000 * 60).subscribe(t => {
       this.timeFormator(new Date());
@@ -198,5 +205,12 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
         }
       });
     }
+  }
+
+  FCMnotif() {
+    this.apiObject.FCMnotification().subscribe(
+      data => {
+        this.response = data;
+      });
   }
 }

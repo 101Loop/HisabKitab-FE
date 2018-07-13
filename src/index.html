@@ -45,7 +45,6 @@
       storageBucket: "hisabkitabin.appspot.com",
       messagingSenderId: "1011998306961"
     };
-
     firebase.initializeApp(config);
 
     // Retrieve Firebase Messaging object.
@@ -56,11 +55,8 @@
       return messaging.getToken();
     })
       .then(function (token) {
-          console.log(token);
-        const fireToken = token;
-        window.onload = function() {
-            document.getElementById("token").innerHTML = fireToken;
-        };
+        //console.log('Token:'+ token);
+        var FCM_token = token;
       })
       .catch(function(err) {
          // console.log('Unable to get permission to notify.', err);
@@ -75,7 +71,8 @@
     // subsequent calls to getToken will return from cache.
     messaging.getToken().then(function(currentToken) {
       if (currentToken) {
-        sendTokenToServer(currentToken);
+        //sendTokenToServer(currentToken);
+        // FCMnotification(currentToken);
       } else {
         // Show permission request.
       //  console.log('No Instance ID token available. Request permission to generate one.');
@@ -196,7 +193,41 @@
           'Thanks for logging in, ' + response.name + '!';*/
       });
     }
+
   </script>
+
+
+
+  <!-- <script>
+     var pushPlugin = require("nativescript-push-notifications");
+     var pushSettings = {
+       senderID: "1011998306961", // Required: setting with the sender/project number
+       notificationCallbackAndroid: function (stringifiedData, fcmNotification) {
+         var notificationBody = fcmNotification && fcmNotification.getBody();
+         _this.updateMessage("Message received!\n" + notificationBody + "\n" + stringifiedData);
+       }
+     };
+     pushPlugin.register(pushSettings, function (token) {
+       alert("Device registered. Access token: " + token);
+     }, function() { });
+
+   </script>-->
+
+  <!--Script for Google Platform Library (for sign in with G+)-->
+  <meta name="google-signin-client_id" content="1011998306961-jses4go0dm3garppk70m0u7vajlkbdom.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!--Script for fb button-->
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=624942187864135&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
 </head>
 
 <body>

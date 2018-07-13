@@ -182,4 +182,22 @@ export class APICallService {
     return this.http.post(this.baseUrl + 'api/feedback/', this.data, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }
+/*---------------------------------To push notification--------------------------------------------------*/
+  FCMnotification() {
+    const key = 'key=AAAA65_MspE:APA91bEng9AtI2zz2ba5hmBMBUbZ_NDDjGrLWnIzk8oLcEthalLmEl3Sa3PKOm0q' +
+      '2HP9i9txLir817bTQYgCQ3uQDhwrY81K2pTAO74fa41V6foeHaI2QoOO6J7AXw92zYxw74jvcYWPQqriVLeQnFw9KDVmUU_8Jw';
+    this.headers = new HttpHeaders().set('content-type', 'application/json').set('Authorization', key);
+
+    this.data = {
+      to : 'ewmX9brtxTM:APA91bGwgy4vOy0Z21P23d6IRfLPWN0coYY6Bm8P20PSrXY1NGVLh886IuVn-rBLRgqhmkRBjRRYNeis' +
+      '53ZtDrEG7IQAN0xMv6O1W6BjIqosENMQau0_jzTj17BRGp4hfH2RXpa1Vs8T',
+      notification: {
+        title: 'Hisab Kitab',
+        body: 'Have you updated your today"\"s #HisabKitab?',
+        click_action: 'https://hisabkitab.in'
+
+      }
+    };
+    return this.http.post('https://fcm.googleapis.com/fcm/send', this.data, {headers: this.headers});
+  }
 }

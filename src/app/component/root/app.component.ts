@@ -14,14 +14,15 @@ import {FeedbackComponent} from '../feedback/feedback.component';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ContactComponent} from '../contact/contact.component';
 import {timer} from 'rxjs';
-import {ToastrService} from 'ngx-toastr';
-import {isBoolean} from 'util';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
+import {error} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [DatePipe],
+  providers: [DatePipe]
 })
 export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
@@ -45,16 +46,20 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   is_ZtAclicked = true;
   name_sort: any;
   time: string;
+  i: number;
+  inputElements: any;
   Filterform: FormGroup;
   notification: any;
-  Cash: number;
-  Cheque: number;
-  Account: number;
+  Cash = 1;
+  Cheque = 2;
+  Account = 3;
+  notifdata: any;
+  headers: any;
   private readonly _mobileQueryListener: () => void;
 
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
               private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService,
-              private timeFormat: DatePipe, private toast: ToastrService) {
+              private timeFormat: DatePipe, private http: HttpClient) {
     // public dialog: MatDialog,
     super(rtr);
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -72,11 +77,10 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'Fdate': new FormControl('', []),
       'FMinAmt': new FormControl('', []),
       'FMaxAmt': new FormControl('', []),
-      'Checkbox': new FormControl('', []),
     });
     /*Will call timeFormat function after every 60sec */
     timer(1000, 1000 * 60).subscribe(t => {
-     this.timeFormator(new Date());
+      this.timeFormator(new Date());
     });
     // setInterval(function() { alert('Do you add your Transaction'); }, 1000 * 60 * 60 * 6);
   }
@@ -140,7 +144,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.max_amount) {
       this.params.end_amount = this.max_amount;
     }
-    console.log(this.params);
+   // console.log(this.params);
     this.data.passfilter(this.params);
     this.isFilter = !this.isFilter;
     this.Filterform.reset();
@@ -175,13 +179,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
 
   notifyMe() {
     if (!('Notification' in window)) {
-     // alert('This browser does not support desktop notification');
-
-      this.notification = new Notification('Hi there!', <NotificationOptions>{
-        body: 'Have you added your daily transaction details?',
-        vibrate: [200, 100, 200, 100, 200, 100, 200],
-        tag: 'Hisab-kitab'
-      });
+      alert('This browser does not support desktop notification');
     } else if (Notification.prototype.permission === 'granted') {
       // If it's okay let's create a notification
       this.notification = new Notification('Hi there!', <NotificationOptions>{
@@ -202,5 +200,12 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
         }
       });
     }
+  }
+
+  FCMnotif() {
+    this.apiObject.FCMnotification().subscribe(
+      data => {
+        this.response = data;
+      });
   }
 }

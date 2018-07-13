@@ -20,7 +20,6 @@ export class LoginComponent extends SharedClass implements OnInit {
   username: string;
   password: string;
   response: any;
-  status: any;
   mail = new FormControl('', [Validators.required]);
   loginForm: FormGroup;
 

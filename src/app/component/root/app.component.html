@@ -29,7 +29,7 @@
       <!--nav menu-->
       <mat-nav-list (click)="snav.toggle()">
         <div>
-          <div class="profile" align="center">
+          <div class="profile" align="center" routerLink="/profile">
             <button mat-mini-fab class="profile_fab"><mat-icon>person</mat-icon></button>
             <p class="name">{{s_name}}</p>
             <p>{{s_mobile}}</p>
@@ -105,15 +105,19 @@
                 <!--<div class="radiobox">
                   <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
                     <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
-                  </mat-radio-group
+                  </mat-radio-group>
                 </div>-->
 
                 <div class="radiobox">
                   <!--<mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" [(ngModel)]="m.modeID" [ngModelOptions]="{standalone: true}">{{m.mode}}<p>{{m.id}}</p></mat-checkbox>-->
-                  <mat-checkbox class="checkpos" [value]="Cash">Cash</mat-checkbox>
-                  <mat-checkbox class="checkpos" [value]="Cheque">Cheque</mat-checkbox>
-                  <mat-checkbox class="checkpos" [value]="Account">Account</mat-checkbox>
-
+                  <mat-checkbox class="checkpos"  id="cash" (change)="Cash=1" >Cash</mat-checkbox>
+                  <mat-checkbox class="checkpos" id="cheque" (change)="Cheque=2" >Cheque</mat-checkbox>
+                  <mat-checkbox class="checkpos" id="account" (change)="Account=3" >Account</mat-checkbox>
+             <!--     <div class="radiobox">
+                  <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
+                    <mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" >{{m.mode}}</mat-checkbox>
+                  </mat-radio-group>s
+                </div>-->
                 </div>
                 <div align="center">
                   <p class="inline sort" >Sort By Price:</p>
@@ -127,7 +131,6 @@
               </div>
             </div>
           </form>
-
         </mat-card>
       </div>
 <!--      <div style="width: 17%; float: left; z-index: 1; position: absolute">

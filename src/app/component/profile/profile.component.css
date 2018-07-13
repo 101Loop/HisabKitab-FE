@@ -1,0 +1,99 @@
+.container{
+  width: 50%;
+}
+.img{
+  width: 70px;
+  height: 70px;
+}
+.border{
+  background-color: #909192;
+  z-index: 999;
+  border: solid 1px #c7c7c7;
+  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  margin-bottom: -35px;
+  margin-right: 1px;
+}
+.backArrow{
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.card{
+  width: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: transparent;
+}
+.col-xl-4{
+  float: right;
+}
+/*mat-icon{
+  margin: 20px 0 0 20px;
+}*/
+h2{
+  margin-top: -30px;
+  margin-bottom: 20px;
+}
+h3{
+  text-align: center;
+}
+mat-form-field.mat-form-field {
+  font-size: 12px;
+}
+.inputfield{
+  margin-bottom: -25px;
+  width: 80%;
+}
+.button{
+  background: #DA9403;
+  color: white;
+  margin-top: 5px;
+  width: 40%;
+  border-radius: 20px;
+}
+.password{
+  background: #1295c9;
+  color: white;
+  margin-top: -40px;
+  float: right;
+  margin-right: -25px;
+  padding-left: 2px;
+  font-size: 12px;
+  height: 25px;
+  border: none;
+}
+button.password.mat-button{
+padding-top: -10px;
+  padding-bottom: -10px;
+}
+.text{
+  text-align: center;
+}
+a{
+  color: blue;
+  cursor: pointer;
+}
+@media screen and (max-width: 700px) {
+  .password{
+  }
+  .inputfield{
+    width: 100%;
+  }
+  h3{
+    font-size: small;
+  }
+  .button{
+    width: 100%;
+  }
+  .password{
+    margin-right: -15px;
+  }
+  .card{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+}

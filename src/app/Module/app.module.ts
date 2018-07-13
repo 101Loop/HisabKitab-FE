@@ -4,12 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from '../component/root/app.component';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatFormFieldModule,
-  MatIconModule, MatInputModule, MatListModule,
-  MatMenuModule,
-  MatRadioModule, MatSelectModule,
-  MatSidenavModule, MatSliderModule, MatTabsModule,
-  MatToolbarModule
+  MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule,
+  MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatRadioModule, MatSelectModule,
+  MatSidenavModule, MatSliderModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +32,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FilterComponent } from '../component/filter/filter.component';
 import {FeedbackComponent} from '../component/feedback/feedback.component';
 import {ContactComponent} from '../component/contact/contact.component';
+import {ProfileComponent} from '../component/profile/profile.component';
+import {ChangePasswordComponent} from '../component/change-password/change-password.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +53,9 @@ import {ContactComponent} from '../component/contact/contact.component';
     ShowStatusComponent,
     FilterComponent,
     FeedbackComponent,
-    ContactComponent
+    ContactComponent,
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +89,6 @@ import {ContactComponent} from '../component/contact/contact.component';
     AngularFireModule.initializeApp(environment), AngularFireDatabaseModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

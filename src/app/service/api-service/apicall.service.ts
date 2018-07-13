@@ -113,6 +113,25 @@ export class APICallService {
     if (otp != null) {this.data.otp = otp; }
     return this.http.post(this.baseUrl + 'api/users/loginotp/', this.data).pipe(catchError(this.handleError));
   }
+  /*------for change password-----------------------------------------------------------------------------------------*/
+  changePassword(newPassword: string) {
+    this.data = {
+      new_password: newPassword,
+    };
+    return this.http.put(this.baseUrl + 'api/users/changepassword/', this.data, {headers: this.headers})
+      .pipe(catchError(this.handleError));
+  }
+  /*--------for update profile---------------------------------------------------------------------------------------*/
+  updateProfile(name: string, mobile: string, email: string) {
+    this.data = {
+      username: mobile,
+      name: name,
+      mobile: mobile,
+      email: email
+    };
+    return this.http.put(this.baseUrl + 'api/users/updateprofile/', this.data, {headers: this.headers})
+      .pipe(catchError(this.handleError));
+  }
   /*----------for fetching transactions-------------------------------------------------------------------------------*/
   fetchTransactions(data: any) {
     return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: data})

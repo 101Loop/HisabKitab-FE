@@ -1,0 +1,51 @@
+
+<mat-icon class="backArrow" (click)="this.location.back()">keyboard_backspace</mat-icon>
+<div align="center" >
+  <div >
+    <h2>Hisab Kitab</h2>
+  </div>
+  <div class="border">
+    <img src="/assets/images/man.png"  class=" img">
+  </div>
+  <mat-card class="card">
+    <div class="row">
+      <div class="col-xl-8">
+        <h3 >Profile</h3>
+        <!--Change Password Button-->
+        <button class="password" routerLink="/changepassword">Change Password</button>
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Name</mat-label>
+            <input  matInput placeholder="" value="{{s_name}}" >
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </P>
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Mobile</mat-label>
+            <input  matInput placeholder="" value="{{s_mobile}}">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </P>
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Email</mat-label>
+            <input  matInput placeholder=""  value="{{s_email}}">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </P>
+        <P>
+          <mat-form-field appearance="outline" class="inputfield">
+            <mat-label>Address</mat-label>
+            <input  matInput placeholder="Address">
+            <mat-icon matSuffix>home</mat-icon>
+          </mat-form-field>
+        </P>
+        <div>
+          <button mat-button class="button" (click)="onUpdate()">Update</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+

@@ -17,6 +17,8 @@ import {ShowStatusComponent} from '../component/show-status/show-status.componen
 import {FilterComponent} from '../component/filter/filter.component';
 import {FeedbackComponent} from '../component/feedback/feedback.component';
 import {ContactComponent} from '../component/contact/contact.component';
+import {ProfileComponent} from '../component/profile/profile.component';
+import {ChangePasswordComponent} from '../component/change-password/change-password.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
@@ -33,7 +35,9 @@ const routes: Routes = [
   { path: 'showstatus', component: ShowStatusComponent },
   { path: 'filter', component: FilterComponent },
   { path: 'feedback', component: FeedbackComponent},
-  { path: 'contact', component: ContactComponent}
+  { path: 'contact', component: ContactComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'changepassword', component: ChangePasswordComponent}
 ];
 
 @NgModule({

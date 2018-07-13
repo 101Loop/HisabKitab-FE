@@ -29,12 +29,10 @@ export class ProfileComponent extends SharedClass implements OnInit {
   onUpdate() {
     this.apiObject.updateProfile(this.s_name, this.s_mobile, this.s_email).subscribe(
       data => {
-        console.log(data);
         this.toast.success('Your profile updated successfully', 'Profile');
       }, error => {
         for (const mesg of error) {
           this.toast.error(mesg);
-          console.log(error);
         }
       }
     );

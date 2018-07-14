@@ -16,21 +16,21 @@
         <P>
           <mat-form-field appearance="outline" class="inputfield">
             <mat-label>Name</mat-label>
-            <input  matInput placeholder="" value="{{s_name}}" >
+            <input  matInput placeholder="" value="{{name}}" [(ngModel)]="name" >
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
         </P>
         <P>
           <mat-form-field appearance="outline" class="inputfield">
             <mat-label>Mobile</mat-label>
-            <input  matInput placeholder="" value="{{s_mobile}}">
+            <input  matInput placeholder="" value="{{mobile}}" [(ngModel)]="mobile">
             <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field>
         </P>
         <P>
           <mat-form-field appearance="outline" class="inputfield">
             <mat-label>Email</mat-label>
-            <input  matInput placeholder=""  value="{{s_email}}">
+            <input  matInput placeholder="" value="{{email}}" [(ngModel)]="email">
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
         </P>

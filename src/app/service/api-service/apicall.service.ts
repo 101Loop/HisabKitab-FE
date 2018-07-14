@@ -18,7 +18,6 @@ export class APICallService {
   message: any;
   constructor(private http: HttpClient) {}
   private handleError(error: HttpErrorResponse) {
-    // console.log('Error log: ', error);
     switch (error.status) {
       case 400: {
         if (error.error.data) {
@@ -134,6 +133,7 @@ export class APICallService {
   }
   /*----------for fetching transactions-------------------------------------------------------------------------------*/
   fetchTransactions(data: any) {
+    console.log(data);
     return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: data})
       .pipe(catchError(this.handleError));
   }

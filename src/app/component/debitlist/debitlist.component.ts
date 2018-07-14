@@ -34,12 +34,13 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   position: any;
   total_amount: any;
   total_count: any;
-  params = {category: 'D'};
+  params = {category: 'D', page: 1};
   error: any;
   PaymentmodeID: number;
   title = 'Debit History';
   response: any;
   respData: any[];
+  count = 1;
   constructor(public dialog: MatDialog, public data: DataService, private navbar: NavbarService, private apiObject: APICallService,
               private dateFormatter: DatePipe, private rtr: Router,  private toast: ToastrService) {
     super(rtr);
@@ -67,6 +68,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     });
   }
   getData() {
+    this.params.page = this.count;
     this.apiObject.fetchTransactions(this.params).subscribe(
       data => {
         this.response = data;
@@ -75,6 +77,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
         this.respData = this.response.results;
         if (this.respData.length > 0) {
           this.loading = false;
+          this.isData = false;
         } else {
           this.loading = false;
           this.isData = true;
@@ -86,10 +89,6 @@ export class DebitlistComponent extends SharedClass implements OnInit {
             this.isNetwork = true;
           }
           this.toast.error(mesg);
-          if (error[0] === 'Please check your internet connection!') {
-              this.isNetwork = true;
-            this.isData = true;
-          } else
           if (error[0] === 'A server side error occurred. Please report this to info@vitartha.com') {
             this.isServerError = true;
             this.isData = true;
@@ -102,8 +101,9 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
-      // console.log('bottom');
-      //  this.getData();
+      this.count = this.count + 1;
+      this.getData();
+      // console.log(this.count);
     }
   }
   dateFormat(date: any) {
@@ -136,7 +136,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
     });
   }
   openFeedback() {
-    const dialogRef = this.dialog.open(FeedbackComponent, {
+  this.dialog.open(FeedbackComponent, {
       height: '440px',
       width: '400px'
     });

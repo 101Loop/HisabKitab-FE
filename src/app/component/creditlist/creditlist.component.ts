@@ -38,7 +38,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   count = 1;
   modeID: any;
   error: any;
-  params = {category: 'C'/*, page: this.count*/};
+  params = {category: 'C', page: 1};
   response: any;
   respData: any[];
   PaymentmodeID: number;
@@ -63,6 +63,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
     });
   }
   getData() {
+    this.params.page = this.count;
     this.apiObject.fetchTransactions(this.params).subscribe(
       data => {
         this.response = data;
@@ -71,6 +72,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
         this.respData = this.response.results;
         if (this.respData.length > 0) {
           this.loading = false;
+          this.isData = false;
         } else {
           this.loading = false;
           this.isData = true;
@@ -82,10 +84,6 @@ export class CreditlistComponent extends SharedClass implements OnInit {
             this.isNetwork = true;
           }
           this.toast.error(mesg);
-          if (error[0] === 'Please check your internet connection!') {
-            this.isNetwork = true;
-            this.isData = true;
-          }
         }
       }
     );
@@ -94,8 +92,8 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
       // console.log('bottom');
-    // this.params.page = this.count + 1;
-      //  this.getData();
+        this.params.page = this.count + 1;
+        this.getData();
     }
   }
   dateFormat(date: any) {

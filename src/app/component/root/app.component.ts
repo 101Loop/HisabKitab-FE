@@ -81,7 +81,6 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     /*Will call timeFormat function after every 60sec */
     timer(1000, 1000 * 30).subscribe(t => {
       this.timeFormator(new Date());
-      this.FCMnotif();
     });
     // setInterval(function() { alert('Do you add your Transaction'); }, 1000 * 60 * 60 * 6);
   }

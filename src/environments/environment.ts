@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
- // baseUrl: 'http://192.168.1.107/',
-  baseUrl: 'https://y5sa0ot8y4.execute-api.ap-south-1.amazonaws.com/production/',
+  baseUrl: 'http://local.hisabkitab.in/',
   apiKey: 'AIzaSyBSPoo7dYUK5QyGCNk_vfdyIEevwq4A8Co',
   authDomain: 'hisabkitabin.firebaseapp.com',
   databaseURL: 'https://hisabkitabin.firebaseio.com',

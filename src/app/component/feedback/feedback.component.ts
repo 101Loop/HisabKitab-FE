@@ -31,7 +31,7 @@ export class FeedbackComponent extends SharedClass implements OnInit {
     });
   }
   onSubmit() {
-    console.log(this.feeded_name);
+   // console.log(this.feeded_name);
     this.apiObject.sendFeed(this.s_name, this.s_mobile, this.s_email, this.feeder_feeds).subscribe(
       data => {
        // console.log(data);

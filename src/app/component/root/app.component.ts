@@ -53,8 +53,8 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   Cash = 1;
   Cheque = 2;
   Account = 3;
-  notifdata: any;
-  headers: any;
+  FCM_Token: string;
+  token_visibility = false;
   private readonly _mobileQueryListener: () => void;
 
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
@@ -79,8 +79,9 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'FMaxAmt': new FormControl('', []),
     });
     /*Will call timeFormat function after every 60sec */
-    timer(1000, 1000 * 60).subscribe(t => {
+    timer(1000, 1000 * 30).subscribe(t => {
       this.timeFormator(new Date());
+      this.FCMnotif();
     });
     // setInterval(function() { alert('Do you add your Transaction'); }, 1000 * 60 * 60 * 6);
   }
@@ -167,16 +168,17 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   timeFormator(time: any) {
     this.time = this.timeFormat.transform(time, 'H-mm');
     if (this.time === '09-00') {
-      this.notifyMe();
+      this.FCMnotif();
     }
     if (this.time === '13-00') {
-      this.notifyMe();
+      this.FCMnotif();
     }
     if (this.time === '19-00') {
-      this.notifyMe();
+      this.FCMnotif();
     }
   }
 
+  /**Creating Notification**/
   notifyMe() {
     if (!('Notification' in window)) {
       alert('This browser does not support desktop notification');
@@ -202,10 +204,16 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     }
   }
 
+  /**Subscribing to FCMnotification() defined in apicall.service.ts to push notification**/
   FCMnotif() {
-    this.apiObject.FCMnotification().subscribe(
+    this.FCM_Token = document.getElementById('FCMtoken').innerHTML;
+    localStorage.setItem('FCM_key', this.FCM_Token);
+
+    this.apiObject.FCMnotification(localStorage.getItem('FCM_key')).subscribe(
       data => {
         this.response = data;
+        // console.log('fcm:' + localStorage.getItem('FCM_key'));
       });
   }
+
 }

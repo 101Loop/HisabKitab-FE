@@ -88,10 +88,10 @@ export class CreditlistComponent extends SharedClass implements OnInit {
       }
     );
   }
+  // load next page data on scroll down
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
-      // console.log('bottom');
         this.params.page = this.count + 1;
         this.getData();
     }

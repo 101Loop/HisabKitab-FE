@@ -98,12 +98,12 @@ export class DebitlistComponent extends SharedClass implements OnInit {
       }
     );
   }
+  // load next page data on scroll down
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
       this.count = this.count + 1;
       this.getData();
-      // console.log(this.count);
     }
   }
   dateFormat(date: any) {

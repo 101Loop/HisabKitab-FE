@@ -123,11 +123,11 @@ export class APICallService {
   /*--------for update profile---------------------------------------------------------------------------------------*/
   updateProfile(name: string, mobile: string, email: string) {
     this.data = {
-      username: mobile,
       name: name,
       mobile: mobile,
       email: email
     };
+    console.log(this.data);
     return this.http.put(this.baseUrl + 'api/users/updateprofile/', this.data, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }

@@ -65,7 +65,7 @@ export abstract class SharedClass implements OnInit {
         case '/signup': {break; }
         case '/otpverification': {break; }
         default: {
-          this.router.navigate(['/', 'login']);
+          this.router.navigate(['/', 'home']);
           break;
         }
       }

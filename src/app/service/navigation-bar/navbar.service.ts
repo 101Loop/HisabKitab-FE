@@ -7,6 +7,8 @@ export class NavbarService {
   visible: boolean;
   isShow: boolean;
   isSearch = false;
+  isLogin: boolean;
+  isHome: boolean;
   constructor() {this.visible = true; this.isShow = true;  }
   hide() { this.visible = false; }
   show() { this.visible = true; }
@@ -15,4 +17,8 @@ export class NavbarService {
   invisi() {this.isShow = false; }
   hideSearch() { this.isSearch = false; }
   showSearch() { this.isSearch = true; }
+  hideLogin() { this.isLogin = false; }
+  showLogin() { this.isLogin = true; }
+  hideHome() { this.isHome = false; }
+  showhome() { this.isHome = true; }
 }

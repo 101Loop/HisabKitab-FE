@@ -15,6 +15,8 @@
           <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="serach_query">
         </mat-form-field>
         <i class="fa fa-search" aria-hidden="true" (click)=" this.isSearch = !this.isSearch"></i>-->
+      <p class="inline" style="font-size: 14px; margin-right: 8px; font-weight: bold" routerLink="/login" *ngIf="this.navbar.isLogin">Sign In</p>
+      <p class="inline" style="font-size: 14px; margin-right: 8px; font-weight: bold" routerLink="/home" *ngIf="this.navbar.isHome">Home</p>
       <i class="fa fa-filter" aria-hidden="true" (click)="isFilter = !isFilter" *ngIf="this.navbar.isSearch"></i>
       <i class="fa fa-share-alt" aria-hidden="true" (click)="isShare = !isShare" ng-blur="isShare = false"></i>
     </div>

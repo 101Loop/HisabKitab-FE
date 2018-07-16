@@ -1,0 +1,138 @@
+
+.card{
+  background-color: #1295c9;
+  height: auto;
+}
+h1{
+  color: white;
+  font-size: 2em;
+}
+.search_block {
+  width: 75%;
+  border-radius: 30px;
+  background: #1295c9;
+  margin: 25px auto 50px auto;
+}
+.search_block .container {
+  overflow: hidden;
+  width: 100%;
+  border: solid 2px #fff;
+  border-radius: 25px;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.search_block .box_wapper:first-child {
+  margin-left: -22px;
+}
+.search_block .box_wapper:last-child {
+  border-right: none;
+  margin-right: -22px;
+}
+.search_block .box_wapper {
+  display: inline-block;
+  width: 25.3%;
+  text-align: center;
+  background-image: none !important;
+  cursor: pointer;
+  border-radius: 0;
+  padding: 15px;
+  font-size: 100%;
+  letter-spacing: 1px;
+  font-weight: 500;
+  -webkit-transition: background-color .25s linear;
+  transition: background-color .25s linear;
+  font-size: 16px;
+  border-right: 2px solid rgb(255, 255, 255);
+  color: #ffffff;
+  background-color: transparent;
+  border-radius: 0px !important;
+  position: relative;
+}
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .search_block {
+    width: 100%;
+    border: 0;
+    margin: 25px auto 0 auto;
+    background: none;
+  }
+  .search_block .container {
+    border: 0;
+    border-radius: 0;
+    margin-left: -10px;
+  }
+  .search_block .box_wapper:first-child {
+    margin-left: 0px;
+  }
+  .search_block .box_wapper:last-child {
+    margin-right: 0px;
+  }
+  .search_block .box_wapper {
+    width: 80%;
+    padding: 10px;
+    border: solid 2px #fff;
+    border-radius: 25px !important;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+}
+.family_card{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f6f6f6;
+}
+.family{
+  margin-bottom: 15px;
+}
+img{
+  width: 50px;
+  height: 50px;
+}
+hr{
+  width: 100px;
+  height: 1px;
+  background: #DA9403;
+  margin-top: -5px;
+}
+/*.row{*/
+/*width: 100%;*/
+/*}*/
+.column {
+  width: 33.33%;
+  text-align: center;
+  display: inline-block;
+}
+h6{
+  margin-top: -15px;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+ul{
+  margin-top: -10px;
+}
+a{
+  text-decoration: none;
+  color: #003253;
+}
+li{
+  list-style: none;
+  display: inline-block;
+  margin-right: 20px;
+}
+@media (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+  h1{
+    font-size: 1em;
+  }
+}
+

@@ -55,11 +55,12 @@
       return messaging.getToken();
     })
       .then(function (token) {
-       // console.log('Token:'+ token);
         var fcm = token;
-        window.onload = function () {
-          document.getElementById("FCMtoken").innerHTML = fcm;
-        }
+       // console.log('Token:'+ fcm);
+         // document.getElementById("FCMtoken").innerHTML = fcm;
+        localStorage.setItem('FCM_key', fcm);
+       // console.log('local:'+fcm);
+
       })
       .catch(function(err) {
          // console.log('Unable to get permission to notify.', err);

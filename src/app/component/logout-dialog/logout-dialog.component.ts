@@ -30,7 +30,7 @@ export class LogoutDialogComponent extends SharedClass implements OnInit {
         data => {
           // console.log(data);
           this.dialogRef.close();
-          this.toast.error('Your Transaction has been deleted', 'Delete Post');
+          this.toast.error('Your Transaction has been deleted.', 'Deleting Transaction!');
           window.location.reload();
         }, error => {
           this.dialogRef.close();

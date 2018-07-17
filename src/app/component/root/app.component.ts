@@ -17,6 +17,9 @@ import {timer} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 import {error} from '@angular/compiler/src/util';
+import {until} from 'selenium-webdriver';
+import elementIsSelected = until.elementIsSelected;
+import {Timestamp} from 'rxjs/internal/operators/timestamp';
 
 @Component({
   selector: 'app-root',
@@ -78,9 +81,11 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'FMinAmt': new FormControl('', []),
       'FMaxAmt': new FormControl('', []),
     });
-    /*Will call timeFormat function after every 60sec */
+    /*Will call timeFormat function after every 30sec */
     timer(1000, 1000 * 30).subscribe(t => {
       this.timeFormator(new Date());
+      // this.FCMnotif();
+
     });
     // setInterval(function() { alert('Do you add your Transaction'); }, 1000 * 60 * 60 * 6);
   }
@@ -123,15 +128,15 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.search_query) {
       this.params.search = this.search_query;
     }
-    // if (this.Cash) {
-    //   this.params.mode = this.Cash;
-    // }
-    // if (this.Cheque) {
-    //   this.params.mode = this.Cheque;
-    // }
-    // if (this.Account) {
-    //   this.params.mode = this.Account;
-    // }
+    /*if (this.Cash) {
+      this.params.mode = this.Cash;
+    }
+    if (this.Cheque) {
+      this.params.mode = this.Cheque;
+    }
+    if (this.Account) {
+      this.params.mode = this.Account;
+    }*/
     if (this.price_sort) {
       this.params.ordering = this.price_sort + 'amount';
     }
@@ -144,7 +149,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.max_amount) {
       this.params.end_amount = this.max_amount;
     }
-   // console.log(this.params);
+   console.log(this.params);
     this.data.passfilter(this.params);
     this.isFilter = !this.isFilter;
     this.Filterform.reset();
@@ -178,7 +183,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   }
 
   /**Creating Notification**/
-  notifyMe() {
+ /* notifyMe() {
     if (!('Notification' in window)) {
       alert('This browser does not support desktop notification');
     } else if (Notification.prototype.permission === 'granted') {
@@ -201,17 +206,17 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
         }
       });
     }
-  }
+  }*/
 
   /**Subscribing to FCMnotification() defined in apicall.service.ts to push notification**/
   FCMnotif() {
-    this.FCM_Token = document.getElementById('FCMtoken').innerHTML;
-    localStorage.setItem('FCM_key', this.FCM_Token);
+    // this.FCM_Token = document.getElementById('FCMtoken').innerHTML;
+    // localStorage.setItem('FCM_key', this.FCM_Token);
 
     this.apiObject.FCMnotification(localStorage.getItem('FCM_key')).subscribe(
       data => {
         this.response = data;
-        // console.log('fcm:' + localStorage.getItem('FCM_key'));
+         console.log('fcm:' + localStorage.getItem('FCM_key'));
       });
   }
 

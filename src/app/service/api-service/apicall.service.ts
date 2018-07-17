@@ -192,7 +192,7 @@ export class APICallService {
       to : fcmtoken,
       notification: {
         title: 'Hisab Kitab',
-        body: 'Have you updated your today"\"s #HisabKitab?',
+        body: 'Have you updated your today`s #HisabKitab?',
         click_action: 'https://hisabkitab.in'
 
       }

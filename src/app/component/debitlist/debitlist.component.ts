@@ -26,6 +26,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   isServerError = false;
   loading: boolean;
   isDelete = false;
+  isPaging: boolean;
   name: string;
   amount: string;
   post_id: string;
@@ -41,6 +42,7 @@ export class DebitlistComponent extends SharedClass implements OnInit {
   response: any;
   respData: any[];
   count = 1;
+  totalPage: number;
   constructor(public dialog: MatDialog, public data: DataService, private navbar: NavbarService, private apiObject: APICallService,
               private dateFormatter: DatePipe, private rtr: Router,  private toast: ToastrService) {
     super(rtr);
@@ -75,12 +77,16 @@ export class DebitlistComponent extends SharedClass implements OnInit {
         this.total_amount = this.response.total_amount;
         this.total_count = this.response.count;
         this.respData = this.response.results;
-        if (this.respData.length > 0) {
+        this.totalPage = Math.ceil(this.response.count / 10);
+        if (this.response.count > 0) {
           this.loading = false;
           this.isData = false;
         } else {
           this.loading = false;
           this.isData = true;
+        }
+        if (this.response.count > 10) {
+          this.isPaging = true;
         }
       }, error => {
         this.loading = false;
@@ -98,14 +104,26 @@ export class DebitlistComponent extends SharedClass implements OnInit {
       }
     );
   }
-  // load next page data on scroll down
+  onNext() {
+    if (this.count < this.totalPage ) {
+      this.count = this.count + 1;
+      this.getData();
+    }
+  }
+  onBack() {
+    if (this.count > 1) {
+      this.count = this.count - 1;
+      this.getData();
+    }
+  }
+/*  // load next page data on scroll down
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
       this.count = this.count + 1;
       this.getData();
     }
-  }
+  }*/
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
   }

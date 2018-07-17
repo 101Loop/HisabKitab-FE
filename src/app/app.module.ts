@@ -5,7 +5,7 @@ import { AppComponent } from './component/root/app.component';
 import {
   MatButtonModule,
   MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule,
-  MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatRadioModule, MatSelectModule,
+  MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatPaginatorModule, MatRadioModule, MatSelectModule,
   MatSidenavModule, MatSliderModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -35,8 +35,6 @@ import {ContactComponent} from './component/contact/contact.component';
 import {ProfileComponent} from './component/profile/profile.component';
 import {ChangePasswordComponent} from './component/change-password/change-password.component';
 import { LandingPageComponent } from './component/landing-page/landing-page.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +84,7 @@ import { LandingPageComponent } from './component/landing-page/landing-page.comp
     MatRadioModule,
     MatSliderModule,
     MatExpansionModule,
+    MatPaginatorModule,
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment), AngularFireDatabaseModule

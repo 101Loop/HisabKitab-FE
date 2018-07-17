@@ -1,8 +1,11 @@
-<div class="container" (scroll)="onScroll($event)">
+<div class="container">
   <div align="center">
     <mat-card class="card1">
       <h4 class="total" >Total Transaction(s): {{total_count}}</h4> |
       <h4 class="total">Total Amount:  <i class="fa fa-inr" style="font-size: 14px"></i>{{total_amount}}</h4></mat-card>
+    <div *ngIf="isPaging">
+     <button class="bt"><i class="fa fa-angle-double-left" disabled="isDisable" aria-hidden="true" (click)="onBack()"></i></button><button style="font-size: 15px" class="bt">{{count}}</button><button class="bt"><i class="fa fa-angle-double-right"  aria-hidden="true" (click)="onNext()"></i></button>
+  </div>
   </div>
   <div class="noData" *ngIf="isData" align="center">
     <p>You haven't added any Credit Transactions yet!<br>
@@ -29,6 +32,9 @@
       </div>
       <button class="delete" (click)="deletePost(i)" >Delete</button>
     </mat-card>
+  </div>
+  <div align="center" *ngIf="isPaging" style="margin-bottom: 10px">
+    <button class="bt"><i class="fa fa-angle-double-left" disabled="isDisable" aria-hidden="true" (click)="onBack()"></i></button><button style="font-size: 15px" class="bt">{{count}}</button><button class="bt"><i class="fa fa-angle-double-right"  aria-hidden="true" (click)="onNext()"></i></button>
   </div>
   <div class="buttondiv">
     <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()" *ngIf="isData">

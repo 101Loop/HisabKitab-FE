@@ -5,6 +5,7 @@ import {environment} from '../../../environments/environment';
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class APICallService {
   baseUrl = environment.baseUrl;
   data: any;
   message: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private rtr: Router) {}
   private handleError(error: HttpErrorResponse) {
     switch (error.status) {
       case 400: {
@@ -47,6 +48,10 @@ export class APICallService {
             this.message.push(x + ': ' + error.error.data[x][0]);
           }
         }
+        break;
+      }
+      case 429: {
+        this.message = ['Too many request'];
         break;
       }
       case 500: {
@@ -179,6 +184,7 @@ export class APICallService {
       email: email,
       message: feeds
     };
+    console.log(this.data);
     return this.http.post(this.baseUrl + 'api/feedback/', this.data, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }
@@ -194,7 +200,6 @@ export class APICallService {
         title: 'Hisab Kitab',
         body: 'Have you updated your today`s #HisabKitab?',
         click_action: 'https://hisabkitab.in'
-
       }
     };
     return this.http.post('https://fcm.googleapis.com/fcm/send', this.data, {headers: this.headers});

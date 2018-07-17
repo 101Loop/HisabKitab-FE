@@ -13,6 +13,7 @@ import {PostcreditComponent} from '../postcredit/postcredit.component';
 import {ShowStatusComponent} from '../show-status/show-status.component';
 import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
 import {FeedbackComponent} from '../feedback/feedback.component';
+import {st} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-hisabkitab-job-list',
@@ -26,6 +27,8 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   isServerError = false;
   loading: boolean;
   isDelete = false;
+  isPaging: boolean;
+  isDisable: boolean;
   name: string;
   amount: string;
   post_id: string;
@@ -36,6 +39,7 @@ export class CreditlistComponent extends SharedClass implements OnInit {
   total_count: any;
   page: string;
   count = 1;
+  totalPage: number;
   modeID: any;
   error: any;
   params = {category: 'C', page: 1};
@@ -70,12 +74,16 @@ export class CreditlistComponent extends SharedClass implements OnInit {
         this.total_amount = this.response.total_amount;
         this.total_count = this.response.count;
         this.respData = this.response.results;
-        if (this.respData.length > 0) {
+        this.totalPage = Math.ceil(this.response.count / 10);
+        if (this.response.count > 0) {
           this.loading = false;
           this.isData = false;
         } else {
           this.loading = false;
           this.isData = true;
+        }
+        if (this.response.count > 10) {
+          this.isPaging = true;
         }
       }, error => {
         this.loading = false;
@@ -88,14 +96,26 @@ export class CreditlistComponent extends SharedClass implements OnInit {
       }
     );
   }
-  // load next page data on scroll down
+  onNext() {
+    if (this.count < this.totalPage ) {
+    this.count = this.count + 1;
+    this.getData();
+  }
+  }
+  onBack() {
+    if (this.count > 1) {
+    this.count = this.count - 1;
+    this.getData();
+  }
+  }
+/*  // load next page data on scroll down
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
     if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight) {
         this.params.page = this.count + 1;
         this.getData();
     }
-  }
+  }*/
   dateFormat(date: any) {
     this.create_date =  this.dateFormatter.transform(date, 'yyyy-MM-dd');
   }

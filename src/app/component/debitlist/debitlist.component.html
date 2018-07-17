@@ -50,11 +50,14 @@
     <p class="fa">Filter</p><i class="fa fa-filter" aria-hidden="true"></i>
   </div>&ndash;&gt;
 </div>-->
-<div class="container" (scroll)="onScroll($event)">
+<div class="container">
   <div align="center">
     <mat-card class="card1">
       <h4 class="total">Total Transaction(s): {{total_count}}</h4> |
       <h4 class="total">Total Amount:  <i class="fa fa-inr" style="font-size: 14px">  </i>{{total_amount}}</h4></mat-card>
+    <div *ngIf="isPaging">
+      <button class="bt"><i class="fa fa-angle-double-left" disabled="isDisable" aria-hidden="true" (click)="onBack()"></i></button><button style="font-size: 15px" class="bt">{{count}}</button><button class="bt"><i class="fa fa-angle-double-right"  aria-hidden="true" (click)="onNext()"></i></button>
+    </div>
   </div>
   <div *ngIf="isData" class="noData" align="center">
     <p>You haven't added any Debit Transactions yet!<br>
@@ -82,6 +85,9 @@
       </div>
       <button class="delete" (click)="deletePost(i)" >Delete</button>
     </mat-card>
+  </div>
+  <div align="center" *ngIf="isPaging" style="margin-bottom: 10px">
+    <button class="bt"><i class="fa fa-angle-double-left" disabled="isDisable" aria-hidden="true" (click)="onBack()"></i></button><button style="font-size: 15px" class="bt">{{count}}</button><button class="bt"><i class="fa fa-angle-double-right"  aria-hidden="true" (click)="onNext()"></i></button>
   </div>
   <div align="center">
     <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">

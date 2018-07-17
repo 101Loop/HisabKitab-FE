@@ -20,6 +20,7 @@ import {ProfileComponent} from './component/profile/profile.component';
 import {ChangePasswordComponent} from './component/change-password/change-password.component';
 import {LandingPageComponent} from './component/landing-page/landing-page.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: LandingPageComponent},

@@ -51,7 +51,6 @@
 .card1{
   width: 60%;
   margin: 10px auto;
-  margin-bottom: 15px;
   border-radius: 10px;
   padding: 4px;
 }
@@ -199,7 +198,15 @@ mat-form-field.mat-form-field {
 .amount{
   margin-top: -10px;
 }
-
+.bt{
+  height: 25px;
+  background-color: white;
+  border: solid 1px #c7c7c7;
+  color: #1295c9;
+  cursor: pointer;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 @media screen and (max-width: 500px) {
   .button{
     position: fixed;

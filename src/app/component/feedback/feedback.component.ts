@@ -14,15 +14,18 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class FeedbackComponent extends SharedClass implements OnInit {
   feedForm: FormGroup;
-  feeded_name = this.s_name;
-  feeder_contact =  this.s_mobile;
-  feeder_mail = this.s_email;
+  feeded_name: string;
+  feeder_contact: string;
+  feeder_mail: string;
   feeder_feeds: string;
   constructor( private apiObject: APICallService, private rtr: Router, public dialogRef: MatDialogRef<FeedbackComponent>,
                private toast: ToastrService) { super(rtr); }
 
   ngOnInit() {
     super.ngOnInit();
+    this.feeded_name = this.s_name;
+    this.feeder_contact =  this.s_mobile;
+    this.feeder_mail = this.s_email;
     this.feedForm = new FormGroup({
       'name': new FormControl('', ),
       'email' : new FormControl('',  ),
@@ -31,12 +34,15 @@ export class FeedbackComponent extends SharedClass implements OnInit {
     });
   }
   onSubmit() {
-   // console.log(this.feeded_name);
-    this.apiObject.sendFeed(this.s_name, this.s_mobile, this.s_email, this.feeder_feeds).subscribe(
+    this.apiObject.sendFeed(this.feeded_name, this.feeder_contact, this.feeder_mail, this.feeder_feeds).subscribe(
       data => {
        // console.log(data);
         this.dialogRef.close();
         this.toast.success(' Thank you for your feedback :)', 'Feedback');
+      }, error => {
+        for (const mesg of error) {
+          this.toast.error(mesg);
+        }
       }
     );
   }

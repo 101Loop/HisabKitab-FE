@@ -7,6 +7,7 @@ import {APICallService} from './service/api-service/apicall.service';
 
 export abstract class SharedClass implements OnInit {
   KEY_TOKEN = 'TOKEN';
+  isToken: boolean;
   token: string;
   token_data: any;
   s_name: string;
@@ -28,8 +29,10 @@ export abstract class SharedClass implements OnInit {
       this.s_name = this.token_data.name;
       this.s_email = this.token_data.email;
       this.s_mobile = this.token_data.mobile;
+      this.isToken = true;
       return true;
     } else {
+      this.isToken = false;
       return false;
     }
   }
@@ -38,6 +41,14 @@ export abstract class SharedClass implements OnInit {
     const url = this.router.url;
     if (this.isLoggedIn()) {
       switch (url) {
+        // case '/': {
+        //   this.router.navigate(['/', 'dashboard']);
+        //   break;
+        // }
+        // case '/home': {
+        //   this.router.navigate(['/', 'dashboard']);
+        //   break;
+        // }
         case '/login': {
           this.router.navigate(['/', 'dashboard']);
           break;
@@ -59,6 +70,7 @@ export abstract class SharedClass implements OnInit {
     } else {
       switch (url) {
         case '/': {break; }
+        case '/home': {break; }
         case '/login': {break; }
         case '/forgetpassword': {
           break; }

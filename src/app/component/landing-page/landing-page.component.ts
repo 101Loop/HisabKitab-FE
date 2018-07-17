@@ -14,6 +14,7 @@ export class LandingPageComponent implements OnInit {
     this.navbar.hideSearch();
     this.navbar.hideHome();
     this.navbar.showLogin();
+    this.navbar.showDash();
   }
   ngOnInit() {
   }

@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {SharedClass} from '../../shared-class';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,8 @@ export class NavbarService {
   isSearch = false;
   isLogin: boolean;
   isHome: boolean;
-  constructor() {this.visible = true; this.isShow = true;  }
+  isDash: boolean;
+  constructor() {this.visible = true; this.isShow = true; }
   hide() { this.visible = false; }
   show() { this.visible = true; }
   toggle() { this.visible = !this.visible; }
@@ -21,4 +24,6 @@ export class NavbarService {
   showLogin() { this.isLogin = true; }
   hideHome() { this.isHome = false; }
   showhome() { this.isHome = true; }
+  hideDash() { this.isDash = false; }
+  showDash() { this.isDash = true; }
 }

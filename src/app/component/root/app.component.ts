@@ -34,6 +34,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   isShare = false;
   isFilter = false;
   isDelete = false;
+  isDashboard: boolean;
   modeID: number;
   create_date: any;
   search_query: string;
@@ -72,6 +73,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
 
   ngOnInit() {
     super.ngOnInit();
+    this.isDashboard = this.isToken;
     this.data.currentMessage.subscribe(message => this.title = message);
     this.getMode(this.apiObject);
     this.Filterform = new FormGroup({
@@ -81,7 +83,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'FMinAmt': new FormControl('', []),
       'FMaxAmt': new FormControl('', []),
     });
-    /*Will call timeFormat function after every 30sec */
+    /*Will call timeFormat function after every 60sec */
     timer(1000, 1000 * 30).subscribe(t => {
       this.timeFormator(new Date());
       // this.FCMnotif();
@@ -128,15 +130,15 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.search_query) {
       this.params.search = this.search_query;
     }
-    /*if (this.Cash) {
-      this.params.mode = this.Cash;
-    }
-    if (this.Cheque) {
-      this.params.mode = this.Cheque;
-    }
-    if (this.Account) {
-      this.params.mode = this.Account;
-    }*/
+    // if (this.Cash) {
+    //   this.params.mode = this.Cash;
+    // }
+    // if (this.Cheque) {
+    //   this.params.mode = this.Cheque;
+    // }
+    // if (this.Account) {
+    //   this.params.mode = this.Account;
+    // }
     if (this.price_sort) {
       this.params.ordering = this.price_sort + 'amount';
     }
@@ -149,7 +151,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.max_amount) {
       this.params.end_amount = this.max_amount;
     }
-   console.log(this.params);
+   // console.log(this.params);
     this.data.passfilter(this.params);
     this.isFilter = !this.isFilter;
     this.Filterform.reset();
@@ -206,7 +208,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
         }
       });
     }
-  }*/
+  }
 
   /**Subscribing to FCMnotification() defined in apicall.service.ts to push notification**/
   FCMnotif() {
@@ -216,7 +218,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     this.apiObject.FCMnotification(localStorage.getItem('FCM_key')).subscribe(
       data => {
         this.response = data;
-         console.log('fcm:' + localStorage.getItem('FCM_key'));
+        // console.log('fcm:' + localStorage.getItem('FCM_key'));
       });
   }
 

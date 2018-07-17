@@ -105,24 +105,24 @@
                     <input  matInput placeholder="Max" name="email" type="search" [(ngModel)]="max_amount" formControlName="FMaxAmt">
                   </mat-form-field>
                 </div>
-                <!--<div class="radiobox">
+                <div class="radiobox">
                   <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
                     <mat-radio-button class="checkpos" *ngFor="let m of mode_api_results" [value]=m.id>{{m.mode}}</mat-radio-button>
                   </mat-radio-group>
-                </div>-->
-
-                <div class="radiobox">
-                  <!--<mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" [(ngModel)]="m.modeID" [ngModelOptions]="{standalone: true}">{{m.mode}}<p>{{m.id}}</p></mat-checkbox>-->
-                  <mat-checkbox class="checkpos"  id="cash" (change)="Cash=1" >Cash</mat-checkbox>
-                  <mat-checkbox class="checkpos" id="cheque" (change)="Cheque=2" >Cheque</mat-checkbox>
-                  <mat-checkbox class="checkpos" id="account" (change)="Account=3" >Account</mat-checkbox>
-                  <p></p>
-             <!--     <div class="radiobox">
-                  <mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">
-                    <mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" >{{m.mode}}</mat-checkbox>
-                  </mat-radio-group>s
-                </div>-->
                 </div>
+
+                <!--<div class="radiobox">-->
+                  <!--&lt;!&ndash;<mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" [(ngModel)]="m.modeID" [ngModelOptions]="{standalone: true}">{{m.mode}}<p>{{m.id}}</p></mat-checkbox>&ndash;&gt;-->
+                  <!--<mat-checkbox class="checkpos"  id="cash" (change)="Cash=1" >Cash</mat-checkbox>-->
+                  <!--<mat-checkbox class="checkpos" id="cheque" (change)="Cheque=2" >Cheque</mat-checkbox>-->
+                  <!--<mat-checkbox class="checkpos" id="account" (change)="Account=3" >Account</mat-checkbox>-->
+                  <!--<p></p>-->
+             <!--&lt;!&ndash;     <div class="radiobox">-->
+                  <!--<mat-radio-group [(ngModel)]="modeID" [ngModelOptions]="{standalone: true}">-->
+                    <!--<mat-checkbox class="checkpos" *ngFor="let m of mode_api_results"  [value]="m.id" >{{m.mode}}</mat-checkbox>-->
+                  <!--</mat-radio-group>s-->
+                <!--</div>&ndash;&gt;-->
+                <!--</div>-->
                 <div align="center">
                   <p class="inline sort" >Sort By Price:</p>
                   <p class="inline sorting sort" (click)="price_sort= '+'; is_H2Lclicked = !is_H2Lclicked; isL2Hclicked = !isL2Hclicked" [class.selectedoption]="is_H2Lclicked">Low-High</p>

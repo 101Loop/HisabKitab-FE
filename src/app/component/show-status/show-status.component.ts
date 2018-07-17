@@ -61,6 +61,8 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
           this.PMode = '3';
         } else if (this.PaymentModeId === 'Cheque') {
           this.PMode = '2';
+        } else if (this.PaymentModeId === 'Card') {
+          this.PMode = '4';
         }
 
     this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.PMode).subscribe(

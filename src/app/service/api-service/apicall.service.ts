@@ -67,7 +67,7 @@ export class APICallService {
         break;
       }
       default: {
-        this.message = [error.error.message];
+        this.message = [error.error];
         break;
       }
     }

@@ -130,15 +130,9 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.search_query) {
       this.params.search = this.search_query;
     }
-    // if (this.Cash) {
-    //   this.params.mode = this.Cash;
-    // }
-    // if (this.Cheque) {
-    //   this.params.mode = this.Cheque;
-    // }
-    // if (this.Account) {
-    //   this.params.mode = this.Account;
-    // }
+    if (this.modeID) {
+      this.params.mode = this.modeID;
+    }
     if (this.price_sort) {
       this.params.ordering = this.price_sort + 'amount';
     }

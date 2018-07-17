@@ -35,7 +35,7 @@
       <div class="radiobox">
         <p>Payment Mode:</p>
         <mat-radio-group [(ngModel)]="modeID" formControlName="radio">
-          <mat-radio-button  class="checkpos" *ngFor="let m of mode_api_results" name="gender" [value]=m.id >{{m.mode}}</mat-radio-button>
+          <mat-radio-button  style="padding-left: 1px" class="checkpos" *ngFor="let m of mode_api_results" name="gender" [value]=m.id >{{m.mode}}</mat-radio-button>
         </mat-radio-group>
       </div>
 

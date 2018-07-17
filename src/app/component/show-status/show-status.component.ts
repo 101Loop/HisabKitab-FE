@@ -7,6 +7,7 @@ import {ToastrService} from 'ngx-toastr';
 import {SharedClass} from '../../shared-class';
 import {PostcreditComponent} from '../postcredit/postcredit.component';
 import {DataService} from '../../service/data-service/data.service';
+import {SuccessMessageComponent} from '../success-message/success-message.component';
 
 @Component({
   selector: 'app-show-status',
@@ -29,7 +30,7 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   isOpen = true;
   PMode: string;
   constructor(private rtr: Router, private navbar: NavbarService,  public dialogRef: MatDialogRef<ShowStatusComponent>,
-              private apiObject: APICallService, private data: DataService, private toast: ToastrService) {
+              private apiObject: APICallService, private data: DataService, private toast: ToastrService, public dialog: MatDialog) {
     super(rtr);
     this.navbar.show();
     this.getMode(this.apiObject);
@@ -67,8 +68,9 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
 
     this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.PMode).subscribe(
           data => {
-            this.toast.success('Transaction has beed updated', 'Update');
-            window.location.reload();
+            this.dialog.open(SuccessMessageComponent, {});
+            // this.toast.success('Transaction has beed updated', 'Update');
+            // window.location.reload();
             this.dialogRef.close();
             this.loading = false;
           /*

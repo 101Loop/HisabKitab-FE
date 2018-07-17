@@ -84,7 +84,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       'FMaxAmt': new FormControl('', []),
     });
     /*Will call timeFormat function after every 60sec */
-    timer(1000, 1000 * 30).subscribe(t => {
+    timer(1000, 1000 * 45).subscribe(t => {
       this.timeFormator(new Date());
       // this.FCMnotif();
 
@@ -173,7 +173,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
     if (this.time === '13-00') {
       this.FCMnotif();
     }
-    if (this.time === '19-00') {
+    if (this.time === '20-30') {
       this.FCMnotif();
     }
   }

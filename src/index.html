@@ -2,15 +2,65 @@
 <html lang="en">
 
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N3XRXB3');</script>
+  <!-- End Google Tag Manager -->
+
   <meta charset="utf-8">
-  <title>Hisab Kitab</title>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>Hisab Kitab | Easiest way to track Money Flow</title>
   <base href="/">
+  <meta charset="UTF-8">
+  <meta name="description" content="Easiest way to track Money Flow">
+  <meta name="keywords" content="Hisab, Kitab, Vitartha, Money, Management, Flow, Flow of Money, Transactions, Personal, Accounting">
+  <meta name="author" content="Vitartha LLP">
   <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <link rel="icon" type="image/x-icon" href="assets/images/hissab-kitab.png">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <meta name="theme-color" content="#1976d2">
+
+  <meta name="subject" content="Money Management">
+  <meta name="copyright"content="Vitartha LLP">
+  <meta name="revised" content="Thursday, July 19th, 2018, 5:15 pm" />
+  <meta name="topic" content="Finance">
+  <meta name="summary" content="Hisab Kitab | Easiest way to track Money Flow | Money Management">
+  <meta name="Classification" content="Application">
+  <meta name="author" content="Vitartha LLP, info@vitartha.com">
+  <meta name="reply-to" content="info@vitartha.com">
+  <meta name="owner" content="Vitartha LLP">
+  <meta name="url" content="https://hisabkitab.in">
+  <meta name="identifier-URL" content="https://hisabkitab.in">
+  <meta name="category" content="Application">
+  <meta name="coverage" content="Worldwide">
+  <meta name="distribution" content="Global">
+  <meta name="rating" content="General">
+
+  <!-- Google meta tags -->
+  <meta name="google-site-verification" content="LOyav7yIhzKqr7YXjm2TswrigXL-C04zhHDYp_3_oP4" />
+
+  <meta name="description" content="Easiest way to track Money Flow" />
+  <meta http-equiv="Content-Type" content="Easiest way to track Money Flow" charset="UTF-8" />
+  <meta name="robots" content="Hisab Kitab | Easiest way to track Money Flow">
+  <meta name="googlebot" content="Hisab Kitab | Easiest way to track Money Flow" />
+  <meta name="google" content="nositelinkssearchbox"/>
+
+  <!-- Facebook meta tags -->
+  <meta property="og:url" content="https://hisabkitab.in" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hisab Kitab" />
+  <meta property="og:description" content="Easiest way to track Money Flow" />
+  <meta property="og:image" content="https://hisabkitab.in/assets/images/hissab-kitab.png" />
+
+  <!-- Twitter meta tags -->
+  <meta name="twitter:card" content="app" />
+  <meta name="twitter:site" content="@vitartha" />
+  <meta name="twitter:creator" content="@vitartha" />
 
   <!-- Firebase App is always required and must be first -->
   <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js"></script>
@@ -22,6 +72,43 @@
   <!--Script for Google Platform Library (for sign in with G+)-->
   <meta name="google-signin-client_id" content="1011998306961-jses4go0dm3garppk70m0u7vajlkbdom.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!--Google Schema.org-->
+  <!--
+  "browserRequirements": "Open-source framework for publishing content",
+          "featureList": "2015-10-07T12:02:41Z",
+        "releaseNotes": "2015-10-07T12:02:41Z",
+                "softwareAddOn": "2015-10-07T12:02:41Z",
+  -->
+  <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebApplication",
+        "applicationCategory": "Finance",
+        "applicationSubCategory": "Money Management",
+        "softwareVersion": "2015-10-07T12:02:41Z",
+        "about": "Hisab Kitab is a finance software that one can use to easily track money flow.",
+        "operatingSystem": "All",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "ratingCount": "12",
+          "ratingValue": "4.7"
+        },
+        "author": {
+          "@type": "Organization",
+          "url": "https://www.vitartha.com",
+          "name": "Vitartha LLP",
+          "logo": "https://vitartha.com/assets/images/favicon.ico",
+          "sameAs": [
+            "https://www.facebook.com/vitarthaa",
+            "https://instagram.com/vitarthaa",
+            "https://in.linkedin.com/company/vitartha",
+            "https://plus.google.com/+Vitartha"
+          ]
+        }
+      }
+    </script>
 
   <!--Script for fb button-->
   <script>
@@ -56,18 +143,18 @@
     })
       .then(function (token) {
         var fcm = token;
-       // console.log('Token:'+ fcm);
-         // document.getElementById("FCMtoken").innerHTML = fcm;
+        // console.log('Token:'+ fcm);
+        // document.getElementById("FCMtoken").innerHTML = fcm;
         localStorage.setItem('FCM_key', fcm);
-       // console.log('local:'+fcm);
+        // console.log('local:'+fcm);
 
       })
       .catch(function(err) {
-         // console.log('Unable to get permission to notify.', err);
+        // console.log('Unable to get permission to notify.', err);
       });
 
     messaging.onMessage(function (payload) {
-     // console.log('onMessage', payload);
+      // console.log('onMessage', payload);
 
     });
 
@@ -79,12 +166,12 @@
         // FCMnotification(currentToken);
       } else {
         // Show permission request.
-      //  console.log('No Instance ID token available. Request permission to generate one.');
+        //  console.log('No Instance ID token available. Request permission to generate one.');
         // Show permission UI.
         setTokenSentToServer(false);
       }
     }).catch(function(err) {
-     // console.log('An error occurred while retrieving token. ', err);
+      // console.log('An error occurred while retrieving token. ', err);
       //showToken('Error retrieving Instance ID token. ', err);
       setTokenSentToServer(false);
     });
@@ -92,7 +179,7 @@
     // Callback fired if Instance ID token is updated.
     messaging.onTokenRefresh(function() {
       messaging.getToken().then(function(refreshedToken) {
-       // console.log('Token refreshed.');
+        // console.log('Token refreshed.');
         // Indicate that the new Instance ID token has not yet been sent to the
         // app server.
         setTokenSentToServer(false);
@@ -110,12 +197,12 @@
     // - subscribe/unsubscribe the token from topics
     function sendTokenToServer(currentToken) {
       if (!isTokenSentToServer()) {
-      //  console.log('Sending token to server...');
+        //  console.log('Sending token to server...');
         // TODO(developer): Send the current token to your server.
         setTokenSentToServer(true);
       } else {
-       // console.log('Token already sent to server so won\'t send it again ' +
-       //   'unless it changes');
+        // console.log('Token already sent to server so won\'t send it again ' +
+        //   'unless it changes');
       }
     }
     function isTokenSentToServer() {
@@ -128,77 +215,77 @@
   </script>
 
   <!--Script for Login with Facebook Integration-->
- <!-- <script>
-    // This is called with the results from from FB.getLoginStatus().
-    function statusChangeCallback(response) {
-//      console.log(response);
-  //    console.log('Token:'+ response.authResponse.accessToken);
-      // The response object is returned with a status field that lets the
-      // app know the current login status of the person.
-      // Full docs on the response object can be found in the documentation
-      // for FB.getLoginStatus().
-      if (response.status === 'connected') {
-        // Logged into your app and Facebook.
-        var FBToken = response.authResponse.accessToken;
-      //  console.log('token after connection:'+ FBToken);
-        testAPI();
-      } else {
-        // The person is not logged into your app or we are unable to tell.
-        document.getElementById('status').innerHTML = 'Please log ' +
-          'into this app.';
-      }
-    }
+  <!-- <script>
+     // This is called with the results from from FB.getLoginStatus().
+     function statusChangeCallback(response) {
+ //      console.log(response);
+   //    console.log('Token:'+ response.authResponse.accessToken);
+       // The response object is returned with a status field that lets the
+       // app know the current login status of the person.
+       // Full docs on the response object can be found in the documentation
+       // for FB.getLoginStatus().
+       if (response.status === 'connected') {
+         // Logged into your app and Facebook.
+         var FBToken = response.authResponse.accessToken;
+       //  console.log('token after connection:'+ FBToken);
+         testAPI();
+       } else {
+         // The person is not logged into your app or we are unable to tell.
+         document.getElementById('status').innerHTML = 'Please log ' +
+           'into this app.';
+       }
+     }
 
-    // This function is called when someone finishes with the Login
-    // Button.  See the onlogin handler attached to it in the sample
-    // code below.
-    function checkLoginState() {
-      FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-      });
-    }
+     // This function is called when someone finishes with the Login
+     // Button.  See the onlogin handler attached to it in the sample
+     // code below.
+     function checkLoginState() {
+       FB.getLoginStatus(function(response) {
+         statusChangeCallback(response);
+       });
+     }
 
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '624942187864135',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v3.0'
-      });
+     window.fbAsyncInit = function() {
+       FB.init({
+         appId      : '624942187864135',
+         cookie     : true,
+         xfbml      : true,
+         version    : 'v3.0'
+       });
 
-      FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-      });
+       FB.getLoginStatus(function(response) {
+         statusChangeCallback(response);
+       });
 
-      FB.AppEvents.logPageView();
+       FB.AppEvents.logPageView();
 
-    };
-
-
-
-    (function(d, s, id){
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+     };
 
 
-    // Here we run a very simple test of the Graph API after login is
-    // successful.  See statusChangeCallback() for when this call is made.
-    // Retreiving email, name and id of user
-    function testAPI() {
-     // console.log('Welcome!  Fetching your information.... ');
-      FB.api('/me?fields=email,name', function (response) {
-      //  console.log(response);
-       // console.log('Successful login for: ' + response.name);
-      /*  document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';*/
-      });
-    }
 
-  </script>-->
+     (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+
+     // Here we run a very simple test of the Graph API after login is
+     // successful.  See statusChangeCallback() for when this call is made.
+     // Retreiving email, name and id of user
+     function testAPI() {
+      // console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me?fields=email,name', function (response) {
+       //  console.log(response);
+        // console.log('Successful login for: ' + response.name);
+       /*  document.getElementById('status').innerHTML =
+           'Thanks for logging in, ' + response.name + '!';*/
+       });
+     }
+
+   </script>-->
 
 
 
@@ -235,6 +322,10 @@
 </head>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3XRXB3"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!--For FB button-->
 <div id="fb-root"></div>

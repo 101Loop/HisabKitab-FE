@@ -54,10 +54,10 @@
         </div>
       </form>
     </div>
-    <p class="text">Already have an account? <a (click)="goBack()">Login</a></p>
+    <p class="text">Already have an account? <a (click)="this.rtr.navigate(['/', 'login'])">Login</a></p>
 
   </mat-card>
-  <div>
+  <!--<div>
     <img class="loader" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
-  </div>
+  </div>-->
 </div>

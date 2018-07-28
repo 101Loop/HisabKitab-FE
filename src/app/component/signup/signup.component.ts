@@ -26,17 +26,14 @@ export class SignupComponent extends SharedClass implements OnInit {
   userPassword: string;
   confirmPassword: string;
   resp: any;
-  constructor(public location: Location, public navbar: NavbarService, private http: HttpClient, private rtr: Router,
+  constructor(public location: Location, public navbar: NavbarService, private http: HttpClient, public rtr: Router,
               private apiObject: APICallService, private toast: ToastrService) {
     // public dialog: MatDialog
     super(rtr);
     this.navbar.hide();
     this.navbar.visi();
   }
-  goBack() {
-    this.rtr.navigate(['/', 'login']);
-    window.location.reload();
-  }
+
   onSuccess(): void {
     if (this.userPassword === this.confirmPassword) {
     this.loading = true;

@@ -62,7 +62,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   private readonly _mobileQueryListener: () => void;
 
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
-              private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService,
+              private data: DataService, public location: Location, public rtr: Router, private apiObject: APICallService,
               private timeFormat: DatePipe, private http: HttpClient) {
     // public dialog: MatDialog,
     super(rtr);
@@ -103,16 +103,6 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       width: '250px'
     });
   }
-
-  goback() {
-    this.rtr.navigate(['/', 'login']);
-    window.location.reload();
-  }
-
-  Reload() {
-    window.location.reload();
-  }
-
   openFilter() {
     /* const dialogRef = this.dialog.open(FilterComponent, {
        height: '400px',

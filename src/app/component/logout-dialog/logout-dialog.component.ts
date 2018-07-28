@@ -43,7 +43,6 @@ export class LogoutDialogComponent extends SharedClass implements OnInit {
       // TODO: Implement Promise function of navigate
       this.rtr.navigate(['/', 'home']);
       localStorage.clear();
-      window.location.reload();
       this.dialogRef.close();
     }
   }

@@ -191,7 +191,7 @@ and (orientation : portrait) {
     width: 60%;
     margin: 10px;
   }
-  .loader{
+  .loader_icon{
     position: absolute;
     top: 31%;
     margin-left: -84px;
@@ -216,7 +216,7 @@ and (orientation : portrait) {
     width: 70%;
     margin: 10px;
   }
-  .loader{
+  .loader_icon{
     position: absolute;
     top: 56%;
     margin-left: -78px;

@@ -40,7 +40,7 @@ export class LoginComponent extends SharedClass implements OnInit {
       'mail': new FormControl('', [Validators.required]),
       'password': new FormControl('', [Validators.required])
     });
-    /*Script for Initial Loader Screen*/
+   /* /!*Script for Initial Loader Screen*!/
     document.onreadystatechange = function () {
       if (document.readyState === 'loading') {
         document.getElementById('loginscreenID').style.display = 'none';
@@ -49,7 +49,7 @@ export class LoginComponent extends SharedClass implements OnInit {
         document.getElementById('loaderId').style.display = 'none';
         document.getElementById('loginscreenID').style.display = 'block';
       }
-    };
+    };*/
   }
 
   onClick() {

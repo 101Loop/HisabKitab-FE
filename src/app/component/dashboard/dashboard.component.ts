@@ -36,14 +36,14 @@ export class DashboardComponent extends SharedClass implements OnInit {
   }
   ngOnInit() {
     super.ngOnInit();
-    /*For Loader*/
+   /* /!*For Loader*!/
     document.onreadystatechange = function () {
       if (document.readyState === 'loading') {
         document.getElementById('loaderId').style.display = 'block';
       } else if (document.readyState === 'complete') {
         document.getElementById('loaderId').style.display = 'none';
       }
-    };
+    };*/
   }
   openFeedback() {
     const dialogRef = this.dialog.open(FeedbackComponent, {

@@ -1,11 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!--c09d2dd6b22f45dc9e4afd4f466ab63a-->
-
+<div id="loaderScreenId">
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
 
   <mat-toolbar color="primary" class="example-toolbar" style="background:#2d576b">
     <button mat-icon-button (click)="snav.toggle()"  *ngIf="this.navbar.visible"><i class="fa fa-bars"></i></button>
-    <mat-icon class="backArrow" (click)="goback()" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
+    <mat-icon class="backArrow" (click)="this.rtr.navigate(['/', 'login'])" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
     <h1 class="example-app-name" *ngIf="this.navbar.visible || isSearch " >{{title}}</h1>
     <h1 class="example-app-name" *ngIf="!this.navbar.visible">Hisab Kitab</h1>
 
@@ -39,7 +39,7 @@
             <p>{{s_email}}</p>
           </div>
           <div class="navmenu">
-            <p routerLink="/dashboard" class="menuitem" (click)="Reload()">Dashboard</p>
+            <p routerLink="/dashboard" class="menuitem">Dashboard</p>
             <p routerLink="/credithistory" class="menuitem">Credit History</p>
             <p routerLink="/debithistory" class="menuitem">Debit History</p>
             <p class="menuitem" (click)="onContact()">Contact us</p>
@@ -201,3 +201,4 @@
   </mat-sidenav-container>
 </div>
 
+</div>

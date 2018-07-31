@@ -89,9 +89,9 @@
   <div align="center" *ngIf="isPaging" style="margin-bottom: 10px">
     <button class="bt"><i class="fa fa-angle-double-left" disabled="isDisable" aria-hidden="true" (click)="onBack()"></i></button><button style="font-size: 15px" class="bt">{{count}}</button><button class="bt"><i class="fa fa-angle-double-right"  aria-hidden="true" (click)="onNext()"></i></button>
   </div>
-  <div align="center">
+  <!--<div align="center">
     <img class="loader_icon" src="assets/images/loading.gif" alt="loading" *ngIf="loading">
-  </div>
+  </div>-->
   <div class="buttondiv">
     <img class="addIcon" src="assets/images/addIcon.gif" alt="loading" (click)="openDialog()" *ngIf="isData">
     <button mat-fab class="button" (click)="openDialog()" *ngIf="!isData"><i style="font-size:24px" class="fa fa-plus" ></i></button>

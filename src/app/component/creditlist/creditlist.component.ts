@@ -15,6 +15,7 @@ import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
 import {FeedbackComponent} from '../feedback/feedback.component';
 import {st} from '@angular/core/src/render3';
 
+
 @Component({
   selector: 'app-hisabkitab-job-list',
   templateUrl: './creditlist.component.html',

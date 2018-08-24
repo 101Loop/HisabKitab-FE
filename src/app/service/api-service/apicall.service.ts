@@ -156,11 +156,12 @@ export class APICallService {
       .pipe(catchError(this.handleError));
   }
   /*-------for update transactions ---------------------------------------------------------------------------------*/
-  updatePost(id: string, name: string, amount: string, comment: string, modeId: any) {
+  updatePost(id: string, name: string, amount: string, comment: string, date: any, modeId: any) {
     this.data = {
       contact: name,
       amount: amount,
       comments: comment,
+      transaction_date: date,
       mode: modeId,
     };
     return this.http.put(this.baseUrl + 'api/transactions/' + id + '/update/', this.data, {headers: this.headers})

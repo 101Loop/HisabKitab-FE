@@ -132,7 +132,7 @@ export class APICallService {
       mobile: mobile,
       email: email
     };
-    console.log(this.data);
+    // console.log(this.data);
     return this.http.put(this.baseUrl + 'api/users/updateprofile/', this.data, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }
@@ -184,7 +184,6 @@ export class APICallService {
       email: email,
       message: feeds
     };
-    console.log(this.data);
     return this.http.post(this.baseUrl + 'api/feedback/', this.data, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }

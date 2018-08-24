@@ -16,10 +16,12 @@
         </mat-form-field>
         <i class="fa fa-search" aria-hidden="true" (click)=" this.isSearch = !this.isSearch"></i>-->
       <p class="inline" style="font-size: 14px; margin-right: 8px; font-weight: bold" routerLink="/login" *ngIf="!isDashboard && this.navbar.isLogin" (click)="Reload()">Sign In</p>
-      <p class="inline" style="font-size: 14px; margin-right: 8px; font-weight: bold" routerLink="/home" *ngIf="this.navbar.isHome">Home</p>
+      <i class="fa fa-home" aria-hidden="true" routerLink="/home" *ngIf="this.navbar.isHome"></i>
       <p class="inline" style="font-size: 14px; margin-right: 8px; font-weight: bold" routerLink="/dashboard" *ngIf="isDashboard && this.navbar.isDash " (click)="Reload()">Dashboard</p>
-      <i class="fa fa-filter" aria-hidden="true" (click)="isFilter = !isFilter" *ngIf="this.navbar.isSearch"></i>
-      <i class="fa fa-share-alt" aria-hidden="true" (click)="isShare = !isShare" ng-blur="isShare = false"></i>
+      <div class="inline">
+      <i class="fa fa-filter" aria-hidden="true" (click)="isFilter = !isFilter" *ngIf="this.navbar.isSearch"></i></div>
+      <div class="inline">
+      <i class="fa fa-share-alt" aria-hidden="true" (click)="isShare = !isShare" ng-blur="isShare = false"></i></div>
     </div>
     <!--    <div align="right" class="logo"> <img src="assets/images/hissab-kitab.png"></div>-->
   </mat-toolbar>
@@ -79,7 +81,7 @@
           <div align="center"><h3 class="title" >Filter</h3></div>
           <form [formGroup]="Filterform" novalidate>
             <div align="center" >
-              <div >
+              <div>
                 <mat-form-field appearance="outline" class="search">
                   <mat-label>Search by name</mat-label>
                   <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="search_query" formControlName="Fname">
@@ -137,6 +139,8 @@
           </form>
         </mat-card>
       </div>
+
+
 <!--      <div style="width: 17%; float: left; z-index: 1; position: absolute">
       &lt;!&ndash;for filter&ndash;&gt;
       <mat-accordion>

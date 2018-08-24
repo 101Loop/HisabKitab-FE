@@ -90,6 +90,11 @@ export class CreditlistComponent extends SharedClass implements OnInit {
         for (const mesg of error) {
           if (error[0] === 'Please check your internet connection!') {
             this.isNetwork = true;
+          } else
+          if (error[0] === 'You are not logged in or the token has expired. Please login again!') {
+            this.rtr.navigate(['/', 'home']);
+            localStorage.clear();
+            window.location.reload();
           }
           this.toast.error(mesg);
         }

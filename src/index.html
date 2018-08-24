@@ -319,23 +319,6 @@
     }(document, 'script', 'facebook-jssdk'));
   </script>
 
-
-  <!-- Script for Initial Loader Screen -->
-  <script>
-    document.onreadystatechange = function () {
-      if (document.readyState === 'loading') {
-        document.getElementById('loaderScreenId').style.display = 'none';
-        document.getElementById('loading').style.display = 'block';
-      } else if (document.readyState === 'intermediate') {
-        document.getElementById('loaderScreenId').style.display = 'none';
-        document.getElementById('loading').style.display = 'block';
-      } else if (document.readyState === 'complete') {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('loaderScreenId').style.display = 'block';
-      }
-    };
-  </script>
-
 </head>
 
 <body>
@@ -346,10 +329,6 @@
 
 <!--For FB button-->
 <div id="fb-root"></div>
-
-<div class="overlay" id="loading">
-  <div class="loader"></div>
-</div>
 
 <app-root></app-root>
 

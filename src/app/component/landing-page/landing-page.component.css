@@ -34,7 +34,7 @@ h1{
 }
 .search_block .box_wapper {
   display: inline-block;
-  width: 25.3%;
+  width: 34.3%;
   text-align: center;
   background-image: none !important;
   cursor: pointer;
@@ -55,34 +55,10 @@ h1{
 a {
   text-decoration: none;
 }
-
-@media (max-width: 768px) {
-  .search_block {
-    width: 100%;
-    border: 0;
-    margin: 25px auto 0 auto;
-    background: none;
-  }
-  .search_block .container {
-    border: 0;
-    border-radius: 0;
-    margin-left: -10px;
-  }
-  .search_block .box_wapper:first-child {
-    margin-left: 0px;
-  }
-  .search_block .box_wapper:last-child {
-    margin-right: 0px;
-  }
-  .search_block .box_wapper {
-    width: 80%;
-    padding: 10px;
-    border: solid 2px #fff;
-    border-radius: 25px !important;
-    margin-bottom: 15px;
-    font-size: 14px;
-  }
-}
+/*.search_block .box_wapper:hover {
+  background-color: #86c10d;
+  text-decoration: none;
+}*/
 .family_card{
   margin-top: 20px;
   margin-bottom: 20px;
@@ -105,15 +81,17 @@ hr{
 /*width: 100%;*/
 /*}*/
 .column {
-  width: 33.33%;
+  width: 29.33%;
   text-align: center;
   display: inline-block;
+  margin: 2%;
 }
 h6{
   margin-top: -15px;
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
+  color: #555555;
 }
 ul{
   margin-top: -10px;
@@ -127,10 +105,45 @@ li{
   display: inline-block;
   margin-right: 20px;
 }
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .search_block {
+    width: 100%;
+    border: 0;
+    margin: 25px auto 0 auto;
+    background: none;
+  }
+  .search_block .container {
+    border: 0;
+    border-radius: 0;
+    margin-left: -10px;
+  }
+  .search_block .box_wapper:first-child {
+    margin-left: 0px;
+  }
+  .search_block .box_wapper:last-child {
+    margin-right: 0px;
+    border-right: solid 2px #fff;
+  }
+  .search_block .box_wapper {
+    width: 80%;
+    padding: 10px;
+    border: solid 2px #fff;
+    border-radius: 25px !important;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
   .column {
     width: 100%;
+    padding: 0;
   }
+}
+
+@media (min-width: 1024px) {
+  .search_block .box_wapper {
+    width: 30.3%;
+  }
+}
+@media (max-width: 600px) {
   h1{
     font-size: 1em;
   }

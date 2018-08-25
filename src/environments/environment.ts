@@ -5,12 +5,6 @@
 export const environment = {
   production: false,
   baseUrl: 'http://local.hisabkitab.in/',
-  apiKey: 'AIzaSyBSPoo7dYUK5QyGCNk_vfdyIEevwq4A8Co',
-  authDomain: 'hisabkitabin.firebaseapp.com',
-  databaseURL: 'https://hisabkitabin.firebaseio.com',
-  projectId: 'hisabkitabin',
-  storageBucket: 'hisabkitabin.appspot.com',
-  messagingSenderId: '1011998306961'
 };
 
 /*

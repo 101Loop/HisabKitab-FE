@@ -82,7 +82,6 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
           data => {
             this.dialog.open(SuccessMessageComponent, {});
             // this.toast.success('Transaction has beed updated', 'Update');
-            // window.location.reload();
             this.dialogRef.close();
             this.loading = false;
           /*

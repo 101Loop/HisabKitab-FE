@@ -1,4 +1,3 @@
-///<reference path="../../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MatDialog} from '@angular/material';
@@ -14,12 +13,7 @@ import {FeedbackComponent} from '../feedback/feedback.component';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ContactComponent} from '../contact/contact.component';
 import {timer} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {error} from '@angular/compiler/src/util';
-import {until} from 'selenium-webdriver';
-import elementIsSelected = until.elementIsSelected;
-import {Timestamp} from 'rxjs/internal/operators/timestamp';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -106,11 +100,10 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
 
   goback() {
     this.rtr.navigate(['/', 'login']);
-    window.location.reload();
   }
 
   Reload() {
-    window.location.reload();
+    this.ngOnInit();
   }
 
   openFilter() {

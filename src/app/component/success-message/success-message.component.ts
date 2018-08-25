@@ -9,7 +9,7 @@ export class SuccessMessageComponent implements OnInit {
   constructor( public dialogRef: MatDialogRef<SuccessMessageComponent>) {}
   ngOnInit() {}
 hide() {
-  window.location.reload();
+ this.ngOnInit();
   this.dialogRef.close();
 }
 }

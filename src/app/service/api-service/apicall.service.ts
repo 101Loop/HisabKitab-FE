@@ -14,7 +14,8 @@ import {Router} from '@angular/router';
 export class APICallService {
   token = localStorage.getItem('TOKEN');
   headers = new HttpHeaders().set('content-type', 'application/json' ).set('Authorization', this.token );
-  baseUrl = environment.baseUrl;
+  // baseUrl = environment.baseUrl;
+  baseUrl = 'https://y5sa0ot8y4.execute-api.ap-south-1.amazonaws.com/production/';
   data: any;
   message: any;
   constructor(private http: HttpClient, private rtr: Router) {}

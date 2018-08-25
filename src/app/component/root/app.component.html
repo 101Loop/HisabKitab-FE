@@ -1,21 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--c09d2dd6b22f45dc9e4afd4f466ab63a-->
-<div id="loaderScreenId">
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
 
   <mat-toolbar color="primary" class="example-toolbar" style="background:#2d576b">
     <button mat-icon-button (click)="snav.toggle()"  *ngIf="this.navbar.visible"><i class="fa fa-bars"></i></button>
-    <mat-icon class="backArrow" (click)="this.rtr.navigate(['/', 'login'])" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
+    <mat-icon class="backArrow" (click)="goback()" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
     <img src="assets/images/hissab-kitab.png/" style="width:45px; height:47px;">
     <h1 class="example-app-name" *ngIf="this.navbar.visible || isSearch " >{{title}}</h1>
     <h1 class="example-app-name" *ngIf="!this.navbar.visible">Hisab Kitab</h1>
 
     <div class="inline filter logo" align="right">
-      <!--  <mat-form-field appearance="outline" class="inputfield" *ngIf="isSearch">
-          <mat-label>Search name</mat-label>
-          <input  matInput placeholder="Search name" name="email" type="search" [(ngModel)]="serach_query">
-        </mat-form-field>
-        <i class="fa fa-search" aria-hidden="true" (click)=" this.isSearch = !this.isSearch"></i>-->
       <p class="inline" style="font-size: 14px; margin-right: 8px; font-weight: bold" routerLink="/login" *ngIf="!isDashboard && this.navbar.isLogin" (click)="Reload()">Sign In</p>
       <i class="fa fa-home" aria-hidden="true" routerLink="/home" *ngIf="this.navbar.isHome"></i>
       <p class="inline" style="font-size: 14px; margin-right: 8px; font-weight: bold" routerLink="/dashboard" *ngIf="isDashboard && this.navbar.isDash " (click)="Reload()">Dashboard</p>
@@ -24,7 +16,7 @@
       <div class="inline">
       <i class="fa fa-share-alt" aria-hidden="true" (click)="isShare = !isShare" ng-blur="isShare = false"></i></div>
     </div>
-    <!--    <div align="right" class="logo"> <img src="assets/images/hissab-kitab.png"></div>-->
+
   </mat-toolbar>
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
 
@@ -46,7 +38,6 @@
             <p routerLink="/credithistory" class="menuitem">Credit History</p>
             <p routerLink="/debithistory" class="menuitem">Debit History</p>
             <p class="menuitem" (click)="onContact()">Contact us</p>
-            <p (click)="openFeedback()" class="menuitem">Feedback</p>
             <div (click)="onLogout()">
               <p class="menuitem logout">Logout</p>
             </div>
@@ -204,6 +195,4 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div>
-
 </div>

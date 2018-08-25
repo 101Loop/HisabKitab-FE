@@ -56,7 +56,7 @@ export class LoginComponent extends SharedClass implements OnInit {
     this.loading = true;
     this.apiObject.login(this.username, this.password).subscribe(
       data => {
-        window.location.reload();
+        this.ngOnInit();
         this.loading = false;
         this.response = data;
         if (this.response.status_code === 200) {

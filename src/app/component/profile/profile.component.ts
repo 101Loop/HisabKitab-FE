@@ -42,7 +42,6 @@ export class ProfileComponent extends SharedClass implements OnInit {
           if (error[0] === 'You are not logged in or the token has expired. Please login again!') {
             this.rtr.navigate(['/', 'home']);
             localStorage.clear();
-            window.location.reload();
           }
           this.toast.error(mesg);
         }

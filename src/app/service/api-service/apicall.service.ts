@@ -166,7 +166,7 @@ export class APICallService {
     return this.http.put(this.baseUrl + 'api/transactions/' + id + '/update/', this.data, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }
-  /*-------for update transactions ---------------------------------------------------------------------------------*/
+  /*-------for delete transactions ---------------------------------------------------------------------------------*/
   deletePost(id: string) {
     return this.http.delete(this.baseUrl + 'api/transactions/' + id + '/delete/', {headers: this.headers})
       .pipe(catchError(this.handleError));

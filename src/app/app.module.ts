@@ -35,6 +35,7 @@ import {ContactComponent} from './component/contact/contact.component';
 import {ProfileComponent} from './component/profile/profile.component';
 import {ChangePasswordComponent} from './component/change-password/change-password.component';
 import { LandingPageComponent } from './component/landing-page/landing-page.component';
+import { PrivacypolicyComponent } from './component/privacypolicy/privacypolicy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { LandingPageComponent } from './component/landing-page/landing-page.comp
     ContactComponent,
     ProfileComponent,
     ChangePasswordComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    PrivacypolicyComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,7 @@ import {ContactComponent} from './component/contact/contact.component';
 import {ProfileComponent} from './component/profile/profile.component';
 import {ChangePasswordComponent} from './component/change-password/change-password.component';
 import {LandingPageComponent} from './component/landing-page/landing-page.component';
+import {PrivacypolicyComponent} from './component/privacypolicy/privacypolicy.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path: 'feedback', component: FeedbackComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'profile', component: ProfileComponent},
-  { path: 'changepassword', component: ChangePasswordComponent}
+  { path: 'changepassword', component: ChangePasswordComponent},
+  { path: 'policy', component: PrivacypolicyComponent}
 ];
 
 @NgModule({

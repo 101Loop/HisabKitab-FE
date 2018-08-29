@@ -8,11 +8,15 @@ import {SharedClass} from '../../shared-class';
 import {PostcreditComponent} from '../postcredit/postcredit.component';
 import {DataService} from '../../service/data-service/data.service';
 import {SuccessMessageComponent} from '../success-message/success-message.component';
+import {DatePipe} from '@angular/common';
+import {FormControl, FormGroup} from '@angular/forms';
+
 
 @Component({
   selector: 'app-show-status',
   templateUrl: './show-status.component.html',
-  styleUrls: ['./show-status.component.css']
+  styleUrls: ['./show-status.component.css'],
+  providers: [DatePipe]
 })
 export class ShowStatusComponent extends SharedClass implements OnInit {
   loading: boolean;
@@ -23,20 +27,29 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
   amount: string;
   modeID: any;
   comment: string;
+  transaction_date: any;
   PaymentModeId: string;
   post_id: string;
   isEditView = false;
   isViewOnly = true;
   isOpen = true;
   PMode: string;
+  editForm: FormGroup;
   constructor(private rtr: Router, private navbar: NavbarService,  public dialogRef: MatDialogRef<ShowStatusComponent>,
-              private apiObject: APICallService, private data: DataService, private toast: ToastrService, public dialog: MatDialog) {
+              private apiObject: APICallService, private data: DataService, private toast: ToastrService, public dialog: MatDialog,
+              private dateFormatter: DatePipe) {
     super(rtr);
     this.navbar.show();
     this.getMode(this.apiObject);
   }
   ngOnInit() {
     super.ngOnInit();
+    this.editForm = new FormGroup({
+      'name' : new FormControl('', ),
+      'amount' : new FormControl('', ),
+      'transaction_date' : new FormControl('', ),
+      'comment' : new FormControl('', )
+    });
     /*Fetching selected transaction details from dataservice.ts file*/
     this.data.nameData.subscribe(message => this.name = message);
     this.data.amountData.subscribe(message => this.amount = message);
@@ -58,19 +71,17 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
         this.loading = true;
         if (this.PaymentModeId === 'Cash') {
           this.PMode = '1';
-        } else if (this.PaymentModeId === 'Account') {
-          this.PMode = '3';
         } else if (this.PaymentModeId === 'Cheque') {
           this.PMode = '2';
+        } else if (this.PaymentModeId === 'Account') {
+          this.PMode = '3';
         } else if (this.PaymentModeId === 'Card') {
           this.PMode = '4';
         }
-
-    this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.PMode).subscribe(
+    this.apiObject.updatePost(this.id, this.name, this.amount, this.comment, this.transaction_date, this.PMode).subscribe(
           data => {
             this.dialog.open(SuccessMessageComponent, {});
             // this.toast.success('Transaction has beed updated', 'Update');
-            // window.location.reload();
             this.dialogRef.close();
             this.loading = false;
           /*
@@ -92,5 +103,8 @@ export class ShowStatusComponent extends SharedClass implements OnInit {
             }*/
           }
         );
+  }
+  dateFormat(date: any) {
+    this.date =  this.dateFormatter.transform(date, 'YYYY-MM-DD');
   }
 }

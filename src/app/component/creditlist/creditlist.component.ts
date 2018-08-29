@@ -15,6 +15,7 @@ import {LogoutDialogComponent} from '../logout-dialog/logout-dialog.component';
 import {FeedbackComponent} from '../feedback/feedback.component';
 import {st} from '@angular/core/src/render3';
 
+
 @Component({
   selector: 'app-hisabkitab-job-list',
   templateUrl: './creditlist.component.html',
@@ -90,6 +91,10 @@ export class CreditlistComponent extends SharedClass implements OnInit {
         for (const mesg of error) {
           if (error[0] === 'Please check your internet connection!') {
             this.isNetwork = true;
+          } else
+          if (error[0] === 'You are not logged in or the token has expired. Please login again!') {
+            this.rtr.navigate(['/', 'home']);
+            localStorage.clear();
           }
           this.toast.error(mesg);
         }

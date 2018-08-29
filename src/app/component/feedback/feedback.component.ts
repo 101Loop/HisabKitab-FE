@@ -41,6 +41,10 @@ export class FeedbackComponent extends SharedClass implements OnInit {
         this.toast.success(' Thank you for your feedback :)', 'Feedback');
       }, error => {
         for (const mesg of error) {
+          if (error[0] === 'You are not logged in or the token has expired. Please login again!') {
+            this.rtr.navigate(['/', 'home']);
+            localStorage.clear();
+          }
           this.toast.error(mesg);
         }
       }

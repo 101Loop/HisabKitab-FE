@@ -1,4 +1,3 @@
-///<reference path="../../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MatDialog} from '@angular/material';
@@ -14,12 +13,7 @@ import {FeedbackComponent} from '../feedback/feedback.component';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ContactComponent} from '../contact/contact.component';
 import {timer} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {error} from '@angular/compiler/src/util';
-import {until} from 'selenium-webdriver';
-import elementIsSelected = until.elementIsSelected;
-import {Timestamp} from 'rxjs/internal/operators/timestamp';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -62,7 +56,7 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
   private readonly _mobileQueryListener: () => void;
 
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public navbar: NavbarService,
-              private data: DataService, public location: Location, public rtr: Router, private apiObject: APICallService,
+              private data: DataService, public location: Location, private rtr: Router, private apiObject: APICallService,
               private timeFormat: DatePipe, private http: HttpClient) {
     // public dialog: MatDialog,
     super(rtr);
@@ -103,6 +97,15 @@ export class AppComponent extends SharedClass implements OnDestroy, OnInit {
       width: '250px'
     });
   }
+
+  goback() {
+    this.rtr.navigate(['/', 'login']);
+  }
+
+  Reload() {
+    this.ngOnInit();
+  }
+
   openFilter() {
     /* const dialogRef = this.dialog.open(FilterComponent, {
        height: '400px',

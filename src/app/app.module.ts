@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_ID, Inject, NgModule, PLATFORM_ID} from '@angular/core';
 
 import { AppComponent } from './component/root/app.component';
 import {
@@ -11,7 +11,7 @@ import {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {LoginComponent} from './component/login/login.component';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {SignupComponent} from './component/signup/signup.component';
 import {ForgetpasswordComponent} from './component/forgetpassword/forgetpassword.component';
@@ -27,14 +27,13 @@ import {PostdebitComponent} from './component/postdebit/postdebit.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {ShowStatusComponent} from './component/show-status/show-status.component';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FilterComponent } from './component/filter/filter.component';
 import {FeedbackComponent} from './component/feedback/feedback.component';
 import {ContactComponent} from './component/contact/contact.component';
 import {ProfileComponent} from './component/profile/profile.component';
 import {ChangePasswordComponent} from './component/change-password/change-password.component';
 import { LandingPageComponent } from './component/landing-page/landing-page.component';
+import {isPlatformBrowser} from '@angular/common';
 import { PrivacypolicyComponent } from './component/privacypolicy/privacypolicy.component';
 @NgModule({
   declarations: [
@@ -60,11 +59,10 @@ import { PrivacypolicyComponent } from './component/privacypolicy/privacypolicy.
     PrivacypolicyComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'HisabKitab' }),
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
@@ -89,9 +87,16 @@ import { PrivacypolicyComponent } from './component/privacypolicy/privacypolicy.
     MatPaginatorModule,
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    AngularFireModule.initializeApp(environment), AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(APP_ID) private appId: string) {
+    const platform = isPlatformBrowser(platformId) ?
+      'in the browser' : 'on the server';
+    // console.log(`Running ${platform} with appId=${appId}`);
+  }
+}

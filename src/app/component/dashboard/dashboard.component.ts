@@ -29,7 +29,7 @@ export class DashboardComponent extends SharedClass implements OnInit {
     this.navbar.show();
     this.navbar.invisi();
     this.navbar.hideSearch();
-    this.navbar.hideHome();
+    this.navbar.showhome();
     this.navbar.hideLogin();
     this.navbar.hideDash();
     this.data.changeMessage(this.title);

@@ -60,6 +60,10 @@ export class PostdebitComponent extends SharedClass implements OnInit {
       }, error => {
         this.loading = false;
         for (const mesg of error) {
+          if (error[0] === 'You are not logged in or the token has expired. Please login again!') {
+            this.rtr.navigate(['/', 'home']);
+            localStorage.clear();
+          }
           this.toast.error(mesg);
         }
       }

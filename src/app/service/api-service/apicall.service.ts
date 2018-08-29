@@ -14,7 +14,8 @@ import {Router} from '@angular/router';
 export class APICallService {
   token = localStorage.getItem('TOKEN');
   headers = new HttpHeaders().set('content-type', 'application/json' ).set('Authorization', this.token );
-  baseUrl = environment.baseUrl;
+  // baseUrl = environment.baseUrl;
+  baseUrl = 'https://y5sa0ot8y4.execute-api.ap-south-1.amazonaws.com/production/';
   data: any;
   message: any;
   constructor(private http: HttpClient, private rtr: Router) {}
@@ -132,7 +133,7 @@ export class APICallService {
       mobile: mobile,
       email: email
     };
-    console.log(this.data);
+    // console.log(this.data);
     return this.http.put(this.baseUrl + 'api/users/updateprofile/', this.data, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }
@@ -156,11 +157,12 @@ export class APICallService {
       .pipe(catchError(this.handleError));
   }
   /*-------for update transactions ---------------------------------------------------------------------------------*/
-  updatePost(id: string, name: string, amount: string, comment: string, modeId: any) {
+  updatePost(id: string, name: string, amount: string, comment: string, date: any, modeId: any) {
     this.data = {
       contact: name,
       amount: amount,
       comments: comment,
+      transaction_date: date,
       mode: modeId,
     };
     return this.http.put(this.baseUrl + 'api/transactions/' + id + '/update/', this.data, {headers: this.headers})
@@ -184,7 +186,6 @@ export class APICallService {
       email: email,
       message: feeds
     };
-    console.log(this.data);
     return this.http.post(this.baseUrl + 'api/feedback/', this.data, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }

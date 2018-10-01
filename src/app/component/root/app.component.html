@@ -3,7 +3,7 @@
   <mat-toolbar color="primary" class="example-toolbar" style="background:#2d576b">
     <button mat-icon-button (click)="snav.toggle()"  *ngIf="this.navbar.visible"><i class="fa fa-bars"></i></button>
     <mat-icon class="backArrow" (click)="goback()" *ngIf="this.navbar.isShow" >keyboard_backspace</mat-icon>
-    <img src="assets/images/hissab-kitab.png/" style="width:45px; height:47px;">
+    <img src="assets/images/hissab-kitab.png" style="width:45px; height:47px;">
     <h1 class="example-app-name" *ngIf="this.navbar.visible || isSearch " >{{title}}</h1>
     <h1 class="example-app-name" *ngIf="!this.navbar.visible">Hisab Kitab</h1>
 

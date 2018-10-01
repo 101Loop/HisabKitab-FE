@@ -59,7 +59,7 @@ import { PrivacypolicyComponent } from './component/privacypolicy/privacypolicy.
     PrivacypolicyComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'HisabKitab' }),
+    BrowserModule.withServerTransition({ appId: 'HisabKitabID' }),
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

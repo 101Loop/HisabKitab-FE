@@ -34,6 +34,7 @@ import {ProfileComponent} from './component/profile/profile.component';
 import {ChangePasswordComponent} from './component/change-password/change-password.component';
 import { LandingPageComponent } from './component/landing-page/landing-page.component';
 import {isPlatformBrowser} from '@angular/common';
+import { PrivacypolicyComponent } from './component/privacypolicy/privacypolicy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,10 +55,11 @@ import {isPlatformBrowser} from '@angular/common';
     ContactComponent,
     ProfileComponent,
     ChangePasswordComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    PrivacypolicyComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'HisabKitab' }),
+    BrowserModule.withServerTransition({ appId: 'HisabKitabID' }),
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

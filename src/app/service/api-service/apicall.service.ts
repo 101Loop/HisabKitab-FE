@@ -1,10 +1,8 @@
-import {Injectable, ɵEMPTY_ARRAY} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 
-import {environment} from '../../../environments/environment';
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 
 
@@ -12,8 +10,8 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class APICallService {
-  token = localStorage.getItem('TOKEN');
-  headers = new HttpHeaders().set('content-type', 'application/json' ).set('Authorization', this.token );
+ token: any;
+  headers: any;
   // baseUrl = environment.baseUrl;
   baseUrl = 'https://y5sa0ot8y4.execute-api.ap-south-1.amazonaws.com/production/';
   data: any;
@@ -91,6 +89,12 @@ export class APICallService {
          this.message = ['A server side error occurred. Report this to info@vitartha.com'];
        }*/
   }
+  /*-----for header------*/
+  header() {
+    this.token = localStorage.getItem('TOKEN');
+    console.log(this.token);
+    return this.headers = new HttpHeaders().set('content-type', 'application/json' ).set('Authorization', this.token );
+  }
   /* -----for login--------------------------------------------------------------------------------------- */
   login(username: string, password: string) {
     this.data = {
@@ -123,7 +127,7 @@ export class APICallService {
     this.data = {
       new_password: newPassword,
     };
-    return this.http.put(this.baseUrl + 'api/users/changepassword/', this.data, {headers: this.headers})
+    return this.http.put(this.baseUrl + 'api/users/changepassword/', this.data, {headers: this.header()})
       .pipe(catchError(this.handleError));
   }
   /*--------for update profile---------------------------------------------------------------------------------------*/
@@ -134,13 +138,13 @@ export class APICallService {
       email: email
     };
     // console.log(this.data);
-    return this.http.put(this.baseUrl + 'api/users/updateprofile/', this.data, {headers: this.headers})
+    return this.http.put(this.baseUrl + 'api/users/updateprofile/', this.data, {headers: this.header()})
       .pipe(catchError(this.handleError));
   }
   /*----------for fetching transactions-------------------------------------------------------------------------------*/
   fetchTransactions(data: any) {
    // console.log(data);
-    return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.headers, params: data})
+    return this.http.get(this.baseUrl + 'api/transactions/show/', {headers: this.header(), params: data})
       .pipe(catchError(this.handleError));
   }
   /*-------for adding transactions ---------------------------------------------------------------------------------*/
@@ -153,7 +157,7 @@ export class APICallService {
       comments: comments,
       transaction_date: date
     };
-    return this.http.post(this.baseUrl + 'api/transactions/add/', this.data, {headers: this.headers})
+    return this.http.post(this.baseUrl + 'api/transactions/add/', this.data, {headers: this.header()})
       .pipe(catchError(this.handleError));
   }
   /*-------for update transactions ---------------------------------------------------------------------------------*/
@@ -165,17 +169,17 @@ export class APICallService {
       transaction_date: date,
       mode: modeId,
     };
-    return this.http.put(this.baseUrl + 'api/transactions/' + id + '/update/', this.data, {headers: this.headers})
+    return this.http.put(this.baseUrl + 'api/transactions/' + id + '/update/', this.data, {headers: this.header()})
       .pipe(catchError(this.handleError));
   }
   /*-------for delete transactions ---------------------------------------------------------------------------------*/
   deletePost(id: string) {
-    return this.http.delete(this.baseUrl + 'api/transactions/' + id + '/delete/', {headers: this.headers})
+    return this.http.delete(this.baseUrl + 'api/transactions/' + id + '/delete/', {headers: this.header()})
       .pipe(catchError(this.handleError));
   }
   /*------get payment mode-----------------------------------------------------------------------------------------*/
   getPaymentMode() {
-    return this.http.get(this.baseUrl + 'api/transactions/mode/show/', {headers: this.headers})
+    return this.http.get(this.baseUrl + 'api/transactions/mode/show/', {headers: this.header()})
       .pipe(catchError(this.handleError));
   }
   /*-------for adding  feeds ---------------------------------------------------------------------------------*/
@@ -186,7 +190,7 @@ export class APICallService {
       email: email,
       message: feeds
     };
-    return this.http.post(this.baseUrl + 'api/feedback/', this.data, {headers: this.headers})
+    return this.http.post(this.baseUrl + 'api/feedback/', this.data, {headers: this.header()})
       .pipe(catchError(this.handleError));
   }
 /*---------To push notification-------------------------------------------------------------------------------*/

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://local.hisabkitab.in/',
+  baseUrl: 'http://localhost:8000/',
 };
 
 /*

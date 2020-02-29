@@ -13,7 +13,7 @@ export class APICallService {
  token: any;
   headers: any;
   // baseUrl = environment.baseUrl;
-  baseUrl = 'https://y5sa0ot8y4.execute-api.ap-south-1.amazonaws.com/production/';
+  baseUrl = 'https://admin.hisabkitab.in/';
   data: any;
   message: any;
   constructor(private http: HttpClient, private rtr: Router) {}
@@ -92,7 +92,6 @@ export class APICallService {
   /*-----for header------*/
   header() {
     this.token = localStorage.getItem('TOKEN');
-    console.log(this.token);
     return this.headers = new HttpHeaders().set('content-type', 'application/json' ).set('Authorization', this.token );
   }
   /* -----for login--------------------------------------------------------------------------------------- */
